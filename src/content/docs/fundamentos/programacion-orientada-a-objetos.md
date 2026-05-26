@@ -19,22 +19,22 @@ En este paradigma, los objetos poseen **atributos** (datos que describen su esta
 Una **clase** es una plantilla o molde que define la estructura y el comportamiento que tendrán los objetos de un determinado tipo. No constituye un objeto en sí misma, sino la especificación de cómo serán los objetos que se creen a partir de ella.
 
 ```
-clase Coche
-    atributos:
+CLASE Coche
+    ATRIBUTOS:
         marca
         modelo
         color
         velocidad
 
-    metodos:
-        funcion arrancar()
+    METODOS:
+        FUNCION arrancar()
             // codigo para arrancar
-        fin_funcion
+        FIN FUNCION
 
-        funcion acelerar(incremento)
+        FUNCION acelerar(incremento)
             velocidad = velocidad + incremento
-        fin_funcion
-fin_clase
+        FIN FUNCION
+FIN CLASE
 ```
 
 La clase `Coche` define que todo coche tendrá marca, modelo, color y velocidad, y podrá ejecutar las acciones de arrancar y acelerar. No obstante, la clase en sí no es un coche: es el plano conceptual a partir del cual se crearán coches concretos.
@@ -44,13 +44,13 @@ La clase `Coche` define que todo coche tendrá marca, modelo, color y velocidad,
 Un **objeto** es una instancia concreta de una clase. Es decir, un ejemplar real construido a partir del molde proporcionado por la clase.
 
 ```
-coche1 = nuevo Coche()
+coche1 = NUEVO Coche()
 coche1.marca = "Toyota"
 coche1.modelo = "Corolla"
 coche1.color = "Rojo"
 coche1.arrancar()
 
-coche2 = nuevo Coche()
+coche2 = NUEVO Coche()
 coche2.marca = "Honda"
 coche2.modelo = "Civic"
 coche2.color = "Azul"
@@ -66,19 +66,19 @@ coche2.arrancar()
 | Definición de `Usuario` | "Ana", un usuario concreto |
 
 ```
-clase Usuario
-    atributos:
+CLASE Usuario
+    ATRIBUTOS:
         nombre
         email
         edad
 
-    metodos:
-        funcion saludar()
-            mostrar("Hola, soy " + nombre)
-        fin_funcion
-fin_clase
+    METODOS:
+        FUNCION saludar()
+            ESCRIBIR("Hola, soy " + nombre)
+        FIN FUNCION
+FIN CLASE
 
-usuario1 = nuevo Usuario()
+usuario1 = NUEVO Usuario()
 usuario1.nombre = "Ana"
 usuario1.email = "ana@email.com"
 usuario1.edad = 25
@@ -94,13 +94,13 @@ Los objetos se componen de dos tipos de elementos:
 Son las **características** del objeto. Definen su estado en un momento determinado.
 
 ```
-clase Producto
-    atributos:
+CLASE Producto
+    ATRIBUTOS:
         nombre
         precio
         stock
         categoria
-fin_clase
+FIN CLASE
 ```
 
 Cada objeto `Producto` tendrá sus propios valores para `nombre`, `precio`, `stock` y `categoria`. Dos productos pueden compartir la misma estructura pero contener valores distintos.
@@ -110,23 +110,23 @@ Cada objeto `Producto` tendrá sus propios valores para `nombre`, `precio`, `sto
 Son las **acciones** que el objeto puede ejecutar. Se trata de funciones que pertenecen al objeto y que, por lo general, operan sobre sus propios atributos.
 
 ```
-clase Contador
-    atributos:
+CLASE Contador
+    ATRIBUTOS:
         valor = 0
 
-    metodos:
-        funcion incrementar()
+    METODOS:
+        FUNCION incrementar()
             valor = valor + 1
-        fin_funcion
+        FIN FUNCION
 
-        funcion decrementar()
+        FUNCION decrementar()
             valor = valor - 1
-        fin_funcion
+        FIN FUNCION
 
-        funcion mostrar_valor()
-            mostrar(valor)
-        fin_funcion
-fin_clase
+        FUNCION mostrar_valor()
+            ESCRIBIR(valor)
+        FIN FUNCION
+FIN CLASE
 ```
 
 ## Los cuatro pilares de la POO
@@ -138,39 +138,39 @@ La programación orientada a objetos se fundamenta en cuatro principios fundamen
 La **herencia** permite que una clase derive de otra, heredando sus atributos y métodos. De este modo, es posible crear clases más específicas a partir de clases más generales, reutilizando el código existente.
 
 ```
-clase Animal
-    atributos:
+CLASE Animal
+    ATRIBUTOS:
         nombre
         edad
 
-    metodos:
-        funcion respirar()
+    METODOS:
+        FUNCION respirar()
             // todos los animales respiran
-        fin_funcion
-fin_clase
+        FIN FUNCION
+FIN CLASE
 
-clase Perro hereda de Animal
-    atributos:
+CLASE Perro HEREDA DE Animal
+    ATRIBUTOS:
         raza
 
-    metodos:
-        funcion ladrar()
-            mostrar("Guau")
-        fin_funcion
-fin_clase
+    METODOS:
+        FUNCION ladrar()
+            ESCRIBIR("Guau")
+        FIN FUNCION
+FIN CLASE
 
-clase Gato hereda de Animal
-    metodos:
-        funcion maullar()
-            mostrar("Miau")
-        fin_funcion
-fin_clase
+CLASE Gato HEREDA DE Animal
+    METODOS:
+        FUNCION maullar()
+            ESCRIBIR("Miau")
+        FIN FUNCION
+FIN CLASE
 ```
 
 `Perro` y `Gato` heredan de `Animal`: ambos disponen de `nombre`, `edad` y el método `respirar`, sin necesidad de definirlos nuevamente. Cada clase hija añade sus propios atributos y métodos específicos.
 
 ```
-perro = nuevo Perro()
+perro = NUEVO Perro()
 perro.nombre = "Rex"
 perro.respirar()     // heredado de Animal
 perro.ladrar()       // propio de Perro
@@ -181,31 +181,31 @@ perro.ladrar()       // propio de Perro
 El **polimorfismo** (del griego "muchas formas") permite que objetos de distintas clases respondan al mismo mensaje de formas diferentes. Esto posibilita escribir código que opere con cualquier objeto de una jerarquía sin importar su tipo concreto.
 
 ```
-clase Animal
-    funcion hacer_sonido()
+CLASE Animal
+    FUNCION hacer_sonido()
         // cada animal lo implementa a su manera
-    fin_funcion
-fin_clase
+    FIN FUNCION
+FIN CLASE
 
-clase Perro hereda de Animal
-    funcion hacer_sonido()
-        mostrar("Guau")
-    fin_funcion
-fin_clase
+CLASE Perro HEREDA DE Animal
+    FUNCION hacer_sonido()
+        ESCRIBIR("Guau")
+    FIN FUNCION
+FIN CLASE
 
-clase Gato hereda de Animal
-    funcion hacer_sonido()
-        mostrar("Miau")
-    fin_funcion
-fin_clase
+CLASE Gato HEREDA DE Animal
+    FUNCION hacer_sonido()
+        ESCRIBIR("Miau")
+    FIN FUNCION
+FIN CLASE
 ```
 
 ```
-animales = [nuevo Perro(), nuevo Gato()]
+animales = [NUEVO Perro(), NUEVO Gato()]
 
-para cada animal en animales hacer
+PARA CADA animal en animales HACER
     animal.hacer_sonido()   // cada uno responde con su propia implementacion
-fin_para
+FIN PARA
 // Salida: Guau  Miau
 ```
 
@@ -214,27 +214,27 @@ fin_para
 El **encapsulamiento** consiste en ocultar los detalles internos de un objeto y exponer únicamente una interfaz controlada. El objeto protege sus datos y solo permite acceder a ellos o modificarlos a través de sus métodos públicos.
 
 ```
-clase CuentaBancaria
+CLASE CuentaBancaria
     privado:
         saldo          // no accesible desde el exterior
 
     publico:
-        funcion depositar(cantidad)
-            si (cantidad > 0) entonces
+        FUNCION depositar(cantidad)
+            SI (cantidad > 0) ENTONCES
                 saldo = saldo + cantidad
-            fin_si
-        fin_funcion
+            FIN SI
+        FIN FUNCION
 
-        funcion retirar(cantidad)
-            si (cantidad <= saldo) entonces
+        FUNCION retirar(cantidad)
+            SI (cantidad <= saldo) ENTONCES
                 saldo = saldo - cantidad
-            fin_si
-        fin_funcion
+            FIN SI
+        FIN FUNCION
 
-        funcion consultar_saldo()
-            devolver saldo
-        fin_funcion
-fin_clase
+        FUNCION consultar_saldo()
+            RETORNAR saldo
+        FIN FUNCION
+FIN CLASE
 ```
 
 No es posible modificar `saldo` directamente desde el exterior:
@@ -255,17 +255,17 @@ cuenta.depositar(500)    // correcto: se accede a traves del metodo publico
 La **abstracción** consiste en modelar únicamente los aspectos relevantes de una entidad para el problema en cuestión, ignorando los detalles innecesarios. Se conserva la interfaz esencial y se oculta la complejidad interna.
 
 ```
-clase EmailServicio
-    funcion enviar_email(destino, asunto, cuerpo)
+CLASE EmailServicio
+    FUNCION enviar_email(destino, asunto, cuerpo)
         // 1. Conectar al servidor SMTP (complejidad oculta)
         // 2. Autenticarse (complejidad oculta)
         // 3. Formatear el mensaje (complejidad oculta)
         // 4. Enviar (complejidad oculta)
-    fin_funcion
-fin_clase
+    FIN FUNCION
+FIN CLASE
 
 // Quien utiliza la clase solo necesita esto:
-email = nuevo EmailServicio()
+email = NUEVO EmailServicio()
 email.enviar_email("ana@email.com", "Hola", "¿Como estas?")
 ```
 
@@ -285,35 +285,35 @@ email.enviar_email("ana@email.com", "Hola", "¿Como estas?")
 El siguiente pseudocódigo modela un sistema básico de gestión de biblioteca utilizando los principios de la POO:
 
 ```
-clase Libro
-    atributos:
+CLASE Libro
+    ATRIBUTOS:
         titulo
         autor
-        disponible = verdadero
+        disponible = VERDADERO
 
-    metodos:
-        funcion prestar()
-            si (disponible) entonces
-                disponible = falso
-                mostrar("Libro prestado: " + titulo)
-            si_no
-                mostrar("El libro no esta disponible")
-            fin_si
-        fin_funcion
+    METODOS:
+        FUNCION prestar()
+            SI (disponible) ENTONCES
+                disponible = FALSO
+                ESCRIBIR("Libro prestado: " + titulo)
+            SINO
+                ESCRIBIR("El libro NO esta disponible")
+            FIN SI
+        FIN FUNCION
 
-        funcion devolver()
-            disponible = verdadero
-            mostrar("Libro devuelto: " + titulo)
-        fin_funcion
-fin_clase
+        FUNCION RETORNAR()
+            disponible = VERDADERO
+            ESCRIBIR("Libro devuelto: " + titulo)
+        FIN FUNCION
+FIN CLASE
 
 // Programa principal
 INICIO
-    libro1 = nuevo Libro()
+    libro1 = NUEVO Libro()
     libro1.titulo = "Cien anios de soledad"
     libro1.autor = "Gabriel Garcia Marquez"
 
-    libro2 = nuevo Libro()
+    libro2 = NUEVO Libro()
     libro2.titulo = "1984"
     libro2.autor = "George Orwell"
 
@@ -328,7 +328,7 @@ FIN
 
 ```
 Libro prestado: Cien anios de soledad
-El libro no esta disponible
+El libro NO esta disponible
 Libro devuelto: Cien anios de soledad
 Libro prestado: 1984
 ```

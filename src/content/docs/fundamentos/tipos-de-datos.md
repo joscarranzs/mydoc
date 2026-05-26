@@ -53,8 +53,8 @@ mensaje = "Hola, mundo"
 Admite únicamente dos valores: **verdadero** o **falso**. Es el tipo más simple, pero también uno de los más fundamentales, ya que constituye la base de la lógica en los programas. Se utiliza para condiciones, banderas y estados binarios como sí/no o encendido/apagado.
 
 ```
-activo = verdadero
-completado = falso
+activo = VERDADERO
+completado = FALSO
 es_mayor = (18 >= 18)   // verdadero
 ```
 
@@ -190,16 +190,16 @@ INICIO
     nombre = "Carlos"
     edad = 30
     altura = 1.75
-    es_estudiante = verdadero
+    es_estudiante = VERDADERO
 
-    MOSTRAR "Nombre: " + nombre
-    MOSTRAR "Edad: " + edad
-    MOSTRAR "Altura: " + altura
-    MOSTRAR "¿Es estudiante?: " + es_estudiante
+    ESCRIBIR "Nombre: " + nombre
+    ESCRIBIR "Edad: " + edad
+    ESCRIBIR "Altura: " + altura
+    ESCRIBIR "¿Es estudiante?: " + es_estudiante
 
     // Tipo compuesto: array
     notas = [85, 92, 78]
-    MOSTRAR "Primera nota: " + notas[0]
+    ESCRIBIR "Primera nota: " + notas[0]
 
     // Tipo compuesto: objeto
     alumno = {
@@ -207,11 +207,11 @@ INICIO
         edad: edad,
         notas: notas
     }
-    MOSTRAR "El alumno " + alumno.nombre + " tiene " + alumno.edad + " años"
+    ESCRIBIR "El alumno " + alumno.nombre + " tiene " + alumno.edad + " años"
 
     // Conversión explícita
     texto_nota = convertir_a_texto(notas[0])
-    MOSTRAR "La primera nota como texto: " + texto_nota
+    ESCRIBIR "La primera nota como texto: " + texto_nota
 FIN
 ```
 
@@ -221,7 +221,7 @@ FIN
 Nombre: Carlos
 Edad: 30
 Altura: 1.75
-¿Es estudiante?: verdadero
+¿Es estudiante?: VERDADERO
 Primera nota: 85
 El alumno Carlos tiene 30 años
 La primera nota como texto: 85

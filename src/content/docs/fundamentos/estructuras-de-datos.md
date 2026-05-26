@@ -85,11 +85,11 @@ matriz[2][2]   // 9 (fila 2, columna 2)
 Requiere bucles anidados: uno para las filas y otro para las columnas.
 
 ```
-para (i = 0; i < 3; i = i + 1) hacer
-    para (j = 0; j < 3; j = j + 1) hacer
-        mostrar(matriz[i][j])
-    fin_para
-fin_para
+PARA (i = 0; i < 3; i = i + 1) HACER
+    PARA (j = 0; j < 3; j = j + 1) HACER
+        ESCRIBIR(matriz[i][j])
+    FIN PARA
+FIN PARA
 ```
 
 ### Cuándo utilizar una matriz
@@ -285,22 +285,22 @@ INICIO
     espera = []
 
     // Encolar clientes en espera
-    para cada cliente en clientes hacer
+    PARA CADA cliente en clientes HACER
         espera.encolar(cliente)
-    fin_para
+    FIN PARA
 
     // Atender clientes en orden FIFO
-    mientras NO espera.esta_vacia() hacer
+    MIENTRAS NO espera.esta_vacia() HACER
         actual = espera.desencolar()
-        mostrar("Atendiendo a: " + actual)
+        ESCRIBIR("Atendiendo a: " + actual)
         historial.apilar(actual)
-    fin_mientras
+    FIN MIENTRAS
 
     // Mostrar historial (LIFO: ultimo atendido primero)
-    mostrar("Historial de atencion (ultimo primero):")
-    mientras NO historial.esta_vacia() hacer
-        mostrar(historial.desapilar())
-    fin_mientras
+    ESCRIBIR("Historial de atencion (ultimo primero):")
+    MIENTRAS NO historial.esta_vacia() HACER
+        ESCRIBIR(historial.desapilar())
+    FIN MIENTRAS
 FIN
 ```
 

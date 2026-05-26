@@ -25,7 +25,7 @@ Un **árbol** es una estructura jerárquica formada por **nodos** conectados med
            5      15      ← hijos de 10 (nivel 1)
           / \       \
          /   \       \
-        3     7      20    ← hijos de 5 y 15 (nivel 2)
+        3     7      20    ← hijos de 5 Y 15 (nivel 2)
 ```
 
 ### Vocabulario básico
@@ -74,19 +74,19 @@ Es un árbol binario con una regla adicional: el hijo izquierdo es **menor** que
 Para buscar un valor, se compara con la raíz. Si es menor, se desciende a la izquierda. Si es mayor, a la derecha. El proceso se repite hasta encontrar el valor o llegar a un nodo vacío.
 
 ```
-funcion buscar(raiz, valor)
-    si (raiz == nulo) entonces
-        devolver falso
-    fin_si
-    si (valor == raiz.valor) entonces
-        devolver verdadero
-    fin_si
-    si (valor < raiz.valor) entonces
-        devolver buscar(raiz.izquierdo, valor)
-    si_no
-        devolver buscar(raiz.derecho, valor)
-    fin_si
-fin_funcion
+FUNCION buscar(raiz, valor)
+    SI (raiz == NULO) ENTONCES
+        RETORNAR FALSO
+    FIN SI
+    SI (valor == raiz.valor) ENTONCES
+        RETORNAR VERDADERO
+    FIN SI
+    SI (valor < raiz.valor) ENTONCES
+        RETORNAR buscar(raiz.izquierdo, valor)
+    SINO
+        RETORNAR buscar(raiz.derecho, valor)
+    FIN SI
+FIN FUNCION
 ```
 
 ### Árbol n-ario
@@ -108,12 +108,12 @@ Se utiliza en: sistemas de archivos, estructura DOM del HTML, taxonomías y orga
 ### Recorridos de árboles
 
 ```
-funcion inorden(nodo)
-    si (nodo == nulo) entonces devolver fin_si
+FUNCION inorden(nodo)
+    SI (nodo == NULO) ENTONCES RETORNAR FIN SI
     inorden(nodo.izquierdo)
-    mostrar(nodo.valor)
+    ESCRIBIR(nodo.valor)
     inorden(nodo.derecho)
-fin_funcion
+FIN FUNCION
 // En un BST, inorden devuelve los valores ordenados
 ```
 
@@ -214,23 +214,23 @@ grafo = {
 Explora el grafo por niveles, como una onda expansiva. Ideal para encontrar el **camino más corto** en un grafo no ponderado.
 
 ```
-funcion bfs(grafo, inicio)
+FUNCION bfs(grafo, inicio)
     visitados = conjunto_vacio()
     cola = []
     cola.encolar(inicio)
     visitados.añadir(inicio)
 
-    mientras (no cola.esta_vacia()) hacer
+    MIENTRAS (NO cola.esta_vacia()) HACER
         nodo = cola.desencolar()
-        mostrar(nodo)
-        para cada vecino en grafo[nodo] hacer
-            si (vecino no está en visitados) entonces
+        ESCRIBIR(nodo)
+        PARA CADA vecino en grafo[nodo] HACER
+            SI (vecino NO está en visitados) ENTONCES
                 cola.encolar(vecino)
                 visitados.añadir(vecino)
-            fin_si
-        fin_para
-    fin_mientras
-fin_funcion
+            FIN SI
+        FIN PARA
+    FIN MIENTRAS
+FIN FUNCION
 ```
 
 ```
@@ -247,15 +247,15 @@ BFS desde A:   →   A   B   C   D
 Explora en profundidad cada rama antes de retroceder. Ideal para explorar todas las posibilidades, como en un laberinto.
 
 ```
-funcion dfs(grafo, inicio, visitados = conjunto_vacio())
+FUNCION dfs(grafo, inicio, visitados = conjunto_vacio())
     visitados.añadir(inicio)
-    mostrar(nodo)
-    para cada vecino en grafo[inicio] hacer
-        si (vecino no está en visitados) entonces
+    ESCRIBIR(nodo)
+    PARA CADA vecino en grafo[inicio] HACER
+        SI (vecino NO está en visitados) ENTONCES
             dfs(grafo, vecino, visitados)
-        fin_si
-    fin_para
-fin_funcion
+        FIN SI
+    FIN PARA
+FIN FUNCION
 ```
 
 ```
@@ -354,35 +354,35 @@ El siguiente pseudocódigo modela un sistema de archivos jerárquico utilizando 
 ```
 INICIO
     // Árbol n-ario: sistema de archivos
-    raiz = nuevo Nodo("Raiz")
+    raiz = NUEVO Nodo("Raiz")
 
-    documentos = nuevo Nodo("Documentos")
-    imagenes = nuevo Nodo("Imagenes")
+    documentos = NUEVO Nodo("Documentos")
+    imagenes = NUEVO Nodo("Imagenes")
 
     raiz.agregar_hijo(documentos)
     raiz.agregar_hijo(imagenes)
 
-    cv = nuevo Nodo("CV.pdf")
-    carta = nuevo Nodo("Carta.pdf")
+    cv = NUEVO Nodo("CV.pdf")
+    carta = NUEVO Nodo("Carta.pdf")
     documentos.agregar_hijo(cv)
     documentos.agregar_hijo(carta)
 
-    foto1 = nuevo Nodo("vacaciones.png")
-    foto2 = nuevo Nodo("familia.jpg")
+    foto1 = NUEVO Nodo("vacaciones.png")
+    foto2 = NUEVO Nodo("familia.jpg")
     imagenes.agregar_hijo(foto1)
     imagenes.agregar_hijo(foto2)
 
     // Recorrido inorden del arbol
-    mostrar("Estructura del sistema de archivos:")
-    funcion mostrar_arbol(nodo, nivel = 0)
-        para i = 1 hasta nivel hacer
-            mostrar("  ")
-        fin_para
-        mostrar("|-- " + nodo.nombre)
-        para cada hijo en nodo.hijos hacer
+    ESCRIBIR("Estructura del sistema de archivos:")
+    FUNCION mostrar_arbol(nodo, nivel = 0)
+        PARA i = 1 hasta nivel HACER
+            ESCRIBIR("  ")
+        FIN PARA
+        ESCRIBIR("|-- " + nodo.nombre)
+        PARA CADA hijo en nodo.hijos HACER
             mostrar_arbol(hijo, nivel + 1)
-        fin_para
-    fin_funcion
+        FIN PARA
+    FIN FUNCION
     mostrar_arbol(raiz)
 
     // Tabla hash: busqueda rapida de archivos
@@ -393,7 +393,7 @@ INICIO
 
     busqueda = "CV.pdf"
     ruta = indice.buscar(busqueda)
-    mostrar("Buscando '" + busqueda + "': " + ruta)
+    ESCRIBIR("Buscando '" + busqueda + "': " + ruta)
 FIN
 ```
 

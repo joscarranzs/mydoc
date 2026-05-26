@@ -17,12 +17,12 @@ Puede entenderse mediante la analogía de un restaurante. En un restaurante sín
 En la programación **síncrona** tradicional, cada operación espera a que la anterior finalice. Si una tarea requiere 5 segundos, todo el programa permanece detenido durante ese intervalo.
 
 ```
-funcion procesar_archivos()
+FUNCION procesar_archivos()
     datos = leer_archivo_grande("datos.txt")   // tarda 3 segundos
     resultado = procesar(datos)                 // tarda 2 segundos
     guardar(resultado)                          // tarda 1 segundo
-    mostrar("Todo listo")
-fin_funcion
+    ESCRIBIR("Todo listo")
+FIN FUNCION
 
 // Durante 6 segundos, el programa no ejecuta ninguna otra operación
 ```
@@ -34,13 +34,13 @@ Si esto fuese una aplicación de escritorio o una página web, la interfaz se co
 La programación asíncrona permite iniciar una operación larga y **seguir ejecutando otro código** mientras esa operación se completa en segundo plano.
 
 ```
-funcion procesar_archivos()
-    asíncrono leer_archivo_grande("datos.txt", funcion(resultado)
+FUNCION procesar_archivos()
+    ASINCRONO leer_archivo_grande("datos.txt", FUNCION(resultado)
         // esta función se ejecuta cuando el archivo esté disponible
         procesar(resultado)
-    fin_funcion)
-    mostrar("Leyendo archivo...")   // se ejecuta inmediatamente, sin esperar
-fin_funcion
+    FIN FUNCION)
+    ESCRIBIR("Leyendo archivo...")   // se ejecuta inmediatamente, sin esperar
+FIN FUNCION
 
 // El programa sigue respondiendo durante la lectura del archivo
 ```
@@ -70,17 +70,17 @@ Existen tres enfoques principales, ordenados de menor a mayor nivel de abstracci
 Un **callback** es una función que se proporciona como argumento a otra función y se ejecuta cuando la operación asíncrona finaliza.
 
 ```
-funcion descargar_archivo(url, al_terminar)
+FUNCION descargar_archivo(url, al_terminar)
     resultado = descarga_real(url)
     al_terminar(resultado)
-fin_funcion
+FIN FUNCION
 
 // Uso:
 descargar_archivo("https://ejemplo.com/datos.json", funcion(contenido)
-    mostrar("Descarga completada: " + contenido)
-fin_funcion)
+    ESCRIBIR("Descarga completada: " + contenido)
+FIN FUNCION)
 
-mostrar("Descarga iniciada...")   // se ejecuta antes que el callback
+ESCRIBIR("Descarga iniciada...")   // se ejecuta antes que el callback
 ```
 
 | Ventajas | Desventajas |
@@ -91,15 +91,15 @@ mostrar("Descarga iniciada...")   // se ejecuta antes que el callback
 El infierno de callbacks ocurre cuando múltiples operaciones asíncronas se encadenan mediante anidamiento:
 
 ```
-funcion_1(url, funcion(r1)
-    funcion_2(r1, funcion(r2)
-        funcion_3(r2, funcion(r3)
-            funcion_4(r3, funcion(r4)
-                mostrar("Terminado: " + r4)
-            fin_funcion)
-        fin_funcion)
-    fin_funcion)
-fin_funcion)
+funcion_1(url, FUNCION(r1)
+    funcion_2(r1, FUNCION(r2)
+        funcion_3(r2, FUNCION(r3)
+            funcion_4(r3, FUNCION(r4)
+                ESCRIBIR("Terminado: " + r4)
+            FIN FUNCION)
+        FIN FUNCION)
+    FIN FUNCION)
+FIN FUNCION)
 ```
 
 ### 2. Promesas
@@ -111,44 +111,44 @@ Una **promesa** (promise) es un objeto que representa un valor que estará dispo
 - **Rechazada (rejected)**: la operación falló.
 
 ```
-funcion descargar(url)
-    promesa = nueva Promesa(funcion(resolver, rechazar)
+FUNCION descargar(url)
+    promesa = NUEVA Promesa(FUNCION(resolver, rechazar)
         resultado = descarga_real(url)
-        si (resultado.exitoso) entonces
+        SI (resultado.exitoso) ENTONCES
             resolver(resultado.datos)
-        si_no
+        SINO
             rechazar("Error al descargar")
-        fin_si
-    fin_funcion)
-    devolver promesa
-fin_funcion
+        FIN SI
+    FIN FUNCION)
+    RETORNAR promesa
+FIN FUNCION
 
 // Uso
 descargar("https://ejemplo.com/datos.json")
-    .entonces(funcion(datos)
-        mostrar("Descargado: " + datos)
-    fin_funcion)
-    .capturar(funcion(error)
-        mostrar("Error: " + error)
-    fin_funcion)
+    .entonces(FUNCION(datos)
+        ESCRIBIR("Descargado: " + datos)
+    FIN FUNCION)
+    .capturar(FUNCION(error)
+        ESCRIBIR("Error: " + error)
+    FIN FUNCION)
 ```
 
 El método `.entonces()` se ejecuta si la promesa se resuelve. `.capturar()` se ejecuta si se rechaza. Es posible encadenar varios `.entonces()` de forma lineal, sin anidamiento:
 
 ```
 descargar("url1")
-    .entonces(funcion(d1)
-        devolver procesar(d1)
-    fin_funcion)
-    .entonces(funcion(d2)
-        devolver guardar(d2)
-    fin_funcion)
-    .entonces(funcion(r)
-        mostrar("Completado")
-    fin_funcion)
-    .capturar(funcion(e)
-        mostrar("Error: " + e)
-    fin_funcion)
+    .entonces(FUNCION(d1)
+        RETORNAR procesar(d1)
+    FIN FUNCION)
+    .entonces(FUNCION(d2)
+        RETORNAR guardar(d2)
+    FIN FUNCION)
+    .entonces(FUNCION(r)
+        ESCRIBIR("Completado")
+    FIN FUNCION)
+    .capturar(FUNCION(e)
+        ESCRIBIR("Error: " + e)
+    FIN FUNCION)
 ```
 
 | Ventajas | Desventajas |
@@ -166,15 +166,15 @@ descargar("url1")
 Anteponer `asíncrono` a una función transforma automáticamente su valor de retorno en una promesa. Toda función marcada como `asíncrono` devuelve implícitamente una promesa, independientemente de lo que contenga su bloque.
 
 ```
-funcion asíncrono obtener_valor()
-    devolver 42
-fin_funcion
+FUNCION ASINCRONO obtener_valor()
+    RETORNAR 42
+FIN FUNCION
 
 // Aunque devuelva un número literal, el resultado envuelto es una promesa
 promesa = obtener_valor()          // promesa (no 42 directamente)
-promesa.entonces(funcion(v)
-    mostrar(v)                     // 42
-fin_funcion)
+promesa.entonces(FUNCION(v)
+    ESCRIBIR(v)                     // 42
+FIN FUNCION)
 ```
 
 #### La palabra clave `esperar`
@@ -182,19 +182,19 @@ fin_funcion)
 `esperar` (await) solo puede utilizarse dentro de una función marcada como `asíncrono`. Su función es detener la ejecución de la función **sin bloquear el programa**, hasta que la promesa indicada se resuelva. Mientras la promesa está pendiente, el programa puede atender otras tareas.
 
 ```
-funcion asíncrono procesar_archivos()
-    intentar
-        datos = esperar descargar("https://ejemplo.com/datos.json")
+FUNCION ASINCRONO procesar_archivos()
+    INTENTAR
+        datos = ESPERAR descargar("https://ejemplo.com/datos.json")
         resultado = procesar(datos)
-        esperar guardar(resultado)
-        mostrar("Todo listo")
-    capturar (error)
-        mostrar("Error: " + error)
-    fin_intentar
-fin_funcion
+        ESPERAR guardar(resultado)
+        ESCRIBIR("Todo listo")
+    CAPTURAR (error)
+        ESCRIBIR("Error: " + error)
+    FIN INTENTAR
+FIN FUNCION
 
 procesar_archivos()
-mostrar("Esto se ejecuta inmediatamente")   // no espera a procesar_archivos
+ESCRIBIR("Esto se ejecuta inmediatamente")   // no espera a procesar_archivos
 ```
 
 #### Errores comunes
@@ -208,10 +208,10 @@ mostrar("Esto se ejecuta inmediatamente")   // no espera a procesar_archivos
 
 ```
 // Ejemplo del error más frecuente
-funcion asíncrono ejemplo()
+FUNCION ASINCRONO ejemplo()
     promesa = descargar("url")       // falta 'esperar': promesa, no el valor
-    datos = esperar descargar("url") // correcto: 'datos' contiene el valor real
-fin_funcion
+    datos = ESPERAR descargar("url") // correcto: 'datos' contiene el valor real
+FIN FUNCION
 ```
 
 #### Flujo interno
@@ -221,9 +221,9 @@ Llamada a función asíncrona:
 
    programa principal                 función asíncrona
         │                                   │
-        ├── llama a funcion() ─────────────►│
-        │                                   ├── encuentra "esperar"
-        │   ┌──── "esperar" pausa ──────────┤
+        ├── llama a FUNCION() ─────────────►│
+        │                                   ├── encuentra "ESPERAR"
+        │   ┌──── "ESPERAR" pausa ──────────┤
         │   │   la función sin              │
         │   │   bloquear el                 │
         │   │   programa                    │
@@ -234,7 +234,7 @@ Llamada a función asíncrona:
         │   │                               │
         │   │                   promesa ────►│ se resuelve
         │   │◄──── reanuda ─────────────────┤
-        │   │                               ├── continúa después de "esperar"
+        │   │                               ├── continúa después de "ESPERAR"
         │   │                               │
         │   │◄──── devuelve resultado ──────┤
         │                                   │
@@ -262,25 +262,25 @@ Con `asíncrono/esperar` es posible lanzar varias operaciones en paralelo para r
 
 ```
 // Secuencial: las operaciones se ejecutan una detrás de otra
-funcion asíncrono secuencial()
-    a = esperar descargar("url1")
-    b = esperar descargar("url2")
-    c = esperar descargar("url3")
-    devolver [a, b, c]
-fin_funcion
+FUNCION ASINCRONO secuencial()
+    a = ESPERAR descargar("url1")
+    b = ESPERAR descargar("url2")
+    c = ESPERAR descargar("url3")
+    RETORNAR [a, b, c]
+FIN FUNCION
 // Tiempo total: suma de los 3 tiempos individuales
 
 // Paralelo: las operaciones se ejecutan simultáneamente
-funcion asíncrono paralelo()
+FUNCION ASINCRONO paralelo()
     p1 = descargar("url1")     // inicia inmediatamente
     p2 = descargar("url2")     // inicia inmediatamente
     p3 = descargar("url3")     // inicia inmediatamente
 
-    a = esperar p1
-    b = esperar p2
-    c = esperar p3
-    devolver [a, b, c]
-fin_funcion
+    a = ESPERAR p1
+    b = ESPERAR p2
+    c = ESPERAR p3
+    RETORNAR [a, b, c]
+FIN FUNCION
 // Tiempo total: el mayor de los 3 tiempos individuales
 ```
 
@@ -303,39 +303,39 @@ El siguiente pseudocódigo simula la descarga y procesamiento de archivos utiliz
 
 ```
 INICIO
-    funcion asíncrono descargar_archivo(nombre, tiempo)
-        mostrar("Iniciando descarga de " + nombre)
+    FUNCION ASINCRONO descargar_archivo(nombre, tiempo)
+        ESCRIBIR("Iniciando descarga de " + nombre)
         // Simula una descarga que toma 'tiempo' segundos
-        esperar(tiempo)
+        ESPERAR(tiempo)
         contenido = "Contenido de " + nombre
-        mostrar(nombre + " descargado")
-        devolver contenido
-    fin_funcion
+        ESCRIBIR(nombre + " descargado")
+        RETORNAR contenido
+    FIN FUNCION
 
-    funcion asíncrono procesar_archivos()
-        intentar
+    FUNCION ASINCRONO procesar_archivos()
+        INTENTAR
             // Descargas en paralelo
             p1 = descargar_archivo("foto.jpg", 2)
             p2 = descargar_archivo("documento.pdf", 3)
             p3 = descargar_archivo("video.mp4", 4)
 
-            foto = esperar p1
-            doc = esperar p2
-            video = esperar p3
+            foto = ESPERAR p1
+            doc = ESPERAR p2
+            video = ESPERAR p3
 
-            mostrar("Todos los archivos descargados")
-            mostrar("Procesando: " + foto)
-            mostrar("Procesando: " + doc)
-            mostrar("Procesando: " + video)
-            mostrar("Proceso completado")
-        capturar (error)
-            mostrar("Error durante la descarga: " + error)
-        fin_intentar
-    fin_funcion
+            ESCRIBIR("Todos los archivos descargados")
+            ESCRIBIR("Procesando: " + foto)
+            ESCRIBIR("Procesando: " + doc)
+            ESCRIBIR("Procesando: " + video)
+            ESCRIBIR("Proceso completado")
+        CAPTURAR (error)
+            ESCRIBIR("Error durante la descarga: " + error)
+        FIN INTENTAR
+    FIN FUNCION
 
-    mostrar("Inicio del programa")
+    ESCRIBIR("Inicio del programa")
     procesar_archivos()
-    mostrar("El programa continúa mientras se descargan los archivos")
+    ESCRIBIR("El programa continúa MIENTRAS se descargan los archivos")
 FIN
 ```
 
@@ -346,7 +346,7 @@ Inicio del programa
 Iniciando descarga de foto.jpg
 Iniciando descarga de documento.pdf
 Iniciando descarga de video.mp4
-El programa continúa mientras se descargan los archivos
+El programa continúa MIENTRAS se descargan los archivos
 foto.jpg descargado
 documento.pdf descargado
 video.mp4 descargado

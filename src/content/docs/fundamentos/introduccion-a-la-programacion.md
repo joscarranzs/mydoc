@@ -25,7 +25,7 @@ INICIO
     LEER numero1
     LEER numero2
     suma = numero1 + numero2
-    MOSTRAR "La suma es: " + suma
+    ESCRIBIR "La suma es: " + suma
 FIN
 ```
 

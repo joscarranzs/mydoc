@@ -19,9 +19,9 @@ Esta práctica se fundamenta en el principio DRY (Don't Repeat Yourself): cada p
 Una **función** es un bloque de código que recibe datos de entrada (parámetros), realiza una operación y **devuelve un resultado** mediante la instrucción `devolver` (o `return`).
 
 ```
-funcion suma(a, b)
-    devolver a + b
-fin_funcion
+FUNCION suma(a, b)
+    RETORNAR a + b
+FIN FUNCION
 
 resultado = suma(3, 5)   // resultado = 8
 ```
@@ -29,9 +29,9 @@ resultado = suma(3, 5)   // resultado = 8
 La función `suma` recibe dos números, los suma y devuelve el resultado. Quien invoca la función puede utilizar ese valor en una asignación, en una expresión o pasarlo a otra función.
 
 ```
-funcion calcular_iva(precio)
-    devolver precio * 0.21
-fin_funcion
+FUNCION calcular_iva(precio)
+    RETORNAR precio * 0.21
+FIN FUNCION
 
 total_sin_iva = 100
 iva = calcular_iva(total_sin_iva)        // 21
@@ -45,10 +45,10 @@ Cada llamada a `calcular_iva` evita repetir la fórmula. Si el porcentaje de IVA
 Un **procedimiento** (también denominado función void) es similar a una función, pero **no devuelve ningún valor**. Su propósito es ejecutar una secuencia de acciones y terminar.
 
 ```
-procedimiento mostrar_bienvenida()
-    mostrar("Bienvenido al sistema")
-    mostrar("Versión 1.0")
-fin_procedimiento
+PROCEDIMIENTO mostrar_bienvenida()
+    ESCRIBIR("Bienvenido al sistema")
+    ESCRIBIR("Versión 1.0")
+FIN PROCEDIMIENTO
 
 mostrar_bienvenida()   // ejecuta las acciones, no produce un valor
 ```
@@ -72,9 +72,9 @@ Aunque con frecuencia se utilizan como sinónimos, existe una diferencia concept
 - **Argumento**: el valor concreto que se proporciona al invocar la función (el "relleno").
 
 ```
-funcion saludar(nombre)        // 'nombre' es un parámetro
-    mostrar("Hola, " + nombre)
-fin_funcion
+FUNCION saludar(nombre)        // 'nombre' es un parámetro
+    ESCRIBIR("Hola, " + nombre)
+FIN FUNCION
 
 saludar("Ana")                 // "Ana" es un argumento
 saludar("Pedro")               // "Pedro" es otro argumento
@@ -89,14 +89,14 @@ Cuando se entrega un argumento a una función, el mecanismo de transferencia pue
 Se transfiere una **copia** del valor original. La función opera sobre la copia; la variable original permanece inalterada.
 
 ```
-funcion duplicar(x)
+FUNCION duplicar(x)
     x = x * 2
-    devolver x
-fin_funcion
+    RETORNAR x
+FIN FUNCION
 
 numero = 5
 resultado = duplicar(numero)    // resultado = 10
-mostrar(numero)                 // 5 (el original no se modificó)
+ESCRIBIR(numero)                 // 5 (el original no se modificó)
 ```
 
 #### Paso por referencia
@@ -104,15 +104,15 @@ mostrar(numero)                 // 5 (el original no se modificó)
 Se transfiere la **dirección de memoria** del dato original. La función opera directamente sobre el dato original, por lo que cualquier modificación persiste después de la llamada.
 
 ```
-funcion duplicar_lista(lista)
-    para cada elemento en lista hacer
+FUNCION duplicar_lista(lista)
+    PARA CADA elemento en lista HACER
         elemento = elemento * 2
-    fin_para
-fin_funcion
+    FIN PARA
+FIN FUNCION
 
 mis_numeros = [1, 2, 3]
 duplicar_lista(mis_numeros)
-mostrar(mis_numeros)            // [2, 4, 6] (se modificó la original)
+ESCRIBIR(mis_numeros)            // [2, 4, 6] (se modificó la original)
 ```
 
 | Tipo de dato | Paso por valor | Paso por referencia |
@@ -125,9 +125,9 @@ mostrar(mis_numeros)            // [2, 4, 6] (se modificó la original)
 Es posible asignar valores predeterminados a los parámetros. Si quien invoca la función omite ese argumento, se emplea el valor por defecto.
 
 ```
-funcion saludar(nombre = "invitado")
-    mostrar("Hola, " + nombre)
-fin_funcion
+FUNCION saludar(nombre = "invitado")
+    ESCRIBIR("Hola, " + nombre)
+FIN FUNCION
 
 saludar("Ana")           // "Hola, Ana"
 saludar()                // "Hola, invitado"
@@ -141,12 +141,12 @@ La instrucción `devolver` (return) cumple dos funciones simultáneamente:
 2. **Finaliza la ejecución** de la función de forma inmediata.
 
 ```
-funcion maximo(a, b)
-    si (a > b) entonces
-        devolver a      // si se cumple, la función termina aquí
-    fin_si
-    devolver b          // en caso contrario, retorna b
-fin_funcion
+FUNCION maximo(a, b)
+    SI (a > b) ENTONCES
+        RETORNAR a      // si se cumple, la función termina aquí
+    FIN SI
+    RETORNAR b          // en caso contrario, retorna b
+FIN FUNCION
 
 mayor = maximo(10, 5)   // 10
 ```
@@ -154,10 +154,10 @@ mayor = maximo(10, 5)   // 10
 Cualquier instrucción situada después de un `devolver` no se ejecuta.
 
 ```
-funcion ejemplo()
-    devolver 1
-    mostrar("Esto nunca se ejecuta")   // código inalcanzable
-fin_funcion
+FUNCION ejemplo()
+    RETORNAR 1
+    ESCRIBIR("Esto nunca se ejecuta")   // código inalcanzable
+FIN FUNCION
 ```
 
 ## Alcance de variables (scope)
@@ -169,12 +169,12 @@ El **alcance** (scope) determina desde qué regiones del código puede accederse
 Declarada dentro de una función. Solo existe y es accesible dentro de esa función.
 
 ```
-funcion calcular()
+FUNCION calcular()
     x = 10          // 'x' es local a calcular()
-    mostrar(x)      // funciona: imprime 10
-fin_funcion
+    ESCRIBIR(x)      // funciona: imprime 10
+FIN FUNCION
 
-mostrar(x)          // error: 'x' no está definida en este ámbito
+ESCRIBIR(x)          // error: 'x' no está definida en este ámbito
 ```
 
 ### Variable global
@@ -184,13 +184,13 @@ Declarada fuera de cualquier función. Está disponible en cualquier punto del p
 ```
 x = 10              // variable global
 
-funcion mostrar_x()
-    mostrar(x)      // funciona: imprime 10
-fin_funcion
+FUNCION mostrar_x()
+    ESCRIBIR(x)      // funciona: imprime 10
+FIN FUNCION
 
-funcion cambiar_x()
+FUNCION cambiar_x()
     x = 20          // modifica la variable global
-fin_funcion
+FIN FUNCION
 
 mostrar_x()         // 10
 cambiar_x()
@@ -206,17 +206,17 @@ Las variables definidas en un ámbito exterior son visibles hacia el interior; l
 ```
 global = "accesible desde cualquier parte"
 
-funcion exterior()
-    externa = "visible en exterior y sus funciones anidadas"
+FUNCION exterior()
+    externa = "visible en exterior Y sus funciones anidadas"
 
-    funcion interior()
+    FUNCION interior()
         interna = "solo visible dentro de interior"
         // aquí se puede acceder a: global, externa, interna
-    fin_funcion
+    FIN FUNCION
 
     // aquí se puede acceder a: global, externa
     // NO se puede acceder a: interna
-fin_funcion
+FIN FUNCION
 
 // aquí solo se puede acceder a: global
 ```
@@ -237,42 +237,42 @@ El siguiente pseudocódigo define funciones y procedimientos para gestionar las 
 ```
 INICIO
     // Definición de funciones
-    funcion suma(a, b)
-        devolver a + b
-    fin_funcion
+    FUNCION suma(a, b)
+        RETORNAR a + b
+    FIN FUNCION
 
-    funcion resta(a, b)
-        devolver a - b
-    fin_funcion
+    FUNCION resta(a, b)
+        RETORNAR a - b
+    FIN FUNCION
 
     // Procedimiento (no retorna valor)
-    procedimiento mostrar_menu()
-        mostrar("1. Sumar")
-        mostrar("2. Restar")
-        mostrar("3. Salir")
-    fin_procedimiento
+    PROCEDIMIENTO mostrar_menu()
+        ESCRIBIR("1. Sumar")
+        ESCRIBIR("2. Restar")
+        ESCRIBIR("3. Salir")
+    FIN PROCEDIMIENTO
 
     // Procedimiento con parámetros
-    procedimiento mostrar_resultado(operacion, valor)
-        mostrar("Resultado de la " + operacion + ": " + valor)
-    fin_procedimiento
+    PROCEDIMIENTO mostrar_resultado(operacion, valor)
+        ESCRIBIR("Resultado de la " + operacion + ": " + valor)
+    FIN PROCEDIMIENTO
 
     // Uso de funciones y procedimientos
     mostrar_menu()
 
     opcion = 1
     x = 15
-    y = 7
+    Y = 7
 
-    si (opcion == 1) entonces
-        r = suma(x, y)
+    SI (opcion == 1) ENTONCES
+        r = suma(x, Y)
         mostrar_resultado("suma", r)
-    si_no si (opcion == 2) entonces
-        r = resta(x, y)
+    SINO SI (opcion == 2) ENTONCES
+        r = resta(x, Y)
         mostrar_resultado("resta", r)
-    fin_si
+    FIN SI
 
-    mostrar("Programa finalizado")
+    ESCRIBIR("Programa finalizado")
 FIN
 ```
 

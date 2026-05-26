@@ -21,7 +21,7 @@ Es el flujo más básico. El código se ejecuta línea por línea, de arriba aba
 ```
 entrada = leer_teclado()
 resultado = entrada * 2
-mostrar(resultado)
+ESCRIBIR(resultado)
 ```
 
 No existen saltos, decisiones ni repeticiones. Es el comportamiento predeterminado de cualquier programa.
@@ -37,9 +37,9 @@ Evalúa una condición booleana. Si es verdadera, ejecuta el bloque asociado. Si
 ```
 edad = 18
 
-si (edad >= 18) entonces
-    mostrar("Puedes votar")
-fin_si
+SI (edad >= 18) ENTONCES
+    ESCRIBIR("Puedes votar")
+FIN SI
 ```
 
 Si `edad` fuese 15, el programa no mostraría ningún mensaje.
@@ -51,11 +51,11 @@ Añade un camino alternativo que se ejecuta cuando la condición es falsa. Siemp
 ```
 edad = 15
 
-si (edad >= 18) entonces
-    mostrar("Puedes votar")
-si_no
-    mostrar("No puedes votar")
-fin_si
+SI (edad >= 18) ENTONCES
+    ESCRIBIR("Puedes votar")
+SINO
+    ESCRIBIR("No puedes votar")
+FIN SI
 ```
 
 ### Condiciones anidadas
@@ -65,15 +65,15 @@ Es posible encadenar múltiples condiciones para cubrir varios casos. El program
 ```
 nota = 85
 
-si (nota >= 90) entonces
-    mostrar("Sobresaliente")
-si_no si (nota >= 70) entonces
-    mostrar("Notable")
-si_no si (nota >= 50) entonces
-    mostrar("Aprobado")
-si_no
-    mostrar("Suspenso")
-fin_si
+SI (nota >= 90) ENTONCES
+    ESCRIBIR("Sobresaliente")
+SINO SI (nota >= 70) ENTONCES
+    ESCRIBIR("Notable")
+SINO SI (nota >= 50) ENTONCES
+    ESCRIBIR("Aprobado")
+SINO
+    ESCRIBIR("Suspenso")
+FIN SI
 ```
 
 ### Según (switch / match)
@@ -81,15 +81,15 @@ fin_si
 Cuando se tienen múltiples condiciones basadas en un mismo valor, la estructura `según` resulta más legible que una cadena de `si` anidados.
 
 ```
-según (dia) hacer
-    caso 1: mostrar("Lunes")
-    caso 2: mostrar("Martes")
-    caso 3: mostrar("Miércoles")
-    caso 4: mostrar("Jueves")
-    caso 5: mostrar("Viernes")
-    caso 6: mostrar("Sábado")
-    caso 7: mostrar("Domingo")
-    defecto: mostrar("Día inválido")
+según (dia) HACER
+    CASO 1: ESCRIBIR("Lunes")
+    CASO 2: ESCRIBIR("Martes")
+    CASO 3: ESCRIBIR("Miércoles")
+    CASO 4: ESCRIBIR("Jueves")
+    CASO 5: ESCRIBIR("Viernes")
+    CASO 6: ESCRIBIR("Sábado")
+    CASO 7: ESCRIBIR("Domingo")
+    DE OTRO MODO: ESCRIBIR("Día inválido")
 fin_según
 ```
 
@@ -114,10 +114,10 @@ Repite un bloque **mientras** una condición sea verdadera. Si la condición es 
 ```
 contador = 1
 
-mientras (contador <= 5) hacer
-    mostrar(contador)
+MIENTRAS (contador <= 5) HACER
+    ESCRIBIR(contador)
     contador = contador + 1
-fin_mientras
+FIN MIENTRAS
 
 // Salida: 1 2 3 4 5
 ```
@@ -125,9 +125,9 @@ fin_mientras
 Debe evitarse que la condición permanezca siempre verdadera, ya que esto genera un **bucle infinito**:
 
 ```
-mientras (verdadero) hacer      // bucle infinito
-    mostrar("Esto no termina")
-fin_mientras
+MIENTRAS (VERDADERO) HACER      // bucle infinito
+    ESCRIBIR("Esto NO termina")
+FIN MIENTRAS
 ```
 
 ### Hacer-mientras (do-while)
@@ -137,10 +137,10 @@ Similar a `mientras`, pero ejecuta el bloque **antes** de evaluar la condición.
 ```
 contador = 1
 
-hacer
-    mostrar(contador)
+HACER
+    ESCRIBIR(contador)
     contador = contador + 1
-mientras (contador <= 5)
+MIENTRAS (contador <= 5)
 
 // Salida: 1 2 3 4 5
 ```
@@ -150,9 +150,9 @@ mientras (contador <= 5)
 Ejecuta un bloque un número determinado de veces. Está compuesto por tres partes: inicialización, condición y actualización.
 
 ```
-para (i = 1; i <= 5; i = i + 1) hacer
-    mostrar(i)
-fin_para
+PARA (i = 1; i <= 5; i = i + 1) HACER
+    ESCRIBIR(i)
+FIN PARA
 
 // Salida: 1 2 3 4 5
 ```
@@ -168,9 +168,9 @@ Variante del `para` que recorre todos los elementos de una colección sin necesi
 ```
 numeros = [10, 20, 30, 40]
 
-para cada numero en numeros hacer
-    mostrar(numero)
-fin_para
+PARA CADA numero en numeros HACER
+    ESCRIBIR(numero)
+FIN PARA
 
 // Salida: 10 20 30 40
 ```
@@ -193,21 +193,21 @@ Dos instrucciones permiten modificar el comportamiento estándar de un bucle:
 
 ```
 // Romper: sale del bucle al llegar a 5
-para (i = 1; i <= 10; i = i + 1) hacer
-    si (i == 5) entonces
-        romper
-    fin_si
-    mostrar(i)
-fin_para
+PARA (i = 1; i <= 10; i = i + 1) HACER
+    SI (i == 5) ENTONCES
+        ROMPER
+    FIN SI
+    ESCRIBIR(i)
+FIN PARA
 // Salida: 1 2 3 4
 
 // Continuar: se salta el 3 pero continúa con el resto
-para (i = 1; i <= 5; i = i + 1) hacer
-    si (i == 3) entonces
-        continuar
-    fin_si
-    mostrar(i)
-fin_para
+PARA (i = 1; i <= 5; i = i + 1) HACER
+    SI (i == 3) ENTONCES
+        CONTINUAR
+    FIN SI
+    ESCRIBIR(i)
+FIN PARA
 // Salida: 1 2 4 5
 ```
 
@@ -216,11 +216,11 @@ fin_para
 Es posible colocar un bucle dentro de otro. Esto resulta útil para recorrer estructuras bidimensionales como matrices o tablas.
 
 ```
-para (i = 1; i <= 3; i = i + 1) hacer
-    para (j = 1; j <= 3; j = j + 1) hacer
-        mostrar(i * j)
-    fin_para
-fin_para
+PARA (i = 1; i <= 3; i = i + 1) HACER
+    PARA (j = 1; j <= 3; j = j + 1) HACER
+        ESCRIBIR(i * j)
+    FIN PARA
+FIN PARA
 
 // Salida: 1 2 3 2 4 6 3 6 9
 ```
@@ -236,36 +236,36 @@ El siguiente pseudocódigo integra estructuras secuenciales, condicionales y rep
 ```
 INICIO
     // Estructura secuencial
-    mostrar("=== Sistema de calificaciones ===")
+    ESCRIBIR("=== Sistema de calificaciones ===")
 
     // Estructura condicional
     estudiantes = ["Ana", "Carlos", "Maria"]
     notas = [85, 42, 73]
 
-    para i = 0 hasta longitud(estudiantes) - 1 hacer
+    PARA i = 0 hasta longitud(estudiantes) - 1 HACER
         nombre = estudiantes[i]
         nota = notas[i]
 
         // Condicional anidado para asignar calificación
-        si (nota >= 90) entonces
+        SI (nota >= 90) ENTONCES
             calificacion = "Sobresaliente"
-        si_no si (nota >= 70) entonces
+        SINO SI (nota >= 70) ENTONCES
             calificacion = "Notable"
-        si_no si (nota >= 50) entonces
+        SINO SI (nota >= 50) ENTONCES
             calificacion = "Aprobado"
-        si_no
+        SINO
             calificacion = "Suspenso"
-        fin_si
+        FIN SI
 
         // Estructura condicional simple
-        si (nota < 50) entonces
-            mostrar(nombre + " debe recuperar")
-        fin_si
+        SI (nota < 50) ENTONCES
+            ESCRIBIR(nombre + " debe recuperar")
+        FIN SI
 
-        mostrar(nombre + ": " + nota + " (" + calificacion + ")")
-    fin_para
+        ESCRIBIR(nombre + ": " + nota + " (" + calificacion + ")")
+    FIN PARA
 
-    mostrar("=== Proceso completado ===")
+    ESCRIBIR("=== Proceso completado ===")
 FIN
 ```
 

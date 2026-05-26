@@ -86,8 +86,8 @@ El operador `=` simple es un mandato ("almacena este valor aquí"). El operador 
 Combinan valores booleanos (`verdadero` / `falso`) y devuelven un nuevo valor booleano. Se utilizan para construir condiciones compuestas.
 
 ```
-llueve   = verdadero
-hace_frio = falso
+llueve   = VERDADERO
+hace_frio = FALSO
 
 llueve Y hace_frio       // falso     (ambos deben ser verdadero)
 llueve O hace_frio       // verdadero (basta con que uno sea verdadero)
@@ -126,14 +126,14 @@ OR produce `verdadero` cuando **al menos uno** de los operandos lo es.
 
 ```
 edad = 20
-usuario_logueado = verdadero
-es_admin = falso
+usuario_logueado = VERDADERO
+es_admin = FALSO
 
 // Acceso para mayores de edad logueados
 puede_acceder = (edad >= 18) Y usuario_logueado     // verdadero
 
 // Acceso para administradores o usuarios con permiso
-tiene_permiso = falso
+tiene_permiso = FALSO
 acceso_especial = es_admin O tiene_permiso           // falso
 
 // Menores de edad que no sean administradores
@@ -232,27 +232,27 @@ INICIO
     precio_original = 250
     descuento = 15
     precio_final = precio_original - (precio_original * descuento / 100)
-    MOSTRAR "Precio original: " + precio_original
-    MOSTRAR "Descuento: " + descuento + "%"
-    MOSTRAR "Precio final: " + precio_final
+    ESCRIBIR "Precio original: " + precio_original
+    ESCRIBIR "Descuento: " + descuento + "%"
+    ESCRIBIR "Precio final: " + precio_final
 
     // Operadores de comparación
     presupuesto = 200
     suficiente = presupuesto >= precio_final
-    MOSTRAR "¿Alcanza el presupuesto?: " + suficiente
+    ESCRIBIR "¿Alcanza el presupuesto?: " + suficiente
 
     // Operadores lógicos
-    es_mayor = verdadero
-    tiene_permiso = falso
+    es_mayor = VERDADERO
+    tiene_permiso = FALSO
     acceso = es_mayor Y (tiene_permiso O suficiente)
-    MOSTRAR "¿Acceso concedido?: " + acceso
+    ESCRIBIR "¿Acceso concedido?: " + acceso
 
     // Operadores de asignación compuestos
     visitas = 0
     visitas += 1
     visitas += 1
     visitas *= 2
-    MOSTRAR "Total de visitas: " + visitas
+    ESCRIBIR "Total de visitas: " + visitas
 FIN
 ```
 
@@ -262,8 +262,8 @@ FIN
 Precio original: 250
 Descuento: 15%
 Precio final: 212.5
-¿Alcanza el presupuesto?: falso
-¿Acceso concedido?: falso
+¿Alcanza el presupuesto?: FALSO
+¿Acceso concedido?: FALSO
 Total de visitas: 4
 ```
 

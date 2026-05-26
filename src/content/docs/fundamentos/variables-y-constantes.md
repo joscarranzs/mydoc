@@ -133,15 +133,15 @@ El siguiente pseudocódigo declara una variable y una constante, modifica la var
 INICIO
     // Declaración de variable
     edad = 25
-    MOSTRAR "Edad inicial: " + edad
+    ESCRIBIR "Edad inicial: " + edad
 
     // Reasignación de variable
     edad = 26
-    MOSTRAR "Edad después de cumpleaños: " + edad
+    ESCRIBIR "Edad después de cumpleaños: " + edad
 
     // Declaración de constante
     PI = 3.1416
-    MOSTRAR "Valor de PI: " + PI
+    ESCRIBIR "Valor de PI: " + PI
 
     // Intento de reasignación de constante (PRODUCE ERROR)
     PI = 3.15       // ERROR: no se puede modificar una constante
@@ -154,7 +154,7 @@ FIN
 Edad inicial: 25
 Edad después de cumpleaños: 26
 Valor de PI: 3.1416
-Error: no se puede reasignar una constante
+Error: NO se puede reasignar una constante
 ```
 
 ---

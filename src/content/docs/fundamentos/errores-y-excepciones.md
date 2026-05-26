@@ -21,7 +21,7 @@ Cuando ocurre un error no manejado, el programa se detiene por completo y muestr
 ```
 resultado = 10 / 0             // error: división por cero
 elemento = lista[10]           // error: índice fuera de rango
-mostrar(x)                     // error: variable no definida
+ESCRIBIR(x)                     // error: variable no definida
 ```
 
 ### Excepciones
@@ -56,10 +56,10 @@ Ocurren cuando el código no respeta las reglas gramaticales del lenguaje. El pr
 
 ```
 // Error: falta un paréntesis de cierre
-mostrar("Hola"
+ESCRIBIR("Hola"
 
 // Error: estructura incorrecta
-funcion suma a, b)
+FUNCION suma a, b)
 ```
 
 ### Errores de lógica
@@ -68,9 +68,9 @@ El código es sintácticamente correcto pero produce un resultado distinto al es
 
 ```
 // Se pretendía calcular el promedio pero falta la división
-funcion promedio(a, b, c)
-    devolver a + b + c    // error: no divide entre 3
-fin_funcion
+FUNCION promedio(a, b, c)
+    RETORNAR a + b + c    // error: no divide entre 3
+FIN FUNCION
 ```
 
 ### Errores de ejecución (runtime)
@@ -79,7 +79,7 @@ Ocurren durante la ejecución del programa debido a condiciones imprevistas del 
 
 ```
 archivo = abrir("datos.txt")
-contenido = leer(archivo)          // error: el archivo no pudo abrirse
+contenido = LEER(archivo)          // error: el archivo no pudo abrirse
 
 datos = descargar("https://api.ejemplo.com")   // error: servidor caído
 ```
@@ -93,13 +93,13 @@ No es posible evitar que ocurran errores y excepciones, pero sí es posible cont
 El bloque `intentar` (try) envuelve el código que puede fallar. El bloque `capturar` (catch) atrapa la excepción si ocurre y define cómo responder.
 
 ```
-intentar
+INTENTAR
     archivo = abrir("datos.txt")
-    contenido = leer(archivo)
-    mostrar(contenido)
-capturar (error)
-    mostrar("No se pudo leer el archivo: " + error)
-fin_intentar
+    contenido = LEER(archivo)
+    ESCRIBIR(contenido)
+CAPTURAR (error)
+    ESCRIBIR("No se pudo LEER el archivo: " + error)
+FIN INTENTAR
 ```
 
 Si el archivo se abre correctamente, el bloque `capturar` se omite. Si falla, la ejecución salta al bloque `capturar` y el programa continúa desde allí, en lugar de detenerse abruptamente.
@@ -109,16 +109,16 @@ Si el archivo se abre correctamente, el bloque `capturar` se omite. Si falla, la
 Es posible capturar diferentes tipos de excepción y responder de forma distinta para cada uno.
 
 ```
-intentar
+INTENTAR
     conexion = conectar_servidor("api.ejemplo.com")
     datos = descargar(conexion)
-capturar (error_de_red)
-    mostrar("Revise su conexión a internet")
-capturar (error_de_autenticacion)
-    mostrar("Credenciales inválidas")
-capturar (error_general)
-    mostrar("Error inesperado: " + error_general)
-fin_intentar
+CAPTURAR (error_de_red)
+    ESCRIBIR("Revise su conexión a internet")
+CAPTURAR (error_de_autenticacion)
+    ESCRIBIR("Credenciales inválidas")
+CAPTURAR (error_general)
+    ESCRIBIR("Error inesperado: " + error_general)
+FIN INTENTAR
 ```
 
 ### Finally (finalmente)
@@ -126,18 +126,18 @@ fin_intentar
 El bloque `finalmente` (finally) se ejecuta **siempre**, haya ocurrido o no una excepción. Se utiliza para liberar recursos: cerrar archivos, liberar memoria, cerrar conexiones de red.
 
 ```
-archivo = nulo
-intentar
+archivo = NULO
+INTENTAR
     archivo = abrir("datos.txt")
-    contenido = leer(archivo)
+    contenido = LEER(archivo)
     procesar(contenido)
-capturar (error)
-    mostrar("Error al procesar el archivo")
-finalmente
-    si (archivo != nulo) entonces
+CAPTURAR (error)
+    ESCRIBIR("Error al procesar el archivo")
+FINALMENTE
+    SI (archivo != NULO) ENTONCES
         cerrar(archivo)       // siempre se cierra, incluso si hubo error
-    fin_si
-fin_intentar
+    FIN SI
+FIN INTENTAR
 ```
 
 ### Throw (lanzar)
@@ -145,20 +145,20 @@ fin_intentar
 Es posible **lanzar** excepciones propias cuando se detecta una situación anómala en el código. Esto permite comunicar al llamante que algo no ha funcionado correctamente.
 
 ```
-funcion retirar_dinero(saldo, cantidad)
-    si (cantidad > saldo) entonces
-        lanzar nueva Excepcion("Saldo insuficiente")
-    fin_si
+FUNCION retirar_dinero(saldo, cantidad)
+    SI (cantidad > saldo) ENTONCES
+        LANZAR NUEVA Excepcion("Saldo insuficiente")
+    FIN SI
     saldo = saldo - cantidad
-    devolver saldo
-fin_funcion
+    RETORNAR saldo
+FIN FUNCION
 
 // Quien llama maneja la excepción
-intentar
+INTENTAR
     nuevo_saldo = retirar_dinero(100, 200)
-capturar (error)
-    mostrar("No se pudo retirar: " + error)
-fin_intentar
+CAPTURAR (error)
+    ESCRIBIR("No se pudo retirar: " + error)
+FIN INTENTAR
 ```
 
 Lanzar excepciones propias constituye un mecanismo para indicar: "esto no debería ocurrir y quien me invoque debe estar preparado para manejarlo".
@@ -181,45 +181,45 @@ El siguiente pseudocódigo gestiona la lectura de la edad de un usuario desde un
 
 ```
 INICIO
-    funcion leer_edad(ruta)
-        archivo = nulo
-        intentar
+    FUNCION leer_edad(ruta)
+        archivo = NULO
+        INTENTAR
             archivo = abrir(ruta)
             linea = leer_linea(archivo)
             edad = convertir_a_entero(linea)
 
-            si (edad < 0 o edad > 150) entonces
-                lanzar nueva Excepcion("Edad fuera de rango")
-            fin_si
+            SI (edad < 0 O edad > 150) ENTONCES
+                LANZAR NUEVA Excepcion("Edad fuera de rango")
+            FIN SI
 
-            devolver edad
+            RETORNAR edad
 
-        capturar (error_de_archivo)
-            mostrar("No se encontró el archivo: " + ruta)
-            devolver -1
+        CAPTURAR (error_de_archivo)
+            ESCRIBIR("No se encontró el archivo: " + ruta)
+            RETORNAR -1
 
-        capturar (error_de_formato)
-            mostrar("El archivo no contiene un número válido")
-            devolver -1
+        CAPTURAR (error_de_formato)
+            ESCRIBIR("El archivo NO contiene un número válido")
+            RETORNAR -1
 
-        capturar (error)
-            mostrar("Error inesperado: " + error)
-            devolver -1
+        CAPTURAR (error)
+            ESCRIBIR("Error inesperado: " + error)
+            RETORNAR -1
 
-        finalmente
-            si (archivo != nulo) entonces
+        FINALMENTE
+            SI (archivo != NULO) ENTONCES
                 cerrar(archivo)
-            fin_si
-        fin_intentar
-    fin_funcion
+            FIN SI
+        FIN INTENTAR
+    FIN FUNCION
 
     // Programa principal
     edad = leer_edad("usuario.txt")
-    si (edad >= 0) entonces
-        mostrar("Edad del usuario: " + edad)
-    si_no
-        mostrar("No se pudo determinar la edad")
-    fin_si
+    SI (edad >= 0) ENTONCES
+        ESCRIBIR("Edad del usuario: " + edad)
+    SINO
+        ESCRIBIR("No se pudo determinar la edad")
+    FIN SI
 FIN
 ```
 
