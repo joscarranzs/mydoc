@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sidebarData } from '../../data/sidebar';
+import { getEntry, render as renderEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (const mod of sidebarData) {
+    paths.push({
+      params: { slug: mod.slug },
+      props: { isModuleIndex: true, moduleTitle: mod.title },
+    });
+
+    for (const sub of mod.submodules) {
+      paths.push({
+        params: { slug: `${mod.slug}/${sub.slug}` },
+        props: {
+          entryId: `${mod.slug}/${sub.slug}`,
+          moduleTitle: mod.title,
+          submoduleTitle: sub.title,
+          isModuleIndex: false,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { entryId, moduleTitle, submoduleTitle, isModuleIndex } = Astro.props as {
+  entryId?: string;
+  moduleTitle: string;
+  submoduleTitle?: string;
+  isModuleIndex: boolean;
+};
+
+const baseUrl = import.meta.env.BASE_URL;
+const pageTitle = isModuleIndex ? moduleTitle : `${submoduleTitle} · ${moduleTitle}`;
+
+const currentModule = isModuleIndex
+  ? sidebarData.find((m) => m.title === moduleTitle)
+  : null;
+
+let Content: any;
+if (!isModuleIndex && entryId) {
+  const entry = await getEntry('docs', entryId);
+  if (entry) {
+    const { Content: C } = await renderEntry(entry);
+    Content = C;
+  }
+}
+
+function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string {
+  return `${baseUrl}docs/${mod.slug}/${sub.slug}`;
+}
+---
+
+<BaseLayout title={pageTitle}>
+  {
+    isModuleIndex && currentModule ? (
+      <div class="space-y-6 sm:space-y-8">
+        <div class="space-y-3">
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-ink">{currentModule.title}</h1>
+          {currentModule.description && (
+            <p class="text-sm sm:text-base lg:text-lg text-ink-light border-l-4 border-amber pl-3 sm:pl-4">
+              {currentModule.description}
+            </p>
+          )}
+        </div>
+
+        <div class="border-t-2 border-ink pt-4 sm:pt-6">
+          <p class="text-xs sm:text-sm font-bold text-ink-muted uppercase tracking-widest mb-4 sm:mb-5">
+            {currentModule.submodules.length} tema{currentModule.submodules.length !== 1 ? 's' : ''}
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {currentModule.submodules.map((sub, i) => (
+              <a
+                href={getSubmoduleLink(currentModule, sub)}
+                class="brutal-card p-4 sm:p-5 block hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+              >
+                <div class="flex items-start gap-3 sm:gap-4">
+                  <span class="text-xs sm:text-sm font-black text-ink-muted shrink-0 w-5 sm:w-6 text-right">
+                    {(i + 1).toString().padStart(2, '0')}
+                  </span>
+                  <div class="min-w-0">
+                    <h3 class="font-bold text-base sm:text-lg text-ink mb-1 leading-tight">{sub.title}</h3>
+                    {sub.description && (
+                      <p class="text-xs sm:text-sm text-ink-light leading-relaxed">{sub.description}</p>
+                    )}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    ) : Content ? (
+      <div class="prose prose-slate max-w-none
+                    prose-headings:font-black prose-headings:text-ink prose-headings:tracking-tight
+                    prose-h1:text-2xl prose-h1:sm:text-3xl prose-h1:lg:text-4xl
+                    prose-h2:text-lg prose-h2:sm:text-xl prose-h2:lg:text-2xl
+                    prose-h2:border-b-2 prose-h2:border-ink prose-h2:pb-1.5 prose-h2:sm:pb-2 prose-h2:mt-6 prose-h2:sm:mt-8 prose-h2:lg:mt-10
+                    prose-h3:text-base prose-h3:sm:text-lg prose-h3:lg:text-xl prose-h3:font-bold
+                    prose-p:text-sm prose-p:sm:text-base prose-p:lg:text-lg
+                    prose-a:text-amber-dark prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+                    prose-code:font-mono prose-code:text-amber-dark prose-code:bg-amber-light prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-none prose-code:text-xs prose-code:sm:text-sm prose-code:font-normal
+                    prose-pre:border-2 prose-pre:border-ink prose-pre:rounded-none
+                    prose-pre:shadow-brutal prose-pre:text-xs prose-pre:sm:text-sm prose-pre:overflow-x-auto
+                    prose-blockquote:border-l-4 prose-blockquote:border-amber
+                    prose-blockquote:text-ink-light prose-blockquote:not-italic prose-blockquote:pl-3 prose-blockquote:sm:pl-4
+                    prose-blockquote:text-sm prose-blockquote:sm:text-base prose-blockquote:lg:text-lg
+                    prose-img:border-2 prose-img:border-ink prose-img:max-w-full
+                    prose-hr:border-ink prose-hr:border-t-2
+                    prose-strong:text-ink
+                    prose-th:border-2 prose-th:border-ink prose-th:bg-dark prose-th:text-white prose-th:px-2 prose-th:py-1.5 prose-th:sm:px-3 prose-th:sm:py-2 prose-th:text-xs prose-th:sm:text-sm
+                    prose-td:border-2 prose-td:border-ink prose-td:px-2 prose-td:py-1.5 prose-td:sm:px-3 prose-td:sm:py-2 prose-td:text-xs prose-td:sm:text-sm
+                    prose-table:border-2 prose-table:border-ink prose-table:shadow-brutal prose-table:w-full prose-table:overflow-x-auto prose-table:block prose-table:sm:table">
+        <Content />
+      </div>
+    ) : (
+      <div class="space-y-5 sm:space-y-6">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-ink">{submoduleTitle}</h1>
+        <div class="brutal-card p-6 sm:p-10 text-center border-dashed">
+          <div class="w-10 sm:w-12 h-10 sm:h-12 bg-amber-light border-2 border-ink flex items-center justify-center mx-auto mb-3 sm:mb-4">
+            <svg class="w-5 sm:w-6 h-5 sm:h-6 text-amber-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </div>
+          <p class="text-sm sm:text-base text-ink-light font-bold">Esta página aún no tiene contenido.</p>
+          <p class="text-xs sm:text-sm text-ink-muted mt-2">
+            Crea un archivo en<br />
+            <code class="bg-amber-light text-amber-dark px-1.5 py-0.5 text-2xs sm:text-xs font-mono font-bold">
+              src/content/docs/{entryId}.md
+            </code>
+          </p>
+        </div>
+      </div>
+    )
+  }
+</BaseLayout>

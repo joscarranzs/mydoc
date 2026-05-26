@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import Sidebar from '../components/Sidebar.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const baseUrl = import.meta.env.BASE_URL;
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    <link rel="icon" href={`${baseUrl}favicon.ico`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description ?? 'Documentación personal de programación'} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title} | mydocs</title>
+  </head>
+  <body class="min-h-screen bg-surface text-ink font-sans antialiased">
+    <!-- Mobile header -->
+    <header class="lg:hidden sticky top-0 z-30 bg-dark border-b-2 border-ink px-4 py-3 flex items-center gap-3">
+      <button id="menu-btn" class="text-white p-1 -ml-1" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <a href={baseUrl} class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 bg-amber rotate-45" />
+        <span class="font-bold text-base text-white">mydocs</span>
+      </a>
+    </header>
+
+    <!-- Flex row: sidebar + main -->
+    <div class="flex flex-1 flex-col lg:flex-row min-h-0">
+      <!-- Backdrop -->
+      <div id="backdrop" class="fixed inset-0 z-20 bg-black/40 hidden lg:hidden"></div>
+
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="fixed top-0 left-0 z-30 h-full w-80 -translate-x-full transition-transform duration-300 ease-in-out
+               lg:static lg:translate-x-0 lg:z-auto lg:h-screen lg:sticky lg:top-0
+               border-r-2 border-ink bg-surface-card shrink-0 overflow-y-auto"
+      >
+        <div class="lg:hidden bg-dark px-4 py-3 border-b-2 border-ink flex items-center justify-between">
+          <span class="font-bold text-white text-sm uppercase tracking-wider">menú</span>
+          <button id="close-btn" class="text-white p-1" aria-label="Cerrar menú">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <Sidebar />
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1 min-w-0 max-w-full">
+        <div class="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10 py-4 sm:py-6 lg:py-8">
+          <slot />
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('backdrop');
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-btn');
+
+      function open() {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close() {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      menuBtn?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', close);
+      backdrop?.addEventListener('click', close);
+    </script>
+  </body>
+</html>
