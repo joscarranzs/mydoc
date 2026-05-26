@@ -19,7 +19,7 @@ const modules = sidebarData;
   <div class="flex-1 overflow-y-auto">
     <div class="px-3 sm:px-4 py-5 space-y-6">
       {modules.map((module) => {
-        const moduleHref = `${baseUrl}docs/${module.slug}`;
+        const moduleHref = `${baseUrl}/docs/${module.slug}`;
         const isActive = currentPath.startsWith(moduleHref);
 
         return (
@@ -39,7 +39,7 @@ const modules = sidebarData;
             {module.submodules.length > 0 && (
               <ul class="mt-1.5 space-y-0.5 ml-2">
                 {module.submodules.map((sub) => {
-                  const href = `${baseUrl}docs/${module.slug}/${sub.slug}`;
+                  const href = `${baseUrl}/docs/${module.slug}/${sub.slug}`;
                   const isSubActive = currentPath === href;
 
                   return (
