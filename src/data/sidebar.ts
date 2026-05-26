@@ -28,7 +28,7 @@ export const sidebarData: Module[] = [
     ],
   },
   {
-    title: 'Fundamentos de Programación',
+    title: 'Fundamentos',
     slug: 'fundamentos',
     description: 'Conceptos fundamentales de programación.',
     submodules: [

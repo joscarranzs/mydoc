@@ -41,7 +41,7 @@ const modules = sidebarData;
             </a>
 
             {module.submodules.length > 0 && (
-              <ul class="mt-1.5 space-y-0.5 ml-2">
+              <ul class="mt-1.5 space-y-0.5">
                 {module.submodules.map((sub) => {
                   const href = `${baseUrl}/docs/${module.slug}/${sub.slug}`;
                   const isSubActive = currentPath === href;
