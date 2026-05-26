@@ -93,10 +93,34 @@ const { title, description } = Astro.props;
         }
       });
 
+      function stripSlash(s) { return s.replace(/\/+$/, ''); }
+
+      function updateSidebarActive() {
+        const path = stripSlash(window.location.pathname);
+
+        document.querySelectorAll('[data-sidebar-module]').forEach((a) => {
+          const active = path.startsWith(stripSlash(a.getAttribute('href')));
+          a.classList.toggle('border-amber', active);
+          a.classList.toggle('bg-amber-light', active);
+          a.classList.toggle('text-ink', active);
+          a.classList.toggle('border-transparent', !active);
+          a.classList.toggle('text-ink-light', !active);
+        });
+
+        document.querySelectorAll('[data-sidebar-sub]').forEach((a) => {
+          const active = path === stripSlash(a.getAttribute('href'));
+          a.classList.toggle('text-ink', active);
+          a.classList.toggle('font-bold', active);
+          a.classList.toggle('bg-surface-hover', active);
+          a.classList.toggle('text-ink-light', !active);
+        });
+      }
+
       document.addEventListener('astro:page-load', () => {
         document.getElementById('sidebar')?.removeAttribute('data-open');
         document.getElementById('backdrop')?.classList.add('hidden');
         document.body.style.overflow = '';
+        updateSidebarActive();
       });
     </script>
   </body>
