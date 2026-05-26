@@ -76,26 +76,25 @@ const { title, description } = Astro.props;
     </div>
 
     <script>
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('backdrop');
-      const menuBtn = document.getElementById('menu-btn');
-      const closeBtn = document.getElementById('close-btn');
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('#menu-btn, #close-btn');
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('backdrop');
 
-      function open() {
-        sidebar.classList.remove('-translate-x-full');
-        backdrop.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
+        if (btn || e.target === backdrop) {
+          const isOpen = btn?.id === 'menu-btn' ? sidebar.dataset.open !== 'true' : false;
+          sidebar.dataset.open = isOpen;
+          sidebar.classList.toggle('-translate-x-full', !isOpen);
+          backdrop.classList.toggle('hidden', !isOpen);
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+      });
 
-      function close() {
-        sidebar.classList.add('-translate-x-full');
-        backdrop.classList.add('hidden');
+      document.addEventListener('astro:page-load', () => {
+        document.getElementById('sidebar')?.removeAttribute('data-open');
+        document.getElementById('backdrop')?.classList.add('hidden');
         document.body.style.overflow = '';
-      }
-
-      menuBtn?.addEventListener('click', open);
-      closeBtn?.addEventListener('click', close);
-      backdrop?.addEventListener('click', close);
+      });
     </script>
   </body>
 </html>
