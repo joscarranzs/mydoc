@@ -111,7 +111,7 @@ const { title, description } = Astro.props;
           const active = path === stripSlash(a.getAttribute('href'));
           a.classList.toggle('text-ink', active);
           a.classList.toggle('font-bold', active);
-          a.classList.toggle('bg-surface-hover', active);
+          a.classList.toggle('bg-amber-light', active);
           a.classList.toggle('text-ink-light', !active);
         });
       }
