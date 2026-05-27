@@ -36,7 +36,7 @@ function moduleHasContent(mod: Module): boolean {
   </div>
 
   <!-- Navigation -->
-  <div class="flex-1 overflow-y-auto">
+  <div class="flex-1 overflow-y-auto" data-sidebar-scroll>
     <div class="px-3 sm:px-4 py-5 space-y-6">
       {modules.map((module: Module) => {
         const moduleHref = `${baseUrl}/docs/${module.slug}`;
@@ -196,21 +196,22 @@ function moduleHasContent(mod: Module): boolean {
 </nav>
 
 <script>
-  const STORAGE_KEY = 'mydocs:sidebar-toggles';
+  const TOGGLE_KEY = 'mydocs:sidebar-toggles';
+  const SCROLL_KEY = 'mydocs:sidebar-scroll';
 
   function loadSavedState() {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      return JSON.parse(localStorage.getItem(TOGGLE_KEY) || '{}');
     } catch {
       return {};
     }
   }
 
-  function saveState(key, open) {
+  function saveToggle(key, open) {
     try {
       const state = loadSavedState();
       state[key] = open;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(TOGGLE_KEY, JSON.stringify(state));
     } catch {}
   }
 
@@ -231,7 +232,7 @@ function moduleHasContent(mod: Module): boolean {
         if (icon) {
           icon.style.transform = open ? 'rotate(90deg)' : 'rotate(0deg)';
         }
-        saveState(key, open);
+        saveToggle(key, open);
       };
 
       if (!isInitialized) {
@@ -256,6 +257,27 @@ function moduleHasContent(mod: Module): boolean {
     });
   }
 
+  function saveScroll() {
+    const el = document.querySelector('[data-sidebar-scroll]');
+    if (el) {
+      localStorage.setItem(SCROLL_KEY, String(el.scrollTop));
+    }
+  }
+
+  function restoreScroll() {
+    const saved = localStorage.getItem(SCROLL_KEY);
+    if (!saved) return;
+    const el = document.querySelector('[data-sidebar-scroll]');
+    if (el) {
+      el.scrollTop = parseInt(saved, 10);
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', setupToggles);
-  document.addEventListener('astro:page-load', setupToggles);
+  document.addEventListener('astro:before-swap', saveScroll);
+
+  document.addEventListener('astro:page-load', () => {
+    setupToggles();
+    restoreScroll();
+  });
 </script>
