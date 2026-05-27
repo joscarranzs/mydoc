@@ -52,7 +52,7 @@ export const sidebarData: Module[] = [
     description: 'Conceptos fundamentales de programación.',
     subcategories: [
       {
-        title: 'Programming',
+        title: 'Programación',
         submodules: [
           { title: 'Introducción a la programación', slug: 'introduccion-a-la-programacion', description: 'Qué es programar, origen, clasificación por paradigmas, compiladores e intérpretes.' },
           { title: 'Variables y constantes', slug: 'variables-y-constantes', description: 'Concepto, diferencias, almacenamiento en memoria, mutabilidad e inmutabilidad.' },
