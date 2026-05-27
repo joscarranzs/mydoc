@@ -239,4 +239,34 @@ html {
   .brutal-section-title {
     @apply text-xs font-bold text-ink tracking-widest uppercase border-b-2 border-ink pb-2;
   }
+
+  /* ─── Collapsible sidebar sections ─── */
+
+  .sidebar-toggle-btn {
+    @apply flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider
+           text-ink-muted hover:text-ink transition-colors duration-150 cursor-pointer;
+    background: none;
+    border: none;
+    text-align: left;
+  }
+
+  .sidebar-toggle-btn--cat {
+    @apply w-full;
+  }
+
+  .sidebar-toggle-btn:focus-visible {
+    @apply outline-2 outline-amber outline-offset-1;
+  }
+
+  .sidebar-toggle-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar-content {
+    display: none;
+  }
+
+  .sidebar-content--open {
+    display: block;
+  }
 }
