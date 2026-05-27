@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sidebarData } from '../data/sidebar';
+import { sidebarData, getAllSubmodules } from '../data/sidebar';
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -59,21 +59,21 @@ const baseUrl = import.meta.env.BASE_URL;
             >
               <h3 class="font-bold text-base sm:text-lg text-ink mb-1">{mod.title}</h3>
               {mod.description && <p class="text-xs sm:text-sm text-ink-light mb-2 sm:mb-3">{mod.description}</p>}
-              {mod.submodules.length > 0 && (
+              {(() => { const subs = getAllSubmodules(mod); return subs.length > 0 && (
                 <ul class="space-y-1">
-                  {mod.submodules.slice(0, 4).map((sub) => (
+                  {subs.slice(0, 4).map((sub) => (
                     <li class="flex items-center gap-2 text-xs sm:text-sm text-ink-light">
                       <span class="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-amber rotate-45 shrink-0" />
                       {sub.title}
                     </li>
                   ))}
-                  {mod.submodules.length > 4 && (
+                  {subs.length > 4 && (
                     <li class="text-xs sm:text-sm font-bold text-amber">
-                      +{mod.submodules.length - 4} más
+                      +{subs.length - 4} más
                     </li>
                   )}
                 </ul>
-              )}
+              )})()}
             </a>
           ))}
         </div>
@@ -88,7 +88,7 @@ const baseUrl = import.meta.env.BASE_URL;
         <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-amber rotate-45 shrink-0" />
         {sidebarData.length} seccion{sidebarData.length !== 1 ? 'es' : ''}
         <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-amber rotate-45 shrink-0" />
-        {sidebarData.reduce((acc, m) => acc + m.submodules.length, 0)} articulo{sidebarData.reduce((acc, m) => acc + m.submodules.length, 0) !== 1 ? 's' : ''}
+        {sidebarData.reduce((acc, m) => acc + getAllSubmodules(m).length, 0)} articulo{sidebarData.reduce((acc, m) => acc + getAllSubmodules(m).length, 0) !== 1 ? 's' : ''}
       </div>
     </section>
   </div>

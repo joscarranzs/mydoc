@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sidebarData } from '../../data/sidebar';
+import { sidebarData, getAllSubmodules } from '../../data/sidebar';
 import { getEntry, render as renderEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
       props: { isModuleIndex: true, moduleTitle: mod.title },
     });
 
-    for (const sub of mod.submodules) {
+    for (const sub of getAllSubmodules(mod)) {
       paths.push({
         params: { slug: `${mod.slug}/${sub.slug}` },
         props: {
@@ -70,29 +70,63 @@ function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string 
         </div>
 
         <div class="border-t-2 border-ink pt-4 sm:pt-6">
-          <p class="text-xs sm:text-sm font-bold text-ink-muted uppercase tracking-widest mb-4 sm:mb-5">
-            {currentModule.submodules.length} tema{currentModule.submodules.length !== 1 ? 's' : ''}
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            {currentModule.submodules.map((sub, i) => (
-              <a
-                href={getSubmoduleLink(currentModule, sub)}
-                class="brutal-card p-4 sm:p-5 block hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
-              >
-                <div class="flex items-start gap-3 sm:gap-4">
-                  <span class="text-xs sm:text-sm font-black text-ink-muted shrink-0 w-5 sm:w-6 text-right">
-                    {(i + 1).toString().padStart(2, '0')}
-                  </span>
-                  <div class="min-w-0">
-                    <h3 class="font-bold text-base sm:text-lg text-ink mb-1 leading-tight">{sub.title}</h3>
-                    {sub.description && (
-                      <p class="text-xs sm:text-sm text-ink-light leading-relaxed">{sub.description}</p>
-                    )}
+          {currentModule.subcategories
+            ? currentModule.subcategories.map((cat) =>
+                cat.submodules.length > 0 ? (
+                  <div class="mb-6 sm:mb-8 last:mb-0">
+                    <h2 class="text-sm sm:text-base font-bold uppercase tracking-wider text-ink-muted mb-3 sm:mb-4">
+                      {cat.title}
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                      {cat.submodules.map((sub, i) => (
+                        <a
+                          href={getSubmoduleLink(currentModule, sub)}
+                          class="brutal-card p-4 sm:p-5 block hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+                        >
+                          <div class="flex items-start gap-3 sm:gap-4">
+                            <div class="min-w-0">
+                              <h3 class="font-bold text-base sm:text-lg text-ink mb-1 leading-tight">{sub.title}</h3>
+                              {sub.description && (
+                                <p class="text-xs sm:text-sm text-ink-light leading-relaxed">{sub.description}</p>
+                              )}
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
-          </div>
+                ) : null
+              )
+            : (() => {
+                const subs = getAllSubmodules(currentModule);
+                return (
+                  <>
+                    <p class="text-xs sm:text-sm font-bold text-ink-muted uppercase tracking-widest mb-4 sm:mb-5">
+                      {subs.length} tema{subs.length !== 1 ? 's' : ''}
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                      {subs.map((sub, i) => (
+                        <a
+                          href={getSubmoduleLink(currentModule, sub)}
+                          class="brutal-card p-4 sm:p-5 block hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+                        >
+                          <div class="flex items-start gap-3 sm:gap-4">
+                            <span class="text-xs sm:text-sm font-black text-ink-muted shrink-0 w-5 sm:w-6 text-right">
+                              {(i + 1).toString().padStart(2, '0')}
+                            </span>
+                            <div class="min-w-0">
+                              <h3 class="font-bold text-base sm:text-lg text-ink mb-1 leading-tight">{sub.title}</h3>
+                              {sub.description && (
+                                <p class="text-xs sm:text-sm text-ink-light leading-relaxed">{sub.description}</p>
+                              )}
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
         </div>
       </div>
     ) : Content ? (

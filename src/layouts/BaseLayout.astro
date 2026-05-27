@@ -117,6 +117,33 @@ const { title, description } = Astro.props;
             localStorage.setItem('sidebar-collapsed', JSON.stringify(stored));
           });
         });
+
+        document.querySelectorAll('[data-subcategory]').forEach((group) => {
+          const key = 'subcat_' + group.dataset.subcategory;
+          const content = group.querySelector('[data-subcat-content]');
+          const chevron = group.querySelector('[data-subcat-chevron]');
+          if (!content || group.dataset.initialized) return;
+          group.dataset.initialized = '';
+
+          if (stored[key] === undefined) {
+            content.classList.add('hidden');
+            chevron?.classList.add('-rotate-90');
+            stored[key] = true;
+          } else if (stored[key]) {
+            content.classList.add('hidden');
+            chevron?.classList.add('-rotate-90');
+          } else {
+            chevron?.classList.remove('-rotate-90');
+          }
+          localStorage.setItem('sidebar-collapsed', JSON.stringify(stored));
+
+          group.querySelector('[data-subcat-toggle]')?.addEventListener('click', () => {
+            content.classList.toggle('hidden');
+            chevron?.classList.toggle('-rotate-90');
+            stored[key] = content.classList.contains('hidden');
+            localStorage.setItem('sidebar-collapsed', JSON.stringify(stored));
+          });
+        });
       }
 
       function updateSidebarActive() {
