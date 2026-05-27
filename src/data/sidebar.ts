@@ -28,6 +28,12 @@ export const sidebarData: Module[] = [
     ],
   },
   {
+    title: 'Linux',
+    slug: 'linux',
+    description: 'Uso y administración del sistema operativo Linux.',
+    submodules: [],
+  },
+  {
     title: 'Fundamentos',
     slug: 'fundamentos',
     description: 'Conceptos fundamentales de programación.',

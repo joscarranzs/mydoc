@@ -26,22 +26,31 @@ const modules = sidebarData;
         const isActive = currentPath.startsWith(moduleHref);
 
         return (
-          <div>
-            <a
-              href={moduleHref}
-              data-sidebar-module
-              class:list={[
-                'block px-3 py-2 text-sm font-bold uppercase tracking-wider transition-colors duration-150 border-l-4',
-                isActive
-                  ? 'border-amber bg-amber-light text-ink'
-                  : 'border-transparent text-ink-light hover:text-ink hover:border-ink-muted',
-              ]}
-            >
-              {module.title}
-            </a>
+          <div data-collapsible={module.slug}>
+            <div class="flex items-center">
+              <a
+                href={moduleHref}
+                data-sidebar-module
+                class:list={[
+                  'flex-1 block px-3 py-2 text-sm font-bold uppercase tracking-wider transition-colors duration-150 border-l-4',
+                  isActive
+                    ? 'border-amber bg-amber-light text-ink'
+                    : 'border-transparent text-ink-light hover:text-ink hover:border-ink-muted',
+                ]}
+              >
+                {module.title}
+              </a>
+              {module.submodules.length > 0 && (
+                <button data-collapsible-toggle class="p-2 text-ink-muted hover:text-ink transition-colors shrink-0" aria-label="Toggle">
+                  <svg class="w-4 h-4 transition-transform duration-200" data-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+              )}
+            </div>
 
             {module.submodules.length > 0 && (
-              <ul class="mt-1.5 space-y-0.5">
+              <ul data-collapsible-content class="space-y-0.5">
                 {module.submodules.map((sub) => {
                   const href = `${baseUrl}/docs/${module.slug}/${sub.slug}`;
                   const isSubActive = currentPath === href;
@@ -52,7 +61,7 @@ const modules = sidebarData;
                         href={href}
                         data-sidebar-sub
                         class:list={[
-                          'block px-3 py-1 text-xs transition-colors duration-150',
+                          'block px-3 py-1 text-sm transition-colors duration-150',
                           isSubActive
                             ? 'text-ink font-bold bg-amber-light'
                             : 'text-ink-light hover:bg-amber-light hover:text-ink',
