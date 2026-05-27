@@ -95,32 +95,6 @@ const { title, description } = Astro.props;
 
       function stripSlash(s) { return s.replace(/\/+$/, ''); }
 
-      function initCollapsible() {
-        const stored = JSON.parse(localStorage.getItem('sidebar-collapsed') || '{}');
-
-        document.querySelectorAll('[data-collapsible]').forEach((group) => {
-          const key = group.dataset.collapsible;
-          const content = group.querySelector('[data-collapsible-content]');
-          const chevron = group.querySelector('[data-chevron]');
-          if (!content || group.dataset.initialized) return;
-          group.dataset.initialized = '';
-
-          if (stored[key]) {
-            content.classList.add('hidden');
-            chevron?.classList.add('-rotate-180');
-          }
-
-          group.querySelector('[data-collapsible-toggle]')?.addEventListener('click', () => {
-            content.classList.toggle('hidden');
-            chevron?.classList.toggle('-rotate-180');
-            stored[key] = content.classList.contains('hidden');
-            localStorage.setItem('sidebar-collapsed', JSON.stringify(stored));
-          });
-        });
-
-
-      }
-
       function updateSidebarActive() {
         const path = stripSlash(window.location.pathname);
 
@@ -147,7 +121,6 @@ const { title, description } = Astro.props;
         document.getElementById('backdrop')?.classList.add('hidden');
         document.body.style.overflow = '';
         updateSidebarActive();
-        initCollapsible();
       });
     </script>
   </body>
