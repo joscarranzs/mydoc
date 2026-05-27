@@ -196,7 +196,27 @@ function moduleHasContent(mod: Module): boolean {
 </nav>
 
 <script>
+  const STORAGE_KEY = 'mydocs:sidebar-toggles';
+
+  function loadSavedState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch {
+      return {};
+    }
+  }
+
+  function saveState(key, open) {
+    try {
+      const state = loadSavedState();
+      state[key] = open;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {}
+  }
+
   function setupToggles() {
+    const saved = loadSavedState();
+
     document.querySelectorAll('[data-toggle]').forEach((btn) => {
       const key = btn.dataset.toggle;
       const content = document.querySelector(`[data-toggle-content="${CSS.escape(key)}"]`);
@@ -211,11 +231,20 @@ function moduleHasContent(mod: Module): boolean {
         if (icon) {
           icon.style.transform = open ? 'rotate(90deg)' : 'rotate(0deg)';
         }
+        saveState(key, open);
       };
 
       if (!isInitialized) {
-        const isDefaultCollapsed = content.dataset.defaultCollapsed !== undefined;
-        setOpen(!isDefaultCollapsed);
+        let isOpen;
+
+        if (key in saved) {
+          isOpen = saved[key];
+        } else {
+          const isDefaultCollapsed = content.dataset.defaultCollapsed !== undefined;
+          isOpen = !isDefaultCollapsed;
+        }
+
+        setOpen(isOpen);
         btn.dataset.toggleInit = 'true';
 
         btn.addEventListener('click', (e) => {
