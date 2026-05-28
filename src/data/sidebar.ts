@@ -26,58 +26,105 @@ export function getAllSubmodules(mod: Module): Submodule[] {
 
 export const sidebarData: Module[] = [
   {
-    title: 'Lenguajes',
-    slug: 'lenguajes',
-    description: 'Lenguajes de programación y sus ecosistemas.',
-    submodules: [
-      { title: 'JavaScript', slug: 'javascript' },
-      { title: 'TypeScript', slug: 'typescript' },
-      { title: 'Python', slug: 'python' },
-      { title: 'Java', slug: 'java' },
-      { title: 'Rust', slug: 'rust' },
-      { title: 'Lua', slug: 'lua' },
-      { title: 'HTML', slug: 'html' },
-      { title: 'CSS', slug: 'css' },
-    ],
-  },
-  {
-    title: 'Linux',
-    slug: 'linux',
-    description: 'Uso y administración del sistema operativo Linux.',
-    submodules: [],
-  },
-  {
-    title: 'Fundamentos',
-    slug: 'fundamentos',
-    description: 'Conceptos fundamentales de programación.',
+    title: 'JavaScript',
+    slug: 'lenguajes/javascript',
+    description: 'Lenguaje de programación web por excelencia.',
     subcategories: [
       {
-        title: 'Programación',
+        title: 'Fundamentos',
         submodules: [
-          { title: 'Introducción a la programación', slug: 'introduccion-a-la-programacion', description: 'Qué es programar, origen, clasificación por paradigmas, compiladores e intérpretes.' },
-          { title: 'Variables y constantes', slug: 'variables-y-constantes', description: 'Concepto, diferencias, almacenamiento en memoria, mutabilidad e inmutabilidad.' },
-          { title: 'Tipos de datos', slug: 'tipos-de-datos', description: 'Primitivos y compuestos, almacenamiento en stack y heap, conversión de tipos.' },
-          { title: 'Operadores y expresiones', slug: 'operadores-y-expresiones', description: 'Aritméticos, comparación, lógicos, asignación, precedencia y tablas de verdad.' },
-          { title: 'Estructuras de control', slug: 'estructuras-de-control', description: 'Secuenciales, condicionales (if, switch) y bucles (while, for, for-each).' },
-          { title: 'Funciones y procedimientos', slug: 'funciones-y-procedimientos', description: 'Declaración, parámetros, retorno, paso por valor y referencia, alcance de variables.' },
-          { title: 'Programación orientada a objetos', slug: 'programacion-orientada-a-objetos', description: 'Clases, objetos, herencia, polimorfismo, encapsulamiento y abstracción.' },
-          { title: 'Estructuras de datos', slug: 'estructuras-de-datos', description: 'Arrays, matrices, listas, mapas, pilas (LIFO) y colas (FIFO) con diagramas.' },
-          { title: 'Estructuras de datos avanzadas', slug: 'estructuras-de-datos-avanzadas', description: 'Árboles binarios, BST, grafos, tablas hash, colisiones y recorridos BFS/DFS.' },
-          { title: 'Errores y excepciones', slug: 'errores-y-excepciones', description: 'Errores vs excepciones, try-catch, finally, lanzar excepciones propias y buenas prácticas.' },
-          { title: 'Programación asíncrona', slug: 'programacion-asincrona', description: 'Callbacks, promesas, async/await, ejecución secuencial vs paralela y modelo de concurrencia.' },
+          { title: 'Introducción', slug: 'general/introduccion', description: 'Origen, evolución y características.' },
+          { title: 'Sintaxis', slug: 'general/sintaxis', description: 'Estructura básica del código.' },
+          { title: 'Tipos de datos', slug: 'general/tipos-de-datos', description: 'Primitivos y compuestos.' },
+          { title: 'Operadores', slug: 'general/operadores', description: 'Aritméticos, lógicos, de comparación.' },
         ],
       },
       {
-        title: 'Front-End',
-        submodules: [],
+        title: 'Strings y Números',
+        submodules: [
+          { title: 'Strings', slug: 'general/strings', description: 'Manipulación de texto.' },
+          { title: 'Números', slug: 'general/numeros', description: 'Operaciones numéricas.' },
+          { title: 'Math', slug: 'general/math', description: 'Objeto matemático.' },
+          { title: 'Fechas', slug: 'general/fechas', description: 'Objeto Date.' },
+          { title: 'Temporal', slug: 'general/temporal', description: 'API moderna de fechas.' },
+        ],
       },
       {
-        title: 'Back-End',
-        submodules: [],
+        title: 'Control de flujo',
+        submodules: [
+          { title: 'Condicionales', slug: 'general/condicionales', description: 'if, else, switch.' },
+          { title: 'Bucles', slug: 'general/bucles', description: 'for, while, do-while.' },
+          { title: 'Iteraciones', slug: 'general/iteraciones', description: 'for...of, for...in, forEach.' },
+        ],
       },
       {
-        title: 'Database',
-        submodules: [],
+        title: 'Colecciones',
+        submodules: [
+          { title: 'Arrays', slug: 'general/arrays', description: 'Listas ordenadas de valores.' },
+          { title: 'Objetos', slug: 'general/objetos', description: 'Pares clave-valor.' },
+          { title: 'Sets', slug: 'general/sets', description: 'Colecciones de valores únicos.' },
+          { title: 'Maps', slug: 'general/maps', description: 'Mapas clave-valor mejorados.' },
+        ],
+      },
+      {
+        title: 'Funciones',
+        submodules: [
+          { title: 'Funciones', slug: 'general/funciones', description: 'Declaración, parámetros, retorno.' },
+          { title: 'Scope', slug: 'general/scope', description: 'Alcance de variables.' },
+        ],
+      },
+      {
+        title: 'Errores y depuración',
+        submodules: [
+          { title: 'Errores', slug: 'general/errores', description: 'Tipos de errores y manejo.' },
+          { title: 'Depuración', slug: 'general/depuracion', description: 'Herramientas de debug.' },
+        ],
+      },
+      {
+        title: 'POO',
+        submodules: [
+          { title: 'Clases', slug: 'general/clases', description: 'Clases y herencia.' },
+          { title: 'Funciones avanzadas', slug: 'general/funciones-avanzadas', description: 'Closures, currying, composition.' },
+          { title: 'Objetos avanzados', slug: 'general/objetos-avanzados', description: 'Prototipos, descriptors.' },
+          { title: 'Meta y Proxy', slug: 'general/meta-proxy', description: 'Reflect y Proxy.' },
+          { title: 'Typed Arrays', slug: 'general/typed-arrays', description: 'Arrays de tipo fijo.' },
+        ],
+      },
+      {
+        title: 'Asíncrono y módulos',
+        submodules: [
+          { title: 'Asíncrono', slug: 'general/asincrono', description: 'Callbacks, promesas, async/await.' },
+          { title: 'Módulos', slug: 'general/modulos', description: 'Import/export, ES Modules.' },
+        ],
+      },
+      {
+        title: 'DOM',
+        submodules: [
+          { title: 'HTML First', slug: 'general/html-first', description: 'Integración HTML/JS básica.' },
+          { title: 'HTML DOM', slug: 'general/html-dom', description: 'Manipulación del DOM.' },
+          { title: 'Navegación DOM', slug: 'general/navegacion-dom', description: 'Recorrer el árbol DOM.' },
+          { title: 'Eventos HTML', slug: 'general/eventos-html', description: 'Event listeners.' },
+          { title: 'Windows', slug: 'general/windows', description: 'Objeto window.' },
+        ],
+      },
+      {
+        title: 'APIs Web',
+        submodules: [
+          { title: 'Web API', slug: 'general/web-api', description: 'APIs del navegador.' },
+          { title: 'AJAX', slug: 'general/ajax', description: 'Peticiones asíncronas.' },
+          { title: 'JSON', slug: 'general/json', description: 'Intercambio de datos.' },
+          { title: 'jQuery', slug: 'general/jquery', description: 'Librería de DOM.' },
+          { title: 'Gráficos', slug: 'general/graficos', description: 'Canvas, SVG.' },
+        ],
+      },
+      {
+        title: 'Referencia',
+        submodules: [
+          { title: 'Guía de estilo', slug: 'general/guia-de-estilo', description: 'Convenciones de código.' },
+          { title: 'Referencia', slug: 'general/referencia', description: 'API completa de JS.' },
+          { title: 'Versiones', slug: 'general/versiones', description: 'Historial de ECMAScript.' },
+          { title: 'Proyectos', slug: 'general/proyectos', description: 'Proyectos prácticos.' },
+        ],
       },
     ],
   },

@@ -5,91 +5,185 @@ import { sidebarData, getAllSubmodules } from '../data/sidebar';
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Inicio" description="Documentación personal de programación.">
-  <div class="space-y-10 sm:space-y-12">
+<BaseLayout title="Inicio" description="Aprender a programar no requiere un aula. Requiere curiosidad.">
+  <div class="space-y-16 sm:space-y-20">
+
     <!-- Hero -->
-    <section class="space-y-5 sm:space-y-6">
-      <div class="inline-flex items-center gap-2 border-2 border-ink bg-amber-light px-3 sm:px-4 py-1 sm:py-1.5 text-2xs sm:text-xs font-bold uppercase tracking-wider">
-        <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-amber rotate-45" />
-        base de conocimiento personal
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] text-ink">
-        <span class="flicker">bienvenido a</span>
-        <span class="glitch block mt-1 text-amber" data-text="mydocs">mydocs</span>
-      </h1>
-      <p class="text-xs sm:text-sm font-bold text-ink-muted uppercase tracking-[0.2em] border-l-2 border-ink pl-2 sm:pl-3">
-        by MR CARRANZA
-      </p>
-
-      <p class="text-sm sm:text-base md:text-lg text-ink-light max-w-xl leading-relaxed border-l-4 border-amber pl-3 sm:pl-4">
-        Una colección personal de notas, patrones y referencias de programación
-        — documentadas y organizadas a mi manera.
-      </p>
-
-      <div class="flex flex-wrap gap-2 sm:gap-3">
-        {sidebarData.map((mod) => (
-          <a
-            href={`${baseUrl}/docs/${mod.slug}`}
-            class="inline-flex items-center gap-1.5 sm:gap-2 border-2 border-ink bg-surface-card px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold
-                   text-ink hover:bg-amber hover:text-white hover:shadow-brutal-hover
-                   hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
-          >
-            {mod.title}
-            <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        ))}
+    <section class="py-6 sm:py-10">
+      <div class="space-y-6 max-w-3xl">
+        <div class="inline-flex items-center gap-2 text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full">
+          <span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
+          mydocs
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-medium text-gray-900 leading-[1.1]">
+          No necesitas un aula para aprender a programar.
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-500 max-w-2xl leading-relaxed">
+          Necesitas internet, determinación y los recursos correctos. Esto es uno de ellos.
+        </p>
       </div>
     </section>
 
-    <!-- Explore -->
-    {sidebarData.length > 0 && (
-      <section class="space-y-4">
-        <h2 class="text-2xs sm:text-xs font-bold text-ink tracking-widest uppercase border-b-2 border-ink pb-2">
-          explorar
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          {sidebarData.map((mod) => (
-            <a
-              href={`${baseUrl}/docs/${mod.slug}`}
-              class="brutal-card p-4 sm:p-5 block hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5
-                     transition-all duration-150"
-            >
-              <h3 class="font-bold text-base sm:text-lg text-ink mb-1">{mod.title}</h3>
-              {mod.description && <p class="text-xs sm:text-sm text-ink-light mb-2 sm:mb-3">{mod.description}</p>}
-              {(() => { const subs = getAllSubmodules(mod); return subs.length > 0 && (
-                <ul class="space-y-1">
-                  {subs.slice(0, 4).map((sub) => (
-                    <li class="flex items-center gap-2 text-xs sm:text-sm text-ink-light">
-                      <span class="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-amber rotate-45 shrink-0" />
-                      {sub.title}
-                    </li>
-                  ))}
-                  {subs.length > 4 && (
-                    <li class="text-xs sm:text-sm font-bold text-amber">
-                      +{subs.length - 4} más
-                    </li>
-                  )}
-                </ul>
-              )})()}
-            </a>
-          ))}
+    <!-- La historia -->
+    <section class="space-y-8">
+      <div class="max-w-3xl space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">El contexto</h2>
+          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
+            Intenté estudiar dos carreras. En tres oportunidades, no funcionó.
+          </p>
         </div>
-      </section>
-    )}
+        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
+          <p>
+            Primero entré a una universidad privada. La calidad era pésima. Luego, a una pública que decían ser una de las mejores de la región. Resultó que la calidad no era buena y el sistema era aún más rígido. En cada intento tenía la esperanza de que esta vez sería diferente. No lo fue.
+          </p>
+          <p>
+            No es un problema de inteligencia. Es un problema de diseño. Un sistema educativo que asume que todos aprenden de la misma manera, al mismo ritmo, sobre los mismos temas, simplemente no funciona para todos. Si tu interés no encaja en el plan de estudios, estás fuera de lugar.
+          </p>
+          <p>
+            Un aula de 40 personas siguiendo un syllabus fijo no puede adaptarse a 40 formas distintas de aprender. Y cuando el sistema no se adapta a ti, tienes dos opciones: adaptarte tú o buscar otro camino.
+          </p>
+          <p class="text-gray-900 font-medium">
+            Elegí la segunda opción. Y fue la mejor decisión que tomé.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- El punto de inflexión -->
+    <section class="space-y-8">
+      <div class="max-w-3xl space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">El punto de inflexión</h2>
+          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
+            El día que dejé de buscar permiso para aprender.
+          </p>
+        </div>
+        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
+          <p>
+            Lo que descubrí fuera del aula fue lo obvio: todo lo que la universidad intenta enseñar está disponible en internet. Documentaciones, cursos, tutoriales, proyectos open source, comunidades de desarrollo. La información no es el problema. Nunca lo fue.
+          </p>
+          <p>
+            El problema real es que nadie te dice que puedes aprender por tu cuenta. El sistema educativo tiene un incentivo perverso: necesita que creas que sin un título, no sabes nada. Pero programar no es como medicina o derecho. No hay una barra de entrada regulada. Tu código compila o no compila. Funciona o no funciona. No hay espacio para opiniones.
+          </p>
+          <p class="text-gray-900 font-medium">
+            Aprendí más en meses de práctica autodidacta que en todos los años que pasé en aulas. No porque la universidad fuera mala en su contenido, sino porque por primera vez, estaba aprendiendo lo que realmente me importaba, a mi ritmo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- La filosofía -->
+    <section class="space-y-8">
+      <div class="max-w-3xl space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">La filosofía</h2>
+          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
+            La programación se aprende programando. No en un aula.
+          </p>
+        </div>
+        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
+          <p>
+            No existe un camino único para aprender a programar. Hay quienes prefieren libros, otros videos, otros la documentación oficial. Algunos aprenden construyendo proyectos reales desde el día uno. Otros necesitan entender la teoría antes de escribir una línea de código.
+          </p>
+          <p>
+            Todos tienen razón. Porque no hay una forma correcta de aprender. Hay formas que funcionan para ti y formas que no. La clave es experimentar hasta encontrar tu método, y luego ser consistente.
+          </p>
+          <p>
+            Esta web es solo un recipiente de información. Como esta, hay miles: MDN, freeCodeCamp, The Odin Project, documentaciones oficiales de cada lenguaje, cursos en YouTube, libros gratuitos. La cantidad de recursos de alta calidad disponibles hoy es absurda. La barrera de entrada para aprender a programar nunca ha sido tan baja.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cifras -->
+    <section class="space-y-8">
+      <div class="max-w-3xl space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Los números</h2>
+          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
+            La evidencia respalda la educación autodidacta.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="google-card p-6">
+          <div class="text-3xl font-display font-medium text-gray-900">73%</div>
+          <p class="text-sm text-gray-500 mt-2">de los desarrolladores profesionales son al menos parcialmente autodidactas (<a href="https://survey.stackoverflow.co/2023/" target="_blank" rel="noopener" class="text-gblue hover:underline">Stack Overflow, 2023</a>).</p>
+        </div>
+        <div class="google-card p-6">
+          <div class="text-3xl font-display font-medium text-gray-900">3 de 10</div>
+          <p class="text-sm text-gray-500 mt-2">desarrolladores activos no tienen título universitario en ciencias de la computación o un campo relacionado.</p>
+        </div>
+        <div class="google-card p-6">
+          <div class="text-3xl font-display font-medium text-gray-900">$0</div>
+          <p class="text-sm text-gray-500 mt-2">es el costo mínimo para empezar a aprender a programar. Solo necesitas un navegador y conexión a internet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- El recursso -->
+    <section class="space-y-8">
+      <div class="max-w-3xl space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Sobre esta web</h2>
+          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
+            No es la única. Ni la mejor. Pero es mía.
+          </p>
+        </div>
+        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
+          <p>
+            Creé esta documentación como un repositorio personal de lo que he aprendido. No es un curso. No reemplaza la documentación oficial. Es una referencia organizada a mi manera — con los ejemplos que me ayudaron a entender, las explicaciones que me hubiera gustado encontrar, y los patrones que uso en proyectos reales.
+          </p>
+          <p>
+            Si te sirve, genial. Si no, hay decenas de alternativas igual de válidas. Lo importante no es qué recurso eliges. Lo importante es que empieces.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acceso a documentación -->
+    <section class="space-y-6">
+      <div class="google-card p-8 sm:p-10">
+        <div class="space-y-4">
+          <h2 class="text-xl sm:text-2xl font-display font-medium text-gray-900">Documentación disponible</h2>
+          <p class="text-gray-500">
+            Notas sobre lenguajes de programación, conceptos y patrones que he encontrado útiles.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            {sidebarData.map((mod) => {
+              const subs = getAllSubmodules(mod);
+              return (
+                <a href={`${baseUrl}/docs/${mod.slug}`} class="flex items-center gap-3 p-3 rounded-google hover:bg-gray-50 transition-colors group">
+                  <div class="w-8 h-8 bg-gblue-50 rounded-google flex items-center justify-center shrink-0 group-hover:bg-gblue-100 transition-colors">
+                    <svg class="w-4 h-4 text-gblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-900 group-hover:text-gblue transition-colors text-sm">{mod.title}</div>
+                    <div class="text-xs text-gray-400">{subs.length} tema{subs.length !== 1 ? 's' : ''}</div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <section class="border-t-2 border-ink pt-5 sm:pt-6">
-      <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-2xs sm:text-xs font-semibold text-ink-muted uppercase tracking-wider">
-        <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-amber rotate-45 shrink-0" />
-        built with Astro
-        <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-amber rotate-45 shrink-0" />
-        {sidebarData.length} seccion{sidebarData.length !== 1 ? 'es' : ''}
-        <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-amber rotate-45 shrink-0" />
-        {sidebarData.reduce((acc, m) => acc + getAllSubmodules(m).length, 0)} articulo{sidebarData.reduce((acc, m) => acc + getAllSubmodules(m).length, 0) !== 1 ? 's' : ''}
+    <section class="border-t border-gray-200 pt-8 pb-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-gray-400">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+          Construido con Astro
+        </div>
+        <div>
+          © 2025 mydocs — Referencia personal de programación
+        </div>
       </div>
     </section>
+
   </div>
 </BaseLayout>
