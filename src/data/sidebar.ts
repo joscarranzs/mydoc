@@ -176,4 +176,28 @@ export const sidebarData: Module[] = [
     description: 'Pequeño, rápido y embebible.',
     submodules: [],
   },
+  {
+    title: 'VIM',
+    slug: 'herramientas/vim',
+    description: 'Editor de texto basado en terminal.',
+    submodules: [
+      { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es VIM y por qué usarlo.' },
+    ],
+  },
+  {
+    title: 'Git',
+    slug: 'herramientas/git',
+    description: 'Sistema de control de versiones distribuido.',
+    submodules: [
+      { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es Git y por qué usarlo.' },
+    ],
+  },
+  {
+    title: 'Linux',
+    slug: 'sistemas/linux',
+    description: 'Sistema operativo de código abierto.',
+    submodules: [
+      { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es Linux y sus componentes.' },
+    ],
+  },
 ];

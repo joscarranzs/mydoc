@@ -17,22 +17,20 @@
 }
 
 /* ─── Code blocks ─── */
-pre.astro-code {
+pre {
   background-color: #F8F9FA !important;
   border: 1px solid #DADCE0 !important;
   border-radius: 8px !important;
   color: #3C4043 !important;
+  padding: 1rem !important;
+  overflow-x: auto !important;
 }
 
-pre.astro-code code {
+pre code {
   background-color: transparent !important;
   padding: 0 !important;
   color: inherit !important;
   font-size: inherit !important;
-}
-
-pre.astro-code span {
-  color: inherit !important;
 }
 
 code {
@@ -87,6 +85,11 @@ html {
   .google-card {
     @apply bg-surface rounded-google border border-gray-200 shadow-google-sm
            hover:shadow-google transition-shadow duration-200;
+  }
+
+  .sidebar-category {
+    @apply px-6 py-2 text-sm font-bold uppercase tracking-wider text-blue-400
+           transition-colors duration-150;
   }
 
   .sidebar-toggle-btn {

@@ -22,6 +22,7 @@ export default {
           800: '#185ABC',
           900: '#174EA6',
         },
+        catblue: 'rgb(141 192 255)',
         gray: {
           50: '#F8F9FA',
           100: '#F1F3F4',

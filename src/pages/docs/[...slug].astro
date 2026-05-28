@@ -154,7 +154,7 @@ function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string 
                       prose-a:text-gblue prose-a:font-medium prose-a:no-underline hover:prose-a:underline
                       prose-code:font-mono prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:sm:text-sm prose-code:font-normal
                       prose-pre:border prose-pre:border-gray-200 prose-pre:rounded-google prose-pre:bg-gray-50
-                      prose-pre:text-xs prose-pre:sm:text-sm prose-pre:overflow-x-auto
+                      prose-pre:text-xs prose-pre:sm:text-sm prose-pre:overflow-x-auto prose-pre:p-4
                       prose-blockquote:border-l-2 prose-blockquote:border-gblue
                       prose-blockquote:text-gray-600 prose-blockquote:not-italic prose-blockquote:pl-3 prose-blockquote:sm:pl-4
                       prose-blockquote:text-sm prose-blockquote:sm:text-base prose-blockquote:lg:text-lg
@@ -169,27 +169,29 @@ function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string 
 
         {/* Prev / Next navigation */}
         {(prevTopic || nextTopic) && (
-          <nav class="border-t border-gray-200 pt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <nav class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-2">
             {prevTopic ? (
               <a
                 href={`${baseUrl}/docs/${prevTopic.slug}`}
-                class="google-card p-4 flex-1 group hover:shadow-google transition-shadow"
+                class="flex items-center gap-2 px-3 py-2 rounded-google hover:bg-gray-50 transition-colors group flex-1"
               >
-                <span class="text-xs text-gray-400 uppercase tracking-wider">Anterior</span>
-                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
-                  ← {prevTopic.title}
-                </p>
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-gblue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                <div class="min-w-0">
+                  <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Anterior</span>
+                  <span class="text-sm font-medium text-gray-700 group-hover:text-gblue truncate block">{prevTopic.title}</span>
+                </div>
               </a>
             ) : <div class="flex-1" />}
             {nextTopic ? (
               <a
                 href={`${baseUrl}/docs/${nextTopic.slug}`}
-                class="google-card p-4 flex-1 text-right group hover:shadow-google transition-shadow"
+                class="flex items-center gap-2 px-3 py-2 rounded-google hover:bg-gray-50 transition-colors group flex-1 justify-end text-right"
               >
-                <span class="text-xs text-gray-400 uppercase tracking-wider">Siguiente</span>
-                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
-                  {nextTopic.title} →
-                </p>
+                <div class="min-w-0">
+                  <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Siguiente</span>
+                  <span class="text-sm font-medium text-gray-700 group-hover:text-gblue truncate block">{nextTopic.title}</span>
+                </div>
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-gblue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
               </a>
             ) : <div class="flex-1" />}
           </nav>
@@ -215,27 +217,29 @@ function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string 
 
         {/* Prev / Next navigation for empty pages too */}
         {(prevTopic || nextTopic) && (
-          <nav class="border-t border-gray-200 pt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <nav class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-2">
             {prevTopic ? (
               <a
                 href={`${baseUrl}/docs/${prevTopic.slug}`}
-                class="google-card p-4 flex-1 group hover:shadow-google transition-shadow"
+                class="flex items-center gap-2 px-3 py-2 rounded-google hover:bg-gray-50 transition-colors group flex-1"
               >
-                <span class="text-xs text-gray-400 uppercase tracking-wider">Anterior</span>
-                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
-                  ← {prevTopic.title}
-                </p>
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-gblue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                <div class="min-w-0">
+                  <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Anterior</span>
+                  <span class="text-sm font-medium text-gray-700 group-hover:text-gblue truncate block">{prevTopic.title}</span>
+                </div>
               </a>
             ) : <div class="flex-1" />}
             {nextTopic ? (
               <a
                 href={`${baseUrl}/docs/${nextTopic.slug}`}
-                class="google-card p-4 flex-1 text-right group hover:shadow-google transition-shadow"
+                class="flex items-center gap-2 px-3 py-2 rounded-google hover:bg-gray-50 transition-colors group flex-1 justify-end text-right"
               >
-                <span class="text-xs text-gray-400 uppercase tracking-wider">Siguiente</span>
-                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
-                  {nextTopic.title} →
-                </p>
+                <div class="min-w-0">
+                  <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Siguiente</span>
+                  <span class="text-sm font-medium text-gray-700 group-hover:text-gblue truncate block">{nextTopic.title}</span>
+                </div>
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-gblue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
               </a>
             ) : <div class="flex-1" />}
           </nav>

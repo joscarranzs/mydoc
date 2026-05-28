@@ -4,44 +4,58 @@ import { sidebarData } from '../data/sidebar';
 const baseUrl = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname.replace(/\/+$/, '');
 
-const langColors: Record<string, { bg: string; text: string; label: string }> = {
-  'javascript': { bg: 'bg-yellow-100', text: 'text-yellow-700', label: 'JS' },
-  'typescript': { bg: 'bg-blue-100', text: 'text-blue-700', label: 'TS' },
-  'html':       { bg: 'bg-orange-100', text: 'text-orange-700', label: 'H5' },
-  'css':        { bg: 'bg-sky-100', text: 'text-sky-700', label: 'CS' },
-  'java':       { bg: 'bg-red-100', text: 'text-red-700', label: 'Jv' },
-  'c':          { bg: 'bg-gray-200', text: 'text-gray-700', label: 'C' },
-  'python':     { bg: 'bg-green-100', text: 'text-green-700', label: 'Py' },
-  'rust':       { bg: 'bg-orange-100', text: 'text-orange-700', label: 'Rs' },
-  'lua':        { bg: 'bg-indigo-100', text: 'text-indigo-700', label: 'Lu' },
-};
+// Group modules by category
+const categories = [
+  {
+    title: 'Lenguajes',
+    prefix: 'lenguajes',
+    modules: sidebarData.filter(m => m.slug.startsWith('lenguajes/')),
+  },
+  {
+    title: 'Herramientas',
+    prefix: 'herramientas',
+    modules: sidebarData.filter(m => m.slug.startsWith('herramientas/')),
+  },
+  {
+    title: 'Sistemas',
+    prefix: 'sistemas',
+    modules: sidebarData.filter(m => m.slug.startsWith('sistemas/')),
+  },
+];
 ---
 
 <nav class="flex flex-col h-full">
   <div class="flex-1 overflow-y-auto" data-sidebar-scroll>
-    <div class="py-4 space-y-0.5">
-      {sidebarData.map((mod) => {
-        const href = `${baseUrl}/docs/${mod.slug}`;
-        const isActive = currentPath === href || currentPath.startsWith(href + '/');
-        const slug = mod.slug.split('/').pop() || '';
-        const colors = langColors[slug] || { bg: 'bg-gray-100', text: 'text-gray-600', label: '??' };
-
+    <div class="py-4 space-y-2">
+      {categories.map((cat) => {
         return (
-          <a
-            href={href}
-            data-sidebar-module
-            class:list={[
-              'flex items-center gap-3 px-6 py-2.5 text-sm font-medium transition-colors duration-150 border-l-2',
-              isActive
-                ? 'border-gblue bg-gblue-50 text-gblue-700'
-                : 'border-transparent text-gray-700 hover:bg-gray-100 hover:text-gray-900',
-            ]}
-          >
-            <span class:list={['w-7 h-7 rounded flex items-center justify-center text-xs font-bold shrink-0', colors.bg, colors.text]}>
-              {colors.label}
-            </span>
-            {mod.title}
-          </a>
+          <div>
+            <div class="px-6 py-2 text-sm font-bold uppercase tracking-wider text-catblue">
+              {cat.title}
+            </div>
+
+            <div class="ml-2">
+              {cat.modules.map((mod) => {
+                const href = `${baseUrl}/docs/${mod.slug}`;
+                const isActive = currentPath === href || currentPath.startsWith(href + '/');
+
+                return (
+                  <a
+                    href={href}
+                    data-sidebar-module
+                    class:list={[
+                      'flex items-center px-6 py-2 text-sm transition-colors duration-150 border-l-2',
+                      isActive
+                        ? 'border-gblue bg-gblue-50 text-gblue-700 font-medium'
+                        : 'border-transparent text-gray-700 hover:bg-gray-100 hover:text-gray-900',
+                    ]}
+                  >
+                    {mod.title}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         );
       })}
     </div>
