@@ -5,7 +5,7 @@ import { sidebarData, getAllSubmodules } from '../data/sidebar';
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Inicio" description="Aprender a programar no requiere un aula. Requiere curiosidad.">
+<BaseLayout title="Inicio" description="Documentación personal de programación. Referencias, guías y ejemplos sobre lenguajes, herramientas y sistemas.">
   <div class="space-y-16 sm:space-y-20">
 
     <!-- Hero -->
@@ -16,127 +16,66 @@ const baseUrl = import.meta.env.BASE_URL;
           mydocs
         </div>
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-medium text-gray-900 leading-[1.1]">
-          No necesitas un aula para aprender a programar.
+          Documentación personal de programación.
         </h1>
         <p class="text-lg sm:text-xl text-gray-500 max-w-2xl leading-relaxed">
-          Necesitas internet, determinación y los recursos correctos. Esto es uno de ellos.
+          Referencias, guías y ejemplos sobre lenguajes de programación, herramientas de desarrollo y sistemas operativos.
         </p>
       </div>
     </section>
 
-    <!-- La historia -->
+    <!-- Qué es -->
     <section class="space-y-8">
       <div class="max-w-3xl space-y-6">
         <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">El contexto</h2>
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Qué es</h2>
           <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            Intenté estudiar dos carreras. En tres oportunidades, no funcionó.
+            Una página personal donde estructuro el contenido que necesito tener a mano.
           </p>
         </div>
         <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
           <p>
-            Primero entré a una universidad privada. La calidad era pésima. Luego, a una pública que decían ser una de las mejores de la región. Resultó que la calidad no era buena y el sistema era aún más rígido. En cada intento tenía la esperanza de que esta vez sería diferente. No lo fue.
-          </p>
-          <p>
-            No es un problema de inteligencia. Es un problema de diseño. Un sistema educativo que asume que todos aprenden de la misma manera, al mismo ritmo, sobre los mismos temas, simplemente no funciona para todos. Si tu interés no encaja en el plan de estudios, estás fuera de lugar.
-          </p>
-          <p>
-            Un aula de 40 personas siguiendo un syllabus fijo no puede adaptarse a 40 formas distintas de aprender. Y cuando el sistema no se adapta a ti, tienes dos opciones: adaptarte tú o buscar otro camino.
-          </p>
-          <p class="text-gray-900 font-medium">
-            Elegí la segunda opción. Y fue la mejor decisión que tomé.
+            Esto es un repositorio personal de documentación. Aquí organizo los temas que estudio, las guías que consulto con frecuencia y los ejemplos que me sirven como referencia rápida cuando estoy trabajando. No hay un plan de estudios detrás ni una secuencia obligatoria. Cada tema está aquí porque me interesa y lo ordené como mejor me funciona.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- El punto de inflexión -->
+    <!-- Qué no es -->
     <section class="space-y-8">
       <div class="max-w-3xl space-y-6">
         <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">El punto de inflexión</h2>
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Qué no es</h2>
           <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            El día que dejé de buscar permiso para aprender.
+            No busca reemplazar nada ni innovar en nada.
           </p>
         </div>
         <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
           <p>
-            Lo que descubrí fuera del aula fue lo obvio: todo lo que la universidad intenta enseñar está disponible en internet. Documentaciones, cursos, tutoriales, proyectos open source, comunidades de desarrollo. La información no es el problema. Nunca lo fue.
-          </p>
-          <p>
-            El problema real es que nadie te dice que puedes aprender por tu cuenta. El sistema educativo tiene un incentivo perverso: necesita que creas que sin un título, no sabes nada. Pero programar no es como medicina o derecho. No hay una barra de entrada regulada. Tu código compila o no compila. Funciona o no funciona. No hay espacio para opiniones.
-          </p>
-          <p class="text-gray-900 font-medium">
-            Aprendí más en meses de práctica autodidacta que en todos los años que pasé en aulas. No porque la universidad fuera mala en su contenido, sino porque por primera vez, estaba aprendiendo lo que realmente me importaba, a mi ritmo.
+            Esta web no pretende ser mejor que la documentación oficial de cada lenguaje, ni reemplazar recursos como MDN, freeCodeCamp o la documentación de Mozilla. Tampoco busca innovar en la forma de enseñar o ser un curso estructurado. Es solo mi propia estructura: los temas ordenados a mi manera, con mis ejemplos, mis explicaciones y mi enfoque.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- La filosofía -->
+    <!-- Por qué organizar tu propia información -->
     <section class="space-y-8">
       <div class="max-w-3xl space-y-6">
         <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">La filosofía</h2>
+          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Por qué hacerlo</h2>
           <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            La programación se aprende programando. No en un aula.
+            Organizar tu propia información es mejor que depender solo de fuentes externas.
           </p>
         </div>
         <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
           <p>
-            No existe un camino único para aprender a programar. Hay quienes prefieren libros, otros videos, otros la documentación oficial. Algunos aprenden construyendo proyectos reales desde el día uno. Otros necesitan entender la teoría antes de escribir una línea de código.
+            La documentación oficial es completa, pero no está hecha para ti. Está hecha para ser exhaustiva. Cuando buscas algo en MDN o en la documentación de un lenguaje, encuentras la especificación completa, con todos los casos borde, todas las variantes, todas las advertencias. Eso es útil, pero no es eficiente cuando lo que necesitas es recordar cómo se hace algo concreto que ya sabes pero no recuerdas la sintaxis exacta.
           </p>
           <p>
-            Todos tienen razón. Porque no hay una forma correcta de aprender. Hay formas que funcionan para ti y formas que no. La clave es experimentar hasta encontrar tu método, y luego ser consistente.
+            Al organizar tu propia documentación, filtras el contenido por lo que realmente necesitas. Puedes incluir solo los fragmentos que usas, escribir ejemplos con tus casos de uso reales, y estructurar la información en el orden que tiene sentido para ti. El resultado es una referencia mucho más rápida de consultar porque tú mismo la diseñaste.
           </p>
           <p>
-            Esta web es solo un recipiente de información. Como esta, hay miles: MDN, freeCodeCamp, The Odin Project, documentaciones oficiales de cada lenguaje, cursos en YouTube, libros gratuitos. La cantidad de recursos de alta calidad disponibles hoy es absurda. La barrera de entrada para aprender a programar nunca ha sido tan baja.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cifras -->
-    <section class="space-y-8">
-      <div class="max-w-3xl space-y-6">
-        <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Los números</h2>
-          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            La evidencia respalda la educación autodidacta.
-          </p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="google-card p-6">
-          <div class="text-3xl font-display font-medium text-gray-900">73%</div>
-          <p class="text-sm text-gray-500 mt-2">de los desarrolladores profesionales son al menos parcialmente autodidactas (<a href="https://survey.stackoverflow.co/2023/" target="_blank" rel="noopener" class="text-gblue hover:underline">Stack Overflow, 2023</a>).</p>
-        </div>
-        <div class="google-card p-6">
-          <div class="text-3xl font-display font-medium text-gray-900">3 de 10</div>
-          <p class="text-sm text-gray-500 mt-2">desarrolladores activos no tienen título universitario en ciencias de la computación o un campo relacionado.</p>
-        </div>
-        <div class="google-card p-6">
-          <div class="text-3xl font-display font-medium text-gray-900">$0</div>
-          <p class="text-sm text-gray-500 mt-2">es el costo mínimo para empezar a aprender a programar. Solo necesitas un navegador y conexión a internet.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- El recursso -->
-    <section class="space-y-8">
-      <div class="max-w-3xl space-y-6">
-        <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Sobre esta web</h2>
-          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            No es la única. Ni la mejor. Pero es mía.
-          </p>
-        </div>
-        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
-          <p>
-            Creé esta documentación como un repositorio personal de lo que he aprendido. No es un curso. No reemplaza la documentación oficial. Es una referencia organizada a mi manera — con los ejemplos que me ayudaron a entender, las explicaciones que me hubiera gustado encontrar, y los patrones que uso en proyectos reales.
-          </p>
-          <p>
-            Si te sirve, genial. Si no, hay decenas de alternativas igual de válidas. Lo importante no es qué recurso eliges. Lo importante es que empieces.
+            Además, el proceso de escribir tu propia documentación refuerza el aprendizaje. No es lo mismo leer un concepto que explicarlo con tus palabras y ejemplos. Al construir tu propia referencia, terminas entendiendo mejor los temas porque te obligaste a organizarlos y redactarlos.
           </p>
         </div>
       </div>
@@ -146,9 +85,9 @@ const baseUrl = import.meta.env.BASE_URL;
     <section class="space-y-6">
       <div class="google-card p-8 sm:p-10">
         <div class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-display font-medium text-gray-900">Documentación disponible</h2>
+          <h2 class="text-xl sm:text-2xl font-display font-medium text-gray-900">Explorar documentación</h2>
           <p class="text-gray-500">
-            Notas sobre lenguajes de programación, conceptos y patrones que he encontrado útiles.
+            Selecciona una categoría para acceder a los temas disponibles.
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
             {sidebarData.map((mod) => {
@@ -157,7 +96,7 @@ const baseUrl = import.meta.env.BASE_URL;
                 <a href={`${baseUrl}/docs/${mod.slug}`} class="flex items-center gap-3 p-3 rounded-google hover:bg-gray-50 transition-colors group">
                   <div class="w-8 h-8 bg-gblue-50 rounded-google flex items-center justify-center shrink-0 group-hover:bg-gblue-100 transition-colors">
                     <svg class="w-4 h-4 text-gblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
                   </div>
                   <div>
@@ -180,7 +119,7 @@ const baseUrl = import.meta.env.BASE_URL;
           Construido con Astro
         </div>
         <div>
-          © 2025 mydocs — Referencia personal de programación
+          &copy; 2025 mydocs — Documentación personal de programación
         </div>
       </div>
     </section>
