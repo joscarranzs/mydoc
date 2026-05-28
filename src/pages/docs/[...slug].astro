@@ -51,6 +51,30 @@ if (!isModuleIndex && entryId) {
   }
 }
 
+// Build flat list of all topics for prev/next navigation
+interface TopicItem {
+  title: string;
+  slug: string;
+  moduleSlug: string;
+}
+
+const allTopics: TopicItem[] = [];
+for (const mod of sidebarData) {
+  for (const sub of getAllSubmodules(mod)) {
+    allTopics.push({
+      title: sub.title,
+      slug: `${mod.slug}/${sub.slug}`,
+      moduleSlug: mod.slug,
+    });
+  }
+}
+
+// Find current index
+const currentSlug = isModuleIndex ? null : entryId;
+const currentIndex = currentSlug ? allTopics.findIndex((t) => t.slug === currentSlug) : -1;
+const prevTopic = currentIndex > 0 ? allTopics[currentIndex - 1] : null;
+const nextTopic = currentIndex < allTopics.length - 1 ? allTopics[currentIndex + 1] : null;
+
 function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string {
   return `${baseUrl}/docs/${mod.slug}/${sub.slug}`;
 }
@@ -119,27 +143,57 @@ function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string 
         </div>
       </div>
     ) : Content ? (
-      <div class="prose prose-gray max-w-none
-                    prose-headings:font-display prose-headings:font-medium prose-headings:text-gray-900
-                    prose-h1:text-2xl prose-h1:sm:text-3xl prose-h1:lg:text-4xl
-                    prose-h2:text-lg prose-h2:sm:text-xl prose-h2:lg:text-2xl
-                    prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2 prose-h2:mt-8 prose-h2:sm:mt-10
-                    prose-h3:text-base prose-h3:sm:text-lg prose-h3:lg:text-xl prose-h3:font-medium
-                    prose-p:text-sm prose-p:sm:text-base prose-p:lg:text-lg prose-p:text-gray-700
-                    prose-a:text-gblue prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-                    prose-code:font-mono prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:sm:text-sm prose-code:font-normal
-                    prose-pre:border prose-pre:border-gray-200 prose-pre:rounded-google prose-pre:bg-gray-50
-                    prose-pre:text-xs prose-pre:sm:text-sm prose-pre:overflow-x-auto
-                    prose-blockquote:border-l-2 prose-blockquote:border-gblue
-                    prose-blockquote:text-gray-600 prose-blockquote:not-italic prose-blockquote:pl-3 prose-blockquote:sm:pl-4
-                    prose-blockquote:text-sm prose-blockquote:sm:text-base prose-blockquote:lg:text-lg
-                    prose-img:border prose-img:border-gray-200 prose-img:rounded-google prose-img:max-w-full
-                    prose-hr:border-gray-200 prose-hr:border-t
-                    prose-strong:text-gray-900
-                    prose-th:border prose-th:border-gray-200 prose-th:bg-gray-50 prose-th:text-gray-700 prose-th:px-3 prose-th:py-2 prose-th:text-xs prose-th:sm:text-sm
-                    prose-td:border prose-td:border-gray-200 prose-td:px-3 prose-td:py-2 prose-td:text-xs prose-td:sm:text-sm
-                    prose-table:border prose-table:border-gray-200 prose-table:rounded-google prose-table:w-full prose-table:overflow-x-auto prose-table:block prose-table:sm:table">
-        <Content />
+      <div class="space-y-8">
+        <div class="prose prose-gray max-w-none
+                      prose-headings:font-display prose-headings:font-medium prose-headings:text-gray-900
+                      prose-h1:text-2xl prose-h1:sm:text-3xl prose-h1:lg:text-4xl
+                      prose-h2:text-lg prose-h2:sm:text-xl prose-h2:lg:text-2xl
+                      prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2 prose-h2:mt-8 prose-h2:sm:mt-10
+                      prose-h3:text-base prose-h3:sm:text-lg prose-h3:lg:text-xl prose-h3:font-medium
+                      prose-p:text-sm prose-p:sm:text-base prose-p:lg:text-lg prose-p:text-gray-700
+                      prose-a:text-gblue prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+                      prose-code:font-mono prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:sm:text-sm prose-code:font-normal
+                      prose-pre:border prose-pre:border-gray-200 prose-pre:rounded-google prose-pre:bg-gray-50
+                      prose-pre:text-xs prose-pre:sm:text-sm prose-pre:overflow-x-auto
+                      prose-blockquote:border-l-2 prose-blockquote:border-gblue
+                      prose-blockquote:text-gray-600 prose-blockquote:not-italic prose-blockquote:pl-3 prose-blockquote:sm:pl-4
+                      prose-blockquote:text-sm prose-blockquote:sm:text-base prose-blockquote:lg:text-lg
+                      prose-img:border prose-img:border-gray-200 prose-img:rounded-google prose-img:max-w-full
+                      prose-hr:border-gray-200 prose-hr:border-t
+                      prose-strong:text-gray-900
+                      prose-th:border prose-th:border-gray-200 prose-th:bg-gray-50 prose-th:text-gray-700 prose-th:px-3 prose-th:py-2 prose-th:text-xs prose-th:sm:text-sm
+                      prose-td:border prose-td:border-gray-200 prose-td:px-3 prose-td:py-2 prose-td:text-xs prose-td:sm:text-sm
+                      prose-table:border prose-table:border-gray-200 prose-table:rounded-google prose-table:w-full prose-table:overflow-x-auto prose-table:block prose-table:sm:table">
+          <Content />
+        </div>
+
+        {/* Prev / Next navigation */}
+        {(prevTopic || nextTopic) && (
+          <nav class="border-t border-gray-200 pt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            {prevTopic ? (
+              <a
+                href={`${baseUrl}/docs/${prevTopic.slug}`}
+                class="google-card p-4 flex-1 group hover:shadow-google transition-shadow"
+              >
+                <span class="text-xs text-gray-400 uppercase tracking-wider">Anterior</span>
+                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
+                  ← {prevTopic.title}
+                </p>
+              </a>
+            ) : <div class="flex-1" />}
+            {nextTopic ? (
+              <a
+                href={`${baseUrl}/docs/${nextTopic.slug}`}
+                class="google-card p-4 flex-1 text-right group hover:shadow-google transition-shadow"
+              >
+                <span class="text-xs text-gray-400 uppercase tracking-wider">Siguiente</span>
+                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
+                  {nextTopic.title} →
+                </p>
+              </a>
+            ) : <div class="flex-1" />}
+          </nav>
+        )}
       </div>
     ) : (
       <div class="space-y-5 sm:space-y-6">
@@ -158,6 +212,34 @@ function getSubmoduleLink(mod: { slug: string }, sub: { slug: string }): string 
             </code>
           </p>
         </div>
+
+        {/* Prev / Next navigation for empty pages too */}
+        {(prevTopic || nextTopic) && (
+          <nav class="border-t border-gray-200 pt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            {prevTopic ? (
+              <a
+                href={`${baseUrl}/docs/${prevTopic.slug}`}
+                class="google-card p-4 flex-1 group hover:shadow-google transition-shadow"
+              >
+                <span class="text-xs text-gray-400 uppercase tracking-wider">Anterior</span>
+                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
+                  ← {prevTopic.title}
+                </p>
+              </a>
+            ) : <div class="flex-1" />}
+            {nextTopic ? (
+              <a
+                href={`${baseUrl}/docs/${nextTopic.slug}`}
+                class="google-card p-4 flex-1 text-right group hover:shadow-google transition-shadow"
+              >
+                <span class="text-xs text-gray-400 uppercase tracking-wider">Siguiente</span>
+                <p class="font-medium text-gray-900 group-hover:text-gblue transition-colors mt-1">
+                  {nextTopic.title} →
+                </p>
+              </a>
+            ) : <div class="flex-1" />}
+          </nav>
+        )}
       </div>
     )
   }

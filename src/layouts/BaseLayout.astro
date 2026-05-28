@@ -123,7 +123,8 @@ const { title, description } = Astro.props;
         const path = stripSlash(window.location.pathname);
 
         document.querySelectorAll('[data-sidebar-module]').forEach((a) => {
-          const active = path.startsWith(stripSlash(a.getAttribute('href')));
+          const href = stripSlash(a.getAttribute('href'));
+          const active = path === href || path.startsWith(href + '/');
           a.classList.toggle('border-l-2', active);
           a.classList.toggle('border-gblue', active);
           a.classList.toggle('bg-gblue-50', active);

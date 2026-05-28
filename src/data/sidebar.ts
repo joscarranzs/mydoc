@@ -128,4 +128,52 @@ export const sidebarData: Module[] = [
       },
     ],
   },
+  {
+    title: 'TypeScript',
+    slug: 'lenguajes/typescript',
+    description: 'JavaScript con tipos estáticos.',
+    submodules: [],
+  },
+  {
+    title: 'HTML',
+    slug: 'lenguajes/html',
+    description: 'Lenguaje de marcado para la web.',
+    submodules: [],
+  },
+  {
+    title: 'CSS',
+    slug: 'lenguajes/css',
+    description: 'Lenguaje de estilos para la web.',
+    submodules: [],
+  },
+  {
+    title: 'Java',
+    slug: 'lenguajes/java',
+    description: 'Lenguaje orientado a objetos, multiplataforma.',
+    submodules: [],
+  },
+  {
+    title: 'C',
+    slug: 'lenguajes/c',
+    description: 'Lenguaje de bajo nivel, base de muchos sistemas.',
+    submodules: [],
+  },
+  {
+    title: 'Python',
+    slug: 'lenguajes/python',
+    description: 'Versátil, simple y poderoso.',
+    submodules: [],
+  },
+  {
+    title: 'Rust',
+    slug: 'lenguajes/rust',
+    description: 'Seguridad y rendimiento sin basura.',
+    submodules: [],
+  },
+  {
+    title: 'Lua',
+    slug: 'lenguajes/lua',
+    description: 'Pequeño, rápido y embebible.',
+    submodules: [],
+  },
 ];

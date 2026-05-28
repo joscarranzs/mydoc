@@ -1,267 +1,49 @@
 ---
-import { getCollection } from 'astro:content';
-import { sidebarData, getAllSubmodules } from '../data/sidebar';
-import type { Module, Subcategory } from '../data/sidebar';
+import { sidebarData } from '../data/sidebar';
 
 const baseUrl = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname.replace(/\/+$/, '');
-const modules = sidebarData;
 
-const docsEntries = await getCollection('docs');
-const existingContent = new Set(docsEntries.map((e) => e.id));
-
-function hasContent(modSlug: string, subSlug: string): boolean {
-  return existingContent.has(`${modSlug}/${subSlug}`);
-}
-
-function categoryHasContent(modSlug: string, cat: Subcategory): boolean {
-  return cat.submodules.some((sub) => hasContent(modSlug, sub.slug));
-}
-
-function moduleHasContent(mod: Module): boolean {
-  return getAllSubmodules(mod).some((sub) => hasContent(mod.slug, sub.slug));
-}
+const langColors: Record<string, { bg: string; text: string; label: string }> = {
+  'javascript': { bg: 'bg-yellow-100', text: 'text-yellow-700', label: 'JS' },
+  'typescript': { bg: 'bg-blue-100', text: 'text-blue-700', label: 'TS' },
+  'html':       { bg: 'bg-orange-100', text: 'text-orange-700', label: 'H5' },
+  'css':        { bg: 'bg-sky-100', text: 'text-sky-700', label: 'CS' },
+  'java':       { bg: 'bg-red-100', text: 'text-red-700', label: 'Jv' },
+  'c':          { bg: 'bg-gray-200', text: 'text-gray-700', label: 'C' },
+  'python':     { bg: 'bg-green-100', text: 'text-green-700', label: 'Py' },
+  'rust':       { bg: 'bg-orange-100', text: 'text-orange-700', label: 'Rs' },
+  'lua':        { bg: 'bg-indigo-100', text: 'text-indigo-700', label: 'Lu' },
+};
 ---
 
 <nav class="flex flex-col h-full">
-  <!-- Navigation -->
   <div class="flex-1 overflow-y-auto" data-sidebar-scroll>
-    <div class="py-4 space-y-1">
-      {modules.map((module: Module) => {
-        const moduleHref = `${baseUrl}/docs/${module.slug}`;
-        const isActive = currentPath.startsWith(moduleHref);
-        const hasDirectSubmodules = !module.subcategories && getAllSubmodules(module).length > 0;
-        const canCollapseModule = hasDirectSubmodules && moduleHasContent(module);
+    <div class="py-4 space-y-0.5">
+      {sidebarData.map((mod) => {
+        const href = `${baseUrl}/docs/${mod.slug}`;
+        const isActive = currentPath === href || currentPath.startsWith(href + '/');
+        const slug = mod.slug.split('/').pop() || '';
+        const colors = langColors[slug] || { bg: 'bg-gray-100', text: 'text-gray-600', label: '??' };
 
         return (
-          <div>
-            <div class="flex items-center">
-              <a
-                href={moduleHref}
-                data-sidebar-module
-                class:list={[
-                  'block px-6 py-2.5 text-sm font-semibold transition-colors duration-150 flex-1 min-w-0',
-                  isActive
-                    ? 'border-l-2 border-gblue bg-gblue-50 text-gblue-700'
-                    : 'border-l-2 border-transparent text-gray-900 hover:bg-gray-100',
-                ]}
-              >
-                {module.title}
-              </a>
-              {
-                canCollapseModule && (
-                  <button
-                    data-toggle={module.slug}
-                    class="sidebar-toggle-btn shrink-0 mr-2"
-                    aria-label="Toggle submodules"
-                  >
-                    <svg class="w-4 h-4 sidebar-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                )
-              }
-            </div>
-
-            {module.subcategories && module.subcategories.length > 0 ? (
-              <ul class="space-y-0.5 mt-2">
-                {module.subcategories.map((cat) => {
-                  if (cat.submodules.length === 0) return null;
-
-                  const catCanCollapse = categoryHasContent(module.slug, cat);
-                  const catKey = `${module.slug}:${cat.title}`;
-
-                  return (
-                    <li>
-                      {
-                        catCanCollapse ? (
-                          <>
-                            <button
-                              data-toggle={catKey}
-                              class="sidebar-toggle-btn sidebar-toggle-btn--cat w-full"
-                              aria-expanded="false"
-                            >
-                              <svg class="w-3.5 h-3.5 sidebar-toggle-icon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                              </svg>
-                              {cat.title}
-                            </button>
-                            <ul class="space-y-0.5 sidebar-content" data-toggle-content={catKey} data-default-collapsed>
-                              {cat.submodules.map((sub) => {
-                                const href = `${baseUrl}/docs/${module.slug}/${sub.slug}`;
-                                const isSubActive = currentPath === href;
-
-                                return (
-                                  <li>
-                                    <a
-                                      href={href}
-                                      data-sidebar-sub
-                                      class:list={[
-                                        'block pl-10 pr-4 py-2 text-sm transition-colors duration-150',
-                                        isSubActive
-                                          ? 'text-gblue-700 font-medium bg-gblue-50'
-                                          : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
-                                      ]}
-                                    >
-                                      {sub.title}
-                                    </a>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </>
-                        ) : (
-                          <>
-                            <div class="px-6 py-2 text-xs font-medium uppercase tracking-wider text-gray-500">
-                              {cat.title}
-                            </div>
-                            <ul class="space-y-0.5">
-                              {cat.submodules.map((sub) => {
-                                const href = `${baseUrl}/docs/${module.slug}/${sub.slug}`;
-                                const isSubActive = currentPath === href;
-
-                                return (
-                                  <li>
-                                    <a
-                                      href={href}
-                                      data-sidebar-sub
-                                      class:list={[
-                                        'block pl-10 pr-4 py-2 text-sm transition-colors duration-150',
-                                        isSubActive
-                                          ? 'text-gblue-700 font-medium bg-gblue-50'
-                                          : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
-                                      ]}
-                                    >
-                                      {sub.title}
-                                    </a>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </>
-                        )
-                      }
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              hasDirectSubmodules && (
-                <ul class="space-y-0.5 mt-2" data-toggle-content={module.slug} data-default-collapsed={canCollapseModule || undefined}>
-                  {getAllSubmodules(module).map((sub) => {
-                    const href = `${baseUrl}/docs/${module.slug}/${sub.slug}`;
-                    const isSubActive = currentPath === href;
-
-                    return (
-                      <li>
-                        <a
-                          href={href}
-                          data-sidebar-sub
-                          class:list={[
-                            'block pl-8 pr-4 py-2 text-sm transition-colors duration-150',
-                            isSubActive
-                              ? 'text-gblue-700 font-medium bg-gblue-50'
-                              : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
-                          ]}
-                        >
-                          {sub.title}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )
-            )}
-          </div>
+          <a
+            href={href}
+            data-sidebar-module
+            class:list={[
+              'flex items-center gap-3 px-6 py-2.5 text-sm font-medium transition-colors duration-150 border-l-2',
+              isActive
+                ? 'border-gblue bg-gblue-50 text-gblue-700'
+                : 'border-transparent text-gray-700 hover:bg-gray-100 hover:text-gray-900',
+            ]}
+          >
+            <span class:list={['w-7 h-7 rounded flex items-center justify-center text-xs font-bold shrink-0', colors.bg, colors.text]}>
+              {colors.label}
+            </span>
+            {mod.title}
+          </a>
         );
       })}
     </div>
   </div>
 </nav>
-
-<script>
-  const TOGGLE_KEY = 'mydocs:sidebar-toggles';
-  const SCROLL_KEY = 'mydocs:sidebar-scroll';
-
-  function loadSavedState() {
-    try {
-      return JSON.parse(localStorage.getItem(TOGGLE_KEY) || '{}');
-    } catch {
-      return {};
-    }
-  }
-
-  function saveToggle(key, open) {
-    try {
-      const state = loadSavedState();
-      state[key] = open;
-      localStorage.setItem(TOGGLE_KEY, JSON.stringify(state));
-    } catch {}
-  }
-
-  function setupToggles() {
-    const saved = loadSavedState();
-
-    document.querySelectorAll('[data-toggle]').forEach((btn) => {
-      const key = btn.dataset.toggle;
-      const content = document.querySelector(`[data-toggle-content="${CSS.escape(key)}"]`);
-      if (!content) return;
-
-      const icon = btn.querySelector('.sidebar-toggle-icon');
-      const isInitialized = btn.dataset.toggleInit === 'true';
-
-      const setOpen = (open) => {
-        content.classList.toggle('sidebar-content--open', open);
-        btn.setAttribute('aria-expanded', String(open));
-        if (icon) {
-          icon.style.transform = open ? 'rotate(90deg)' : 'rotate(0deg)';
-        }
-        saveToggle(key, open);
-      };
-
-      if (!isInitialized) {
-        let isOpen;
-
-        if (key in saved) {
-          isOpen = saved[key];
-        } else {
-          const isDefaultCollapsed = content.dataset.defaultCollapsed !== undefined;
-          isOpen = !isDefaultCollapsed;
-        }
-
-        setOpen(isOpen);
-        btn.dataset.toggleInit = 'true';
-
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const isOpen = content.classList.contains('sidebar-content--open');
-          setOpen(!isOpen);
-        });
-      }
-    });
-  }
-
-  function saveScroll() {
-    const el = document.querySelector('[data-sidebar-scroll]');
-    if (el) {
-      localStorage.setItem(SCROLL_KEY, String(el.scrollTop));
-    }
-  }
-
-  function restoreScroll() {
-    const saved = localStorage.getItem(SCROLL_KEY);
-    if (!saved) return;
-    const el = document.querySelector('[data-sidebar-scroll]');
-    if (el) {
-      el.scrollTop = parseInt(saved, 10);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', setupToggles);
-  document.addEventListener('astro:before-swap', saveScroll);
-
-  document.addEventListener('astro:page-load', () => {
-    setupToggles();
-    restoreScroll();
-  });
-</script>
