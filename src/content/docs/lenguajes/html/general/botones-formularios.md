@@ -122,6 +122,28 @@ Sobrescribe el method del formulario:
 
 ---
 
+## formtarget
+
+Sobrescribe el target del formulario para un botón específico:
+
+```html
+<form action="/procesar" target="_self">
+  <input type="text" name="busqueda">
+
+  <!-- Misma pestaña (defecto) -->
+  <button type="submit">Buscar</button>
+
+  <!-- Nueva pestaña -->
+  <button type="submit" formtarget="_blank">Buscar en nueva pestaña</button>
+
+  <!-- iframe -->
+  <iframe name="resultado"></iframe>
+  <button type="submit" formtarget="resultado">Buscar en iframe</button>
+</form>
+```
+
+---
+
 ## formnovalidate
 
 Desactiva la validación al enviar:
@@ -171,6 +193,7 @@ Desactiva la validación al enviar:
 | `type="button"` | Botón genérico sin envío |
 | `formaction` | Sobrescribe action |
 | `formmethod` | Sobrescribe method |
+| `formtarget` | Sobrescribe target |
 | `formnovalidate` | Desactiva validación |
 
 ---
