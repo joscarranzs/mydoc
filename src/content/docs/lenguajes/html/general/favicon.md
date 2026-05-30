@@ -17,17 +17,19 @@ Al completar esta guía podrás:
 
 ## Favicon básico
 
-El favicon es el pequeño icono que aparece en la pestaña del navegador:
+El favicon es el pequeño icono que aparece en la pestaña del navegador. Ayuda a identificar visualmente tu sitio entre muchas pestañas abiertas:
 
 ```html
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 ```
 
-Se coloca dentro de `<head>`.
+Se coloca dentro de `<head>` porque es metadato del documento, no contenido visible.
 
 ---
 
 ## Formatos
+
+Puedes usar distintos formatos según compatibilidad y calidad:
 
 ```html
 <!-- ICO: formato clásico, compatible con todos los navegadores -->
@@ -44,6 +46,8 @@ Se coloca dentro de `<head>`.
 
 ## Múltiples tamaños
 
+Algunos dispositivos y contextos usan tamaños distintos. Incluir varios mejora la experiencia:
+
 ```html
 <!-- 16x16: estándar para pestañas -->
 <link rel="icon" sizes="16x16" href="favicon-16.png" type="image/png">
@@ -59,7 +63,7 @@ Se coloca dentro de `<head>`.
 
 ## Apple Touch Icon
 
-Para la pantalla de inicio en iOS:
+Para la pantalla de inicio en iOS, Apple usa un icono específico llamado `apple-touch-icon`:
 
 ```html
 <!-- iPhone: 180x180 -->
@@ -73,7 +77,7 @@ Para la pantalla de inicio en iOS:
 
 ## Emoji como favicon
 
-Truco usando SVG con emoji:
+Un truco práctico es usar SVG con emoji. Sirve para prototipos o proyectos pequeños sin crear archivos extra:
 
 ```html
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
@@ -94,6 +98,8 @@ Sin necesidad de archivos. Solo cambia el emoji.
 ---
 
 ## Estructura completa
+
+Si quieres cubrir navegador, iOS y web app, puedes incluir varios enlaces en el `head`:
 
 ```html
 <head>

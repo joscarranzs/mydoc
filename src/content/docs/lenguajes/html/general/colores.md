@@ -18,7 +18,7 @@ Al completar esta guía podrás:
 
 ## Nombres de color
 
-HTML reconoce 147 nombres de color estándar:
+HTML reconoce 147 nombres de color estándar. Son útiles para pruebas rápidas, aunque en proyectos reales conviene usar HEX, RGB o HSL para tener más control:
 
 ```html
 <p style="color: red;">red</p>
@@ -34,7 +34,7 @@ HTML reconoce 147 nombres de color estándar:
 
 ## Color hexadecimal (HEX)
 
-Formato: `#RRGGBB` (rojo, verde, azul de 00 a FF):
+Formato: `#RRGGBB` (rojo, verde, azul de 00 a FF). Es el formato más usado en diseño web porque es preciso y fácil de copiar entre herramientas:
 
 ```html
 <p style="color: #FF0000;">#FF0000 — Rojo puro</p>
@@ -46,7 +46,7 @@ Formato: `#RRGGBB` (rojo, verde, azul de 00 a FF):
 <p style="color: #333333;">#333333 — Gris oscuro</p>
 ```
 
-HEX abreviado (3 dígitos) cuando los pares son iguales:
+HEX abreviado (3 dígitos) solo cuando cada par de valores es igual. Reduce escritura sin cambiar el color:
 
 ```html
 <p style="color: #F00;">#F00 = #FF0000</p>
@@ -59,7 +59,7 @@ HEX abreviado (3 dígitos) cuando los pares son iguales:
 
 ## RGB
 
-Formato: `rgb(rojo, verde, azul)` con valores de 0 a 255:
+Formato: `rgb(rojo, verde, azul)` con valores de 0 a 255. Es útil cuando quieres pensar el color como mezcla directa de canales:
 
 ```html
 <p style="color: rgb(255, 0, 0);">rgb(255, 0, 0) — Rojo</p>
@@ -73,7 +73,7 @@ Formato: `rgb(rojo, verde, azul)` con valores de 0 a 255:
 
 ## RGBA — Transparencia
 
-Añade el canal alpha (0 = transparente, 1 = opaco):
+Añade el canal alpha (0 = transparente, 1 = opaco). Muy útil para capas, fondos suaves y estados visuales:
 
 ```html
 <p style="background: rgba(0, 0, 0, 0.1);">10% opaco</p>
@@ -83,7 +83,7 @@ Añade el canal alpha (0 = transparente, 1 = opaco):
 <p style="background: rgba(0, 0, 0, 1);">100% opaco</p>
 ```
 
-Útil para superposiciones y sombras:
+Útil para superposiciones, fondos suaves y sombras:
 
 ```html
 <div style="
@@ -100,7 +100,7 @@ Añade el canal alpha (0 = transparente, 1 = opaco):
 
 ## HSL
 
-Formato: `hsl(matiz, saturación%, luminosidad%)`:
+Formato: `hsl(matiz, saturación%, luminosidad%)`. Es más intuitivo cuando necesitas generar variaciones del mismo color:
 
 ```html
 <p style="color: hsl(0, 100%, 50%);">hsl(0, 100%, 50%) — Rojo</p>
@@ -114,11 +114,13 @@ Matiz: 0-360 grados en la rueda de color.
 Saturación: 0% (gris) a 100% (color puro).
 Luminosidad: 0% (negro) a 100% (blanco).
 
+Cuando necesitas aclarar u oscurecer un color de forma sistemática, HSL suele ser más cómodo que HEX.
+
 ---
 
 ## HSLA
 
-HSL con canal alpha:
+HSL con canal alpha. Combina la lógica de HSL con transparencia:
 
 ```html
 <p style="background: hsla(217, 80%, 50%, 0.2);">
@@ -130,7 +132,7 @@ HSL con canal alpha:
 
 ## Herramientas útiles
 
-Seleccionar colores con herramientas visuales:
+Seleccionar colores con herramientas visuales te ahorra tiempo y reduce errores al copiar valores:
 
 - **Colorzilla** (extensión de navegador)
 - **Google Color Picker** (búsqueda de Google)

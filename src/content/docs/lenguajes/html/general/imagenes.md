@@ -17,17 +17,19 @@ Al completar esta guía podrás:
 
 ## Sintaxis básica
 
-La etiqueta `<img>` inserta una imagen en la página:
+La etiqueta `<img>` inserta una imagen en la página. Es un elemento vacío, así que toda la información va en atributos:
 
 ```html
 <img src="foto.jpg" alt="Descripción de la imagen">
 ```
 
-`src` indica la ruta de la imagen y `alt` proporciona texto alternativo.
+`src` indica la ruta de la imagen y `alt` proporciona texto alternativo. Si la imagen no carga, `alt` explica su contenido.
 
 ---
 
 ## Atributos obligatorios
+
+Estos atributos no son opcionales si quieres una imagen bien implementada:
 
 ```html
 <!-- src: ruta de la imagen -->
@@ -44,6 +46,8 @@ La etiqueta `<img>` inserta una imagen en la página:
 
 ## Dimensiones
 
+Las dimensiones ayudan a reservar espacio en pantalla y a evitar saltos de diseño mientras carga la página:
+
 ```html
 <!-- Ancho y alto en píxeles -->
 <img src="foto.jpg" alt="Foto" width="300" height="200">
@@ -58,6 +62,8 @@ La etiqueta `<img>` inserta una imagen en la página:
 ---
 
 ## Rutas de imágenes
+
+Las rutas pueden ser relativas o absolutas, igual que en los enlaces:
 
 ```html
 <!-- Misma carpeta -->
@@ -76,6 +82,8 @@ La etiqueta `<img>` inserta una imagen en la página:
 ---
 
 ## Formatos de imagen
+
+No todos los formatos sirven para lo mismo. Elegir bien reduce peso y mejora calidad:
 
 | Formato | Compresión | Transparencia | Animación | Uso ideal |
 |---|---|---|---|---|
@@ -97,6 +105,8 @@ La etiqueta `<img>` inserta una imagen en la página:
 
 ## Imagen responsive con picture
 
+`picture` permite servir distintas versiones según soporte o tamaño. El navegador elige la primera que entiende:
+
 ```html
 <picture>
   <source srcset="foto.webp" type="image/webp">
@@ -111,7 +121,7 @@ El navegador elige el primer formato que soporte.
 
 ## Lazy loading
 
-Carga diferida para mejorar rendimiento:
+La carga diferida mejora rendimiento porque la imagen no se descarga hasta que está cerca del viewport:
 
 ```html
 <!-- La imagen se carga solo cuando está cerca del viewport -->
@@ -125,7 +135,7 @@ Carga diferida para mejorar rendimiento:
 
 ## Imagen decorativa
 
-Si la imagen es decorativa, `alt` debe estar vacío:
+Si la imagen es decorativa y no aporta información, `alt` debe estar vacío para que los lectores de pantalla la ignoren:
 
 ```html
 <!-- Imagen decorativa: alt vacío -->

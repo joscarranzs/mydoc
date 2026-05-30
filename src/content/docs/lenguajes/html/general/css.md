@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## CSS externo
 
-La forma más recomendada: archivo `.css` separado vinculado con `<link>`:
+La forma más recomendada es usar un archivo `.css` separado vinculado con `<link>`. Así mantienes la estructura HTML limpia y reutilizas estilos entre páginas:
 
 ```html
 <!DOCTYPE html>
@@ -52,7 +52,7 @@ h1 {
 
 ## Múltiples archivos CSS
 
-Se pueden vincular varios archivos:
+Se pueden vincular varios archivos cuando el proyecto crece y necesitas separar responsabilidades:
 
 ```html
 <link rel="stylesheet" href="reset.css">
@@ -60,13 +60,13 @@ Se pueden vincular varios archivos:
 <link rel="stylesheet" href="componentes.css">
 ```
 
-El orden importa: los estilos del último archivo prevalecen en caso de conflicto.
+El orden importa: los estilos del último archivo prevalecen en caso de conflicto si la especificidad es la misma.
 
 ---
 
 ## CSS interno
 
-Con la etiqueta `<style>` dentro del `<head>`:
+Con la etiqueta `<style>` dentro del `<head>`. Es útil en prototipos, páginas pequeñas o cuando no quieres crear otro archivo:
 
 ```html
 <!DOCTYPE html>
@@ -99,19 +99,19 @@ Con la etiqueta `<style>` dentro del `<head>`:
 
 ## CSS inline
 
-Con el atributo `style` directamente en el elemento:
+Con el atributo `style` directamente en el elemento. Es la opción más rápida, pero también la menos mantenible:
 
 ```html
 <p style="color: red; font-size: 18px;">Estilo inline</p>
 ```
 
-Tiene la máxima prioridad, pero es difícil de mantener.
+Tiene la máxima prioridad, pero es difícil de mantener si lo usas de forma extensa.
 
 ---
 
 ## Precedencia
 
-Cuando hay conflictos, CSS aplica según esta jerarquía:
+Cuando hay conflictos, CSS aplica según esta jerarquía. Entenderla evita sorpresas al ver estilos que no se aplican:
 
 ```html
 <head>
@@ -139,11 +139,13 @@ Prioridad (de menor a mayor):
 3. CSS inline
 4. `!important` (máxima prioridad)
 
+En general, evita `!important` salvo casos muy concretos de integración o sobrescritura puntual.
+
 ---
 
 ## @import
 
-Otra forma de incluir CSS desde otro archivo CSS:
+Otra forma de incluir CSS desde otro archivo CSS. Funciona, pero suele ser menos eficiente que `<link>` porque retrasa la carga de estilos:
 
 ```css
 /* estilos.css */
@@ -160,6 +162,8 @@ Menos recomendado que `<link>` porque ralentiza la carga.
 ---
 
 ## Buenas prácticas
+
+Un orden claro en el `<head>` ayuda a mantener el proyecto predecible y fácil de leer:
 
 ```html
 <!-- Orden recomendado en el head -->

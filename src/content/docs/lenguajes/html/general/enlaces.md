@@ -18,19 +18,19 @@ Al completar esta guía podrás:
 
 ## Sintaxis básica
 
-La etiqueta `<a>` con el atributo `href`:
+La etiqueta `<a>` con el atributo `href` crea un enlace. El texto visible debe ser claro para que el usuario sepa a dónde va:
 
 ```html
 <a href="https://ejemplo.com">Visitar ejemplo</a>
 ```
 
-El texto entre las etiquetas es lo que ve el usuario.
+El texto entre las etiquetas es lo que ve el usuario. Procura que describa la acción o destino.
 
 ---
 
 ## Rutas absolutas
 
-URL completa, incluyendo protocolo y dominio:
+Una ruta absoluta incluye protocolo y dominio. Se usa para enlaces externos o cuando quieres apuntar a una URL completa:
 
 ```html
 <a href="https://www.google.com">Google</a>
@@ -42,7 +42,7 @@ URL completa, incluyendo protocolo y dominio:
 
 ## Rutas relativas
 
-Ruta desde la ubicación del archivo actual:
+Una ruta relativa parte de la ubicación del archivo actual. Es la forma más común para navegar dentro del mismo sitio:
 
 ```html
 <!-- Misma carpeta -->
@@ -63,7 +63,7 @@ Ruta desde la ubicación del archivo actual:
 
 ## target
 
-Controla dónde se abre el enlace:
+Controla dónde se abre el enlace. El valor más usado es `_blank`, que abre una nueva pestaña:
 
 ```html
 <!-- Misma pestaña (por defecto) -->
@@ -80,7 +80,7 @@ Controla dónde se abre el enlace:
 
 ## rel="noopener"
 
-Siempre usar con `target="_blank"` por seguridad:
+Conviene usarlo siempre con `target="_blank"` por seguridad. Evita que la página abierta pueda manipular la ventana original:
 
 ```html
 <a href="https://ejemplo.com" target="_blank" rel="noopener">
@@ -103,7 +103,7 @@ Siempre usar con `target="_blank"` por seguridad:
 
 ## Anclas internas
 
-Enlazar a secciones dentro de la misma página:
+Las anclas internas sirven para navegar dentro de una misma página, muy útil en índices largos o páginas extensas:
 
 ```html
 <!-- Menú de navegación -->
@@ -128,6 +128,8 @@ Enlazar a secciones dentro de la misma página:
 
 ## Correo y teléfono
 
+HTML también permite acciones directas como abrir el cliente de correo o iniciar una llamada:
+
 ```html
 <!-- Correo electrónico -->
 <a href="mailto:info@ejemplo.com">Enviar correo</a>
@@ -145,7 +147,7 @@ Enlazar a secciones dentro de la misma página:
 
 ## Enlaces con título
 
-El atributo `title` muestra un tooltip al pasar el ratón:
+El atributo `title` muestra un tooltip al pasar el ratón. Úsalo como ayuda extra, no como único texto informativo:
 
 ```html
 <a
@@ -162,7 +164,7 @@ El atributo `title` muestra un tooltip al pasar el ratón:
 
 ## Imagen como enlace
 
-Un enlace puede contener una imagen:
+Un enlace puede contener una imagen. En ese caso, el `alt` debe describir la acción o destino del enlace:
 
 ```html
 <a href="https://ejemplo.com">

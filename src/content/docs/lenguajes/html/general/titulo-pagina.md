@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
-La etiqueta `<title>` va dentro de `<head>`:
+La etiqueta `<title>` va dentro de `<head>`. Define el texto principal que el navegador usa para identificar la página:
 
 ```html
 <head>
@@ -25,13 +25,13 @@ La etiqueta `<title>` va dentro de `<head>`:
 </head>
 ```
 
-El texto aparece en la pestaña del navegador y en los resultados de búsqueda.
+El texto aparece en la pestaña del navegador y en los resultados de búsqueda. Es uno de los metadatos más importantes de la página.
 
 ---
 
 ## Ubicación
 
-Siempre dentro de `<head>`:
+Siempre dentro de `<head>`. No debe ir en `<body>`:
 
 ```html
 <!DOCTYPE html>
@@ -49,6 +49,8 @@ Siempre dentro de `<head>`:
 ---
 
 ## Buenas prácticas SEO
+
+Un título bueno debe ser descriptivo, específico y no demasiado largo:
 
 ```html
 <!-- Bien: descriptivo y con palabras clave -->
@@ -68,6 +70,8 @@ Siempre dentro de `<head>`:
 
 ## Longitud recomendada
 
+Los buscadores suelen mostrar solo una parte del título. Por eso conviene mantenerse en un rango corto y útil:
+
 ```html
 <!-- 50-60 caracteres es el rango ideal -->
 <title>Cómo aprender HTML en 2024 | Guía para principiantes</title>
@@ -82,7 +86,7 @@ Siempre dentro de `<head>`:
 
 ## Título vs h1
 
-El `<title>` es para SEO y navegador. El `<h1>` es para el contenido visible:
+El `<title>` es para SEO y navegador. El `<h1>` es para el contenido visible. Pueden estar relacionados, pero cumplen funciones distintas:
 
 ```html
 <head>
@@ -102,7 +106,7 @@ El `<title>` es para SEO y navegador. El `<h1>` es para el contenido visible:
 
 ## Sin título
 
-Si no hay `<title>`, el navegador muestra el nombre del archivo:
+Si no hay `<title>`, el navegador muestra el nombre del archivo o un título genérico. Eso da una mala impresión y complica la navegación:
 
 ```html
 <!-- Sin title -->
@@ -115,6 +119,8 @@ Si no hay `<title>`, el navegador muestra el nombre del archivo:
 ---
 
 ## Título dinámico con JavaScript
+
+En aplicaciones web, el título puede cambiar según la sección que el usuario esté viendo:
 
 ```html
 <script>
