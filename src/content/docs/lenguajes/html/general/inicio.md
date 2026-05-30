@@ -45,7 +45,7 @@ En este ejemplo:
 
 ## HTML, CSS y JavaScript
 
-Las páginas web现代as usan tres tecnologías complementarias. Cada una tiene un rol específico:
+Las páginas web modernas usan tres tecnologías complementarias. Cada una tiene un rol específico:
 
 - **HTML** define la **estructura**: qué hay en la página (títulos, párrafos, imágenes, enlaces)
 - **CSS** define la **presentación**: cómo se ve (colores, fuentes, espaciado, posicionamiento)
