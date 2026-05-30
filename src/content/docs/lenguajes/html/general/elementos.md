@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
-Un elemento HTML tiene etiqueta de apertura, contenido y etiqueta de cierre:
+Un elemento HTML se compone de tres partes: una etiqueta de apertura, contenido y una etiqueta de cierre. Las etiquetas van entre signos de menor y mayor que.
 
 ```html
 <tipo atributo="valor">Contenido</tipo>
@@ -29,46 +29,50 @@ Un elemento HTML tiene etiqueta de apertura, contenido y etiqueta de cierre:
 <h1>Encabezado principal</h1>
 ```
 
+La etiqueta de cierre siempre lleva una barra `/` antes del nombre: `</p>`, `</a>`, `</h1>`.
+
 ---
 
 ## Elementos vacíos
 
-No tienen contenido ni etiqueta de cierre:
+Algunos elementos no tienen contenido ni etiqueta de cierre. Se escriben como una sola etiqueta, con un espacio y `/` antes del cierre:
 
 ```html
-<!-- Salto de línea -->
+<!-- Salto de línea — fuerza un salto sin crear nuevo párrafo -->
 <br>
 
-<!-- Línea horizontal -->
+<!-- Línea horizontal — separa secciones visualmente -->
 <hr>
 
-<!-- Imagen -->
+<!-- Imagen — muestra una imagen (el contenido es la imagen misma) -->
 <img src="foto.jpg" alt="Descripción">
 
-<!-- Entrada de formulario -->
+<!-- Entrada de formulario — campo de formulario -->
 <input type="text" placeholder="Nombre">
 
-<!-- Metadatos -->
+<!-- Metadatos — información para el navegador -->
 <meta charset="UTF-8">
 ```
+
+Los elementos vacíos no pueden contener texto. `<br>texto</br>` no es válido.
 
 ---
 
 ## Atributos
 
-Modifican el comportamiento o apariencia del elemento:
+Los atributos dan información adicional al elemento. Se escriben dentro de la etiqueta de apertura como pares `nombre="valor"`:
 
 ```html
-<!-- Atributos comunes -->
+<!-- class: identifica el elemento para CSS y JavaScript -->
 <div id="principal" class="contenedor">Contenido</div>
 
-<!-- Atributo src obligatorio en img -->
+<!-- src: obligatorio en img — indica la ruta de la imagen -->
 <img src="imagen.jpg" alt="Descripción">
 
-<!-- Atributo href obligatorio en a -->
+<!-- href: obligatorio en a — indica la URL de destino -->
 <a href="https://ejemplo.com" target="_blank">Enlace</a>
 
-<!-- Múltiples atributos -->
+<!-- Múltiples atributos en un elemento -->
 <input type="email" name="correo" placeholder="tu@email.com" required>
 ```
 
@@ -76,47 +80,58 @@ Modifican el comportamiento o apariencia del elemento:
 
 ## Elementos de bloque
 
-Ocupan todo el ancho disponible y comienzan en nueva línea:
+Los elementos de bloque ocupan todo el ancho disponible y siempre comienzan en una nueva línea. Son como "bloques" que apilan verticalmente.
 
 ```html
-<div>Bloque</div>
-<p>Párrafo</p>
-<h1>Encabezado</h1>
-<ul><li>Lista</li></ul>
-<table>...</table>
-<header>...</header>
-<footer>...</footer>
-<section>...</section>
+<div>Bloque</div>       <!-- Contenedor genérico -->
+<p>Párrafo</p>          <!-- Párrafo de texto -->
+<h1>Encabezado</h1>     <!-- Encabezado de cualquier nivel -->
+<ul><li>Lista</li></ul> <!-- Lista desordenada -->
+<table>...</table>      <!-- Tabla -->
+<header>...</header>    <!-- Cabecera semántica -->
+<footer>...</footer>    <!-- Pie de página semántico -->
+<section>...</section>  <!-- Sección de contenido -->
 ```
+
+Los elementos de bloque no se mezclan en una línea. Si pones dos `<div>` seguidos, cada uno ocupará su propia línea.
 
 ---
 
 ## Elementos en línea
 
-Ocupan solo el espacio necesario y fluyen con el texto:
+Los elementos en línea solo ocupan el espacio necesario para su contenido. Fluyen con el texto y no fuerzan saltos de línea.
 
 ```html
-<span>Texto</span>
-<a href="#">Enlace</a>
-<strong>Negrita</strong>
-<em>Cursiva</em>
-<img src="" alt="">
-<br>
-<code>código</code>
+<span>Texto</span>        <!-- Contenedor genérico en línea -->
+<a href="#">Enlace</a>     <!-- Enlace -->
+<strong>Negrita</strong>   <!-- Énfasis fuerte -->
+<em>Cursiva</em>           <!-- Énfasis moderado -->
+<img src="" alt="">        <!-- Imagen (vacío) -->
+<code>código</code>        <!-- Código en línea -->
 ```
+
+Los elementos en línea pueden estar dentro de párrafos o dentro de otros elementos en línea. `<p>Hola <strong>mundo</strong></p>` es válido.
 
 ---
 
 ## Anidamiento
 
-Los elementos pueden contener otros elementos:
+Los elementos pueden contener otros elementos. Esto crea una jerarquía de padres e hijos:
 
 ```html
-<!-- Válido -->
+<!-- Válido — el strong está dentro del p, que está dentro del div -->
 <div>
   <p>Texto con <strong>negrita</strong> y <a href="#">enlace</a>.</p>
 </div>
+```
 
+Hay reglas que debes seguir:
+
+- **No cruzar etiquetas** — Los hijos deben cerrarse antes que los padres
+- **No poner bloques dentro de enlaces** — Un `<div>` dentro de un `<a>` no es válido
+- **Cerrar todas las etiquetas** — Cada etiqueta de apertura necesita su cierre
+
+```html
 <!-- Inválido — etiquetas cruzadas -->
 <p><strong>Texto</p></strong>
 
@@ -128,7 +143,7 @@ Los elementos pueden contener otros elementos:
 
 ## Comentarios
 
-No se muestran en el navegador:
+Los comentarios no se muestran en el navegador. Son útiles para documentar tu código o dejar notas:
 
 ```html
 <!-- Esto es un comentario -->
@@ -140,6 +155,7 @@ No se muestran en el navegador:
 -->
 
 <!-- TODO: agregar sección de productos -->
+<!-- FIXME: la imagen no carga en Safari -->
 ```
 
 ---
@@ -150,9 +166,9 @@ No se muestran en el navegador:
 |---|---|
 | Elemento | Etiqueta de apertura + contenido + cierre |
 | Vacío | Sin contenido ni cierre (br, hr, img, input) |
-| Bloque | Ocupa todo el ancho, nueva línea |
-| En línea | Ocupa solo su contenido, fluye con texto |
-| Atributo | Modifica el elemento (id, class, src) |
+| Bloque | Ocupa todo el ancho, nueva línea (div, p, h1) |
+| En línea | Solo su contenido, fluye con texto (span, a, strong) |
+| Atributo | Modifica el elemento (id, class, src, href) |
 | Anidamiento | Elementos dentro de elementos |
 
 ---

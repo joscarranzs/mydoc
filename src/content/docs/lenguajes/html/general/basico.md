@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Estructura mínima
 
-Todo documento HTML sigue esta estructura:
+Todo documento HTML sigue esta estructura. Es la base sobre la que se construye cualquier página web:
 
 ```html
 <!DOCTYPE html>
@@ -33,17 +33,21 @@ Todo documento HTML sigue esta estructura:
 </html>
 ```
 
+Cada línea tiene un propósito específico. Veamos cada una.
+
 ---
 
 ## DOCTYPE
 
-`<!DOCTYPE html>` declara que el documento usa HTML5. Debe ir siempre en la primera línea.
+`<!DOCTYPE html>` declara que el documento usa HTML5. Debe ir siempre en la primera línea, antes de cualquier otra etiqueta.
+
+Esta etiqueta no es una etiqueta HTML en sí misma — es una instrucción para el navegador sobre qué versión de HTML debe interpretar. Si la omites, el navegador entra en "modo quirúrgico" y puede comportarse de forma inconsistente.
 
 ```html
-<!-- HTML5 -->
+<!-- HTML5 — lo que debes usar siempre -->
 <!DOCTYPE html>
 
-<!-- Versiones anteriores (obsoleto) -->
+<!-- Versiones anteriores — obsoleto, no lo uses -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 ```
 
@@ -51,7 +55,10 @@ Todo documento HTML sigue esta estructura:
 
 ## html
 
-La etiqueta `<html>` es la raíz del documento. El atributo `lang` indica el idioma.
+La etiqueta `<html>` es la raíz del documento. Todo el contenido va dentro de ella. El atributo `lang` indica el idioma del contenido, lo cual es importante para:
+
+- **Accesibilidad** — Los lectores de pantalla usan el atributo `lang` para pronunciar correctamente el texto
+- **SEO** — Los buscadores usan este dato para mostrar resultados relevantes por idioma
 
 ```html
 <html lang="es">  <!-- Español -->
@@ -63,41 +70,43 @@ La etiqueta `<html>` es la raíz del documento. El atributo `lang` indica el idi
 
 ## head
 
-Contiene metadatos que no se muestran directamente:
+El `<head>` contiene metadatos: información sobre el documento que no se muestra directamente en pantalla. El usuario no ve estos datos, pero el navegador y los buscadores los utilizan.
 
 ```html
 <head>
-  <!-- Codificación de caracteres -->
+  <!-- Codificación de caracteres — permite tildes y ñ -->
   <meta charset="UTF-8">
 
-  <!-- Configuración de viewport para responsive -->
+  <!-- Viewport — hace que la página sea responsive en móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Título (aparece en la pestaña del navegador) -->
+  <!-- Título — aparece en la pestaña del navegador y en resultados de Google -->
   <title>Mi página</title>
 
-  <!-- Descripción para SEO -->
+  <!-- Descripción — aparece en resultados de búsqueda -->
   <meta name="description" content="Descripción de la página">
 
-  <!-- Palabras clave -->
+  <!-- Palabras clave — ya no tiene tanto peso para SEO, pero se usa -->
   <meta name="keywords" content="html, tutorial, web">
 
-  <!-- Autor -->
+  <!-- Autor — identifica al creador del documento -->
   <meta name="author" content="Tu nombre">
 
-  <!-- Vínculo a CSS -->
+  <!-- CSS externo — vincula una hoja de estilos -->
   <link rel="stylesheet" href="estilos.css">
 
-  <!-- Icono de página -->
+  <!-- Favicon — icono que aparece en la pestaña -->
   <link rel="icon" href="favicon.ico">
 </head>
 ```
+
+El `<meta charset="UTF-8">` es especialmente importante: sin él, caracteres como tildes, ñ y eñes pueden mostrarse como símbolos extraños.
 
 ---
 
 ## body
 
-Contiene todo el contenido visible:
+El `<body>` contiene todo el contenido visible de la página. Aquí van los encabezados, párrafos, imágenes, enlaces, listas, formularios — todo lo que el usuario puede ver e interactuar.
 
 ```html
 <body>
@@ -115,10 +124,10 @@ Contiene todo el contenido visible:
 
 ## Indentación
 
-La indentación (sangría) hace el código legible:
+La indentación (sangría) no afecta cómo se muestra la página, pero es esencial para que el código sea legible. Sin indentación, es difícil ver qué elementos están dentro de otros.
 
 ```html
-<!-- Mal — sin indentación -->
+<!-- Mal — sin indentación, difícil de leer -->
 <body>
 <h1>Título</h1>
 <p>Texto</p>
@@ -128,7 +137,7 @@ La indentación (sangría) hace el código legible:
 </ul>
 </body>
 
-<!-- Bien — con indentación -->
+<!-- Bien — con indentación, la estructura es clara -->
 <body>
   <h1>Título</h1>
   <p>Texto</p>
@@ -139,18 +148,22 @@ La indentación (sangría) hace el código legible:
 </body>
 ```
 
+La convención es usar **2 espacios** por nivel de indentación. No uses tabs ni 4 espacios — 2 espacios es lo estándar en desarrollo web.
+
 ---
 
 ## Validación
 
-Puedes validar tu HTML en: https://validator.w3.org/
+Incluso con buena práctica, es posible cometer errores. El validador del W3C detecta problemas como etiquetas sin cerrar, atributos mal escritos o elementos anidados incorrectamente.
+
+Valida tu HTML en: https://validator.w3.org/
 
 ```html
 <!-- Errores comunes que el validador detecta -->
-<img src="foto.jpg">           <!-- Error: falta alt -->
-<p>Texto                        <!-- Error: falta cierre -->
-<br>                            <!-- Advertencia: usa <br> en HTML5 -->
-<div span="texto">              <!-- Error: atributo inexistente -->
+<img src="foto.jpg">           <!-- Error: falta alt — obligatorio para accesibilidad -->
+<p>Texto                        <!-- Error: falta cierre de </p> -->
+<br>                            <!-- Advertencia: en HTML5 se usa <br>, no <br/> -->
+<div span="texto">              <!-- Error: "span" no es un atributo válido -->
 ```
 
 ---
@@ -159,12 +172,12 @@ Puedes validar tu HTML en: https://validator.w3.org/
 
 | Elemento | Propósito |
 |---|---|
-| `<!DOCTYPE html>` | Declara HTML5 |
-| `<html>` | Raíz del documento |
-| `<head>` | Metadatos, título, CSS |
-| `<body>` | Contenido visible |
-| `lang` | Idioma del documento |
-| `charset` | Codificación de caracteres |
+| `<!DOCTYPE html>` | Declara que el documento es HTML5 |
+| `<html>` | Raíz del documento. Usa `lang` para idioma |
+| `<head>` | Metadatos: título, charset, viewport, CSS |
+| `<body>` | Contenido visible de la página |
+| `charset` | Codificación de caracteres (usa UTF-8) |
+| `viewport` | Configuración para dispositivos móviles |
 
 ---
 

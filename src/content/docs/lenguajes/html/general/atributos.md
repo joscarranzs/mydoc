@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
-Los atributos se escriben dentro de la etiqueta de apertura:
+Los atributos se escriben dentro de la etiqueta de apertura como pares `nombre="valor"`. Se separan con espacios y el orden no importa.
 
 ```html
 <tipo atributo="valor">Contenido</tipo>
@@ -33,34 +33,34 @@ Los atributos se escriben dentro de la etiqueta de apertura:
 
 ## Atributos globales
 
-Funcionan en cualquier elemento HTML:
+Los atributos globales funcionan en **cualquier** elemento HTML. Son como propiedades universales que todo elemento puede tener.
 
 ```html
-<!-- class: para CSS y JavaScript -->
+<!-- class: agrega una o más clases CSS. Se usan con puntos en CSS -->
 <div class="contenedor principal">...</div>
 
-<!-- id: identificador único -->
+<!-- id: identificador único en toda la página. Se usa con # en CSS -->
 <section id="introduccion">...</section>
 
-<!-- style: estilos inline -->
+<!-- style: aplica estilos inline (sin CSS externo) -->
 <p style="color: red; font-size: 18px;">Texto rojo</p>
 
-<!-- title: tooltip -->
+<!-- title: muestra un tooltip al pasar el mouse -->
 <abbr title="HyperText Markup Language">HTML</abbr>
 
-<!-- lang: idioma del elemento -->
+<!-- lang: indica el idioma de ese elemento específico -->
 <span lang="en">Hello</span>
 ```
 
 ```html
-<!-- hidden: oculta el elemento -->
+<!-- hidden: oculta el elemento (no se muestra pero sigue en el DOM) -->
 <div hidden>Este texto no se ve</div>
 
-<!-- tabindex: orden de tabulación -->
+<!-- tabindex: define el orden al presionar Tab para navegar con teclado -->
 <input tabindex="1" />
 <input tabindex="2" />
 
-<!-- data-*: datos personalizados -->
+<!-- data-*: almacena datos personalizados accesibles con JavaScript -->
 <button data-id="123" data-action="delete">Eliminar</button>
 ```
 
@@ -68,56 +68,66 @@ Funcionan en cualquier elemento HTML:
 
 ## Atributos obligatorios
 
-Algunos elementos requieren ciertos atributos para funcionar:
+Algunos elementos **necesitan** ciertos atributos para funcionar correctamente. Sin ellos, el elemento puede no renderizarse o no pasar validación:
 
 ```html
 <!-- src y alt son obligatorios en img -->
+<!-- src: ruta de la imagen -->
+<!-- alt: texto alternativo para lectores de pantalla y si la imagen no carga -->
 <img src="foto.jpg" alt="Descripción de la imagen">
 
 <!-- href es obligatorio en a (sin JavaScript) -->
+<!-- Sin href, el enlace no funciona como enlace -->
 <a href="https://ejemplo.com">Enlace</a>
 
-<!-- type es obligatorio en input -->
-<input type="text">
-<input type="email">
-<input type="password">
+<!-- type es obligatorio en input — define qué tipo de campo es -->
+<input type="text">    <!-- Campo de texto -->
+<input type="email">   <!-- Campo de correo (valida formato) -->
+<input type="password"> <!-- Campo de contraseña (oculta caracteres) -->
 ```
 
 ---
 
 ## Atributos booleanos
 
-Se activan con solo escribir el nombre o `nombre="nombre"`:
+Los atributos booleanos no necesitan valor. Se activan simplemente con escribir el nombre del atributo en la etiqueta:
 
 ```html
-<!-- required: campo obligatorio -->
+<!-- required: el campo debe completarse antes de enviar el formulario -->
 <input type="text" required>
 
-<!-- disabled: campo deshabilitado -->
+<!-- disabled: el campo está deshabilitado, el usuario no puede interactuar -->
 <input type="text" disabled>
 
-<!-- checked: opción preseleccionada -->
+<!-- checked: preselecciona un checkbox o radio button -->
 <input type="checkbox" checked>
 
-<!-- readonly: modo solo lectura -->
+<!-- readonly: el usuario ve el valor pero no puede editarlo -->
 <input type="text" readonly>
 
-<!-- autofocus: foco automático -->
+<!-- autofocus: el cursor se coloca automáticamente al cargar la página -->
 <input type="text" autofocus>
 ```
+
+Puedes escribir `required="required"` o simplemente `required`. Ambos son válidos, pero la forma corta es la convención moderna.
 
 ---
 
 ## Atributos comunes por tipo de elemento
 
+Cada tipo de elemento tiene sus propios atributos específicos:
+
 ```html
 <!-- Enlaces -->
+<!-- rel="noopener" previene que la página abierta tenga acceso a tu ventana -->
 <a href="url" target="_blank" rel="noopener">Enlace</a>
 
 <!-- Imágenes -->
+<!-- loading="lazy" carga la imagen solo cuando está cerca del viewport -->
 <img src="url" alt="texto" width="200" height="150" loading="lazy">
 
 <!-- Formularios -->
+<!-- name: identifica el campo al enviar el formulario al servidor -->
 <input type="text" name="usuario" placeholder="Nombre" required>
 <textarea rows="4" cols="50"></textarea>
 <select>
@@ -129,7 +139,7 @@ Se activan con solo escribir el nombre o `nombre="nombre"`:
 
 ## Múltiples atributos
 
-Se separan con espacios, el orden no importa:
+Se pueden combinar varios atributos en un solo elemento. Se separan con espacios y el orden no importa:
 
 ```html
 <img
@@ -144,19 +154,23 @@ Se separan con espacios, el orden no importa:
 >
 ```
 
+Este estilo de una línea por atributo es recomendado cuando hay más de 3 atributos. Hace el código más legible.
+
 ---
 
 ## Resumen
 
 | Atributo | Elementos | Descripción |
 |---|---|---|
-| `id` | Todos | Identificador único |
-| `class` | Todos | Clase para CSS |
+| `id` | Todos | Identificador único en la página |
+| `class` | Todos | Clase(s) CSS para estilos |
 | `style` | Todos | Estilos inline |
 | `src` | img, script, iframe | Origen del recurso |
 | `href` | a, link | URL de destino |
-| `alt` | img | Texto alternativo |
+| `alt` | img | Texto alternativo (accesibilidad) |
 | `required` | input, select | Campo obligatorio |
+| `disabled` | input, textarea, button | Campo deshabilitado |
+| `placeholder` | input, textarea | Texto de ejemplo |
 
 ---
 

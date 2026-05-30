@@ -17,9 +17,12 @@ Al completar esta guía podrás:
 
 ## ¿Qué es HTML?
 
-HTML (HyperText Markup Language) es el lenguaje estándar para crear páginas web. No es un lenguaje de programación, sino de marcado: describe la estructura y el contenido mediante etiquetas.
+HTML (HyperText Markup Language) es el lenguaje estándar para crear páginas web. No es un lenguaje de programación, sino de **marcado**: describe la estructura y el contenido mediante etiquetas.
+
+Cada página web que visitas está construida con HTML. Cuando abres un navegador y escribes una URL, el servidor te devuelve un archivo HTML que el navegador interpreta y muestra en pantalla.
 
 ```html
+<!-- Estructura básica de cualquier página web -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -32,17 +35,27 @@ HTML (HyperText Markup Language) es el lenguaje estándar para crear páginas we
 </html>
 ```
 
+En este ejemplo:
+- `<!DOCTYPE html>` le indica al navegador que es HTML5
+- `<html>` es la raíz del documento
+- `<head>` contiene información que no se ve en pantalla (como el título)
+- `<body>` contiene todo lo que el usuario puede ver
+
 ---
 
 ## HTML, CSS y JavaScript
 
-Estas tres tecnologías trabajan juntas para construir la web:
+Las páginas web现代as usan tres tecnologías complementarias. Cada una tiene un rol específico:
+
+- **HTML** define la **estructura**: qué hay en la página (títulos, párrafos, imágenes, enlaces)
+- **CSS** define la **presentación**: cómo se ve (colores, fuentes, espaciado, posicionamiento)
+- **JavaScript** define el **comportamiento**: qué hace (interacciones, validaciones, animaciones)
 
 ```html
-<!-- HTML: estructura -->
+<!-- HTML: estructura — define qué elemento es cada cosa -->
 <button id="saludar">Haz clic</button>
 
-<!-- CSS: presentación -->
+<!-- CSS: presentación — define cómo se ve el botón -->
 <style>
   button {
     background: #1A73E8;
@@ -53,7 +66,7 @@ Estas tres tecnologías trabajan juntas para construir la web:
   }
 </style>
 
-<!-- JavaScript: comportamiento -->
+<!-- JavaScript: comportamiento — define qué pasa al hacer clic -->
 <script>
   document.getElementById("saludar").onclick = () => {
     alert("¡Hola!");
@@ -63,18 +76,22 @@ Estas tres tecnologías trabajan juntas para construir la web:
 
 ---
 
-## Cómo funciona
+## Cómo funciona una página web
 
-1. El navegador solicita una página HTML al servidor
-2. El servidor devuelve el código HTML
-3. El navegador interpreta las etiquetas y renderiza la página
-4. El navegador carga recursos adicionales (CSS, JS, imágenes)
+El proceso de carga de una página web tiene cuatro pasos:
+
+1. **El navegador solicita** una página HTML al servidor (escribes la URL o haces clic en un enlace)
+2. **El servidor responde** enviando el código HTML del archivo
+3. **El navegador interpreta** las etiquetas HTML y construye la estructura visual (DOM)
+4. **El navegador carga** recursos adicionales: hojas de estilo CSS, scripts JavaScript, imágenes, fuentes
+
+Este proceso ocurre cada vez que visitas una página. El HTML es la base que todo navegador entiende.
 
 ---
 
 ## Editor de código
 
-Solo necesitas un editor de texto y un navegador:
+Para escribir HTML solo necesitas dos cosas: un editor de texto y un navegador. No necesitas instalar nada especial.
 
 ```html
 <!-- Guarda esto como index.html -->
@@ -91,6 +108,8 @@ Solo necesitas un editor de texto y un navegador:
 </html>
 ```
 
+Guarda el archivo con extensión `.html` y ábrelo haciendo doble clic. El navegador lo mostrará automáticamente. Si usas un editor como VS Code con la extensión Live Server, el navegador se actualizará cada vez que guardes cambios.
+
 ---
 
 ## Resumen
@@ -98,9 +117,9 @@ Solo necesitas un editor de texto y un navegador:
 | Concepto | Descripción |
 |---|---|
 | HTML | Lenguaje de marcado para estructurar contenido web |
-| CSS | Lenguaje de estilos para presentación |
-| JavaScript | Lenguaje de programación para comportamiento |
-| Navegador | Interpreta el HTML y renderiza la página |
+| CSS | Lenguaje de estilos para presentación visual |
+| JavaScript | Lenguaje de programación para comportamiento e interacción |
+| Navegador | Software que interpreta HTML y renderiza la página |
 
 ---
 
