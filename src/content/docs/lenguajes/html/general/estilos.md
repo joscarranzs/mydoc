@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Atributo style
 
-Aplica estilos CSS directamente a un elemento:
+Aplica estilos CSS directamente a un elemento. Es rápido para pruebas o ajustes puntuales, pero no conviene usarlo como solución principal en proyectos grandes:
 
 ```html
 <p style="color: blue;">Texto azul</p>
@@ -25,11 +25,13 @@ Aplica estilos CSS directamente a un elemento:
 <p style="background: yellow;">Fondo amarillo</p>
 ```
 
-Se usa `propiedad: valor;` y se separan con punto y coma.
+Se usa `propiedad: valor;` y se separan con punto y coma. Cada regla modifica una propiedad visual del elemento.
 
 ---
 
 ## Propiedades comunes
+
+Estas son algunas propiedades que vas a usar con frecuencia al dar formato rápido a contenido HTML:
 
 ```html
 <p style="color: red;">Color del texto</p>
@@ -44,7 +46,7 @@ Se usa `propiedad: valor;` y se separan con punto y coma.
 
 ## Múltiples propiedades
 
-Se separan con punto y coma:
+Cuando un elemento necesita varios ajustes visuales, puedes escribirlos en una sola declaración style:
 
 ```html
 <p style="
@@ -63,6 +65,8 @@ Se separan con punto y coma:
 
 ## Colores
 
+CSS admite varios formatos de color. Los más comunes son nombres, RGB, HEX y HSL:
+
 ```html
 <p style="color: red;">Nombre del color</p>
 <p style="color: rgb(255, 0, 0);">RGB</p>
@@ -78,6 +82,8 @@ Se separan con punto y coma:
 
 ## Bordes y márgenes
 
+Estas propiedades controlan el espacio y el contorno de un elemento. Son clave para construir bloques visuales legibles:
+
 ```html
 <p style="border: 1px solid black;">Borde sólido negro</p>
 <p style="border: 2px dashed red;">Borde discontinuo rojo</p>
@@ -91,7 +97,7 @@ Se separan con punto y coma:
 
 ## Etiqueta style
 
-Para estilos que afectan a múltiples elementos:
+Para estilos que afectan a múltiples elementos, es mejor usar la etiqueta `<style>` dentro del `<head>`:
 
 ```html
 <!DOCTYPE html>
@@ -127,6 +133,8 @@ Para estilos que afectan a múltiples elementos:
 
 ## Inline vs etiqueta style
 
+El estilo inline solo afecta a un elemento. La etiqueta `<style>` puede afectar a varios elementos a la vez:
+
 ```html
 <!-- Inline: afecta solo un elemento -->
 <p style="color: red;">Solo este es rojo</p>
@@ -138,11 +146,13 @@ Para estilos que afectan a múltiples elementos:
 <p>Todos los párrafos azules</p>
 ```
 
-Inline tiene mayor prioridad (especificidad) que la etiqueta `style`.
+Inline tiene mayor prioridad (especificidad) que la etiqueta `style`, por eso sobrescribe reglas más generales.
 
 ---
 
 ## Unidades
+
+Las unidades determinan cómo se calculan tamaños y proporciones. Algunas son absolutas y otras relativas al contexto:
 
 ```html
 <p style="font-size: 16px;">px: píxeles</p>

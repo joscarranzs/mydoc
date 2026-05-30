@@ -17,6 +17,8 @@ Al completar esta guía podrás:
 
 ## Formato básico
 
+HTML distingue entre formato visual y formato semántico. La diferencia importa porque no todo lo que se ve igual significa lo mismo para el navegador o un lector de pantalla.
+
 ```html
 <p><b>Texto en negrita</b> (físico)</p>
 <p><strong>Texto importante</strong> (semántico)</p>
@@ -32,33 +34,33 @@ Al completar esta guía podrás:
 
 ## strong vs b
 
-`<strong>` indica importancia (semántico), `<b>` solo aplica negrita (visual):
+`<strong>` indica importancia real del contenido. `<b>` solo cambia el aspecto visual:
 
 ```html
 <p><strong>Advertencia:</strong> este paso es obligatorio.</p>
 <p>Este producto tiene <b>20%</b> de descuento.</p>
 ```
 
-Los lectores de pantalla enfatizan `<strong>` pero no `<b>`.
+Los lectores de pantalla suelen enfatizar `<strong>` pero no `<b>`. Por eso conviene usar `strong` cuando el texto realmente aporta relevancia.
 
 ---
 
 ## em vs i
 
-`<em>` indica énfasis (semántico), `<i>` solo aplica cursiva (visual):
+`<em>` indica énfasis real, mientras que `<i>` solo cambia el estilo tipográfico:
 
 ```html
 <p>Debes <em>terminar</em> el proyecto antes del viernes.</p>
 <p>El término <i>software</i> fue acuñado en 1958.</p>
 ```
 
-Útil para palabras extranjeras, voces internas, términos técnicos.
+`<i>` suele ser útil para palabras extranjeras, nombres científicos o términos técnicos cuando solo necesitas cursiva.
 
 ---
 
 ## mark
 
-Texto resaltado, como con marcador fluorescente:
+Texto resaltado, como con marcador fluorescente. Sirve para señalar coincidencias o partes relevantes del contenido:
 
 ```html
 <p>
@@ -74,7 +76,7 @@ Texto resaltado, como con marcador fluorescente:
 
 ## small
 
-Texto de nota legal o comentario secundario:
+Texto de nota legal, aclaración o comentario secundario:
 
 ```html
 <p>Precio: $19.99 <small>(impuestos no incluidos)</small></p>
@@ -88,7 +90,7 @@ Texto de nota legal o comentario secundario:
 
 ## del e ins
 
-Texto eliminado e insertado (útil para mostrar cambios):
+Texto eliminado e insertado. Es muy útil para mostrar revisiones, cambios de precios o ediciones de contenido:
 
 ```html
 <p>
@@ -105,7 +107,7 @@ Texto eliminado e insertado (útil para mostrar cambios):
 
 ## sub y sup
 
-Subíndice y superíndice:
+Subíndice y superíndice. Se usan en química, matemáticas y notación especial:
 
 ```html
 <p>Fórmula del agua: H<sub>2</sub>O</p>
@@ -117,7 +119,7 @@ Subíndice y superíndice:
 
 ## Combinar formatos
 
-Las etiquetas de formato pueden anidarse:
+Las etiquetas de formato pueden anidarse cuando el significado lo justifica:
 
 ```html
 <p>

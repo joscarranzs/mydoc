@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## blockquote
 
-Cita en bloque, con sangría y separación del texto normal:
+Cita en bloque, con sangría y separación del texto normal. Se usa para fragmentos largos o independientes del flujo principal:
 
 ```html
 <blockquote>
@@ -26,7 +26,7 @@ Cita en bloque, con sangría y separación del texto normal:
 </blockquote>
 ```
 
-El atributo `cite` puede indicar la URL de origen:
+El atributo `cite` puede indicar la URL de origen. No se muestra visualmente, pero deja constancia de dónde salió la cita:
 
 ```html
 <blockquote cite="https://www.w3.org/TR/html52/">
@@ -38,7 +38,7 @@ El atributo `cite` puede indicar la URL de origen:
 
 ## Estilo de blockquote
 
-Por defecto los navegadores aplican margen izquierdo y cursiva. Se puede personalizar:
+Por defecto los navegadores aplican margen izquierdo y cursiva. Si quieres integrarlo con tu diseño, puedes personalizarlo con CSS:
 
 ```html
 <blockquote style="
@@ -57,7 +57,7 @@ Por defecto los navegadores aplican margen izquierdo y cursiva. Se puede persona
 
 ## q
 
-Cita en línea dentro de un párrafo:
+Cita en línea dentro de un párrafo. Se usa para frases cortas que forman parte del texto normal:
 
 ```html
 <p>
@@ -67,13 +67,13 @@ Cita en línea dentro de un párrafo:
 </p>
 ```
 
-El navegador añade automáticamente comillas al texto dentro de `<q>`.
+El navegador añade automáticamente comillas al texto dentro de `<q>`, por eso no hace falta escribirlas manualmente.
 
 ---
 
 ## cite
 
-Referencia a una fuente creativa (libro, artículo, película, etc.):
+Referencia a una fuente creativa (libro, artículo, película, obra, etc.). Se usa para identificar el nombre de la fuente, no para escribir la cita completa:
 
 ```html
 <p>
@@ -89,7 +89,7 @@ Referencia a una fuente creativa (libro, artículo, película, etc.):
 
 ## Anidamiento de citas
 
-Se pueden anidar blockquote para citas dentro de citas:
+Las citas también pueden aparecer dentro de otras citas cuando necesitas representar una fuente secundaria o una respuesta dentro de otra cita:
 
 ```html
 <blockquote>
@@ -104,7 +104,7 @@ Se pueden anidar blockquote para citas dentro de citas:
 
 ## Address
 
-Aunque no es una cita, `<address>` se relaciona con información de contacto:
+Aunque no es una cita, `<address>` se relaciona con información de contacto del autor o del responsable del contenido:
 
 ```html
 <address>

@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
-Los comentarios en HTML se escriben entre `<!--` y `-->`:
+Los comentarios en HTML se escriben entre `<!--` y `-->`. El navegador los ignora por completo, así que no afectan al renderizado:
 
 ```html
 <!-- Esto es un comentario -->
@@ -28,6 +28,8 @@ Los comentarios en HTML se escriben entre `<!--` y `-->`:
 ---
 
 ## Comentarios multi-línea
+
+Cuando una explicación necesita varias líneas, puedes escribir comentarios largos sin problema:
 
 ```html
 <!--
@@ -42,7 +44,7 @@ Los comentarios en HTML se escriben entre `<!--` y `-->`:
 
 ## Organizar secciones
 
-Útil para identificar partes del documento:
+Útil para identificar partes del documento cuando el archivo empieza a crecer:
 
 ```html
 <!-- ========== HEADER ========== -->
@@ -67,7 +69,7 @@ Los comentarios en HTML se escriben entre `<!--` y `-->`:
 
 ## Depuración
 
-Comentar código temporalmente para pruebas:
+También sirven para desactivar temporalmente partes del código mientras pruebas algo:
 
 ```html
 <!--
@@ -87,7 +89,7 @@ Comentar código temporalmente para pruebas:
 
 ## TODO y notas
 
-Los comentarios pueden contener notas para desarrolladores:
+Los comentarios pueden contener notas para desarrolladores. Son útiles para dejar pendientes o indicar algo que debe revisarse más tarde:
 
 ```html
 <!-- TODO: agregar enlace a la página de productos -->
@@ -99,7 +101,7 @@ Los comentarios pueden contener notas para desarrolladores:
 
 ## Comentarios condicionales
 
-Para versiones antiguas de Internet Explorer (obsoleto):
+Para versiones antiguas de Internet Explorer (obsoleto). Hoy casi nunca se usan, pero siguen siendo parte de la historia de HTML:
 
 ```html
 <!--[if IE]>
@@ -114,6 +116,8 @@ Para versiones antiguas de Internet Explorer (obsoleto):
 ---
 
 ## Qué no poner en comentarios
+
+Evita usar comentarios para información sensible o texto que debería vivir en otro lugar del código:
 
 ```html
 <!-- MAL: información sensible -->

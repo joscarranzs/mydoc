@@ -17,20 +17,20 @@ Al completar esta guía podrás:
 
 ## La etiqueta p
 
-Define un párrafo de texto:
+Define un párrafo de texto. Es la etiqueta más común para contenido narrativo, explicativo o informativo:
 
 ```html
 <p>Este es un párrafo de texto en HTML.</p>
 <p>Este es otro párrafo. El navegador añade espacio entre párrafos automáticamente.</p>
 ```
 
-Cada `<p>` crea un bloque con margen superior e inferior.
+Cada `<p>` crea un bloque con margen superior e inferior. Por eso el navegador separa visualmente cada párrafo sin que tengas que agregar espacio manual.
 
 ---
 
 ## Saltos de línea
 
-Usa `<br>` para saltos dentro del mismo párrafo:
+Usa `<br>` para saltos dentro del mismo párrafo. Es útil cuando la separación debe mantenerse dentro del mismo bloque de texto, como una dirección o un poema:
 
 ```html
 <p>Primera línea<br>
@@ -38,13 +38,13 @@ Segunda línea<br>
 Tercera línea</p>
 ```
 
-`<br>` es un elemento vacío (no tiene etiqueta de cierre).
+`<br>` es un elemento vacío (no tiene etiqueta de cierre) y no debe usarse para crear espacio entre párrafos completos.
 
 ---
 
 ## Línea horizontal
 
-`<hr>` crea una separación visual:
+`<hr>` crea una separación visual y suele marcar un cambio de tema o de sección:
 
 ```html
 <p>Primera sección</p>
@@ -52,13 +52,13 @@ Tercera línea</p>
 <p>Segunda sección</p>
 ```
 
-También es un elemento vacío.
+También es un elemento vacío. Su función es semántica y visual al mismo tiempo.
 
 ---
 
 ## Espacios en HTML
 
-El navegador colapsa múltiples espacios y saltos de línea:
+El navegador colapsa múltiples espacios y saltos de línea. Eso significa que el formato del archivo no siempre coincide con lo que se ve en pantalla:
 
 ```html
 <!-- Todo esto se ve como una línea -->
@@ -70,7 +70,7 @@ El navegador colapsa múltiples espacios y saltos de línea:
   línea.
 </p>
 
-<!-- Para preservar espacios, usa &nbsp; -->
+<!-- Para preservar espacios, usa &nbsp; cuando sea necesario -->
 <p>Esto&nbsp;&nbsp;&nbsp;tiene&nbsp;tres&nbsp;espacios</p>
 
 <!-- O la etiqueta pre -->
@@ -83,7 +83,7 @@ El navegador colapsa múltiples espacios y saltos de línea:
 
 ## pre
 
-La etiqueta `<pre>` muestra el texto con formato predefinido:
+La etiqueta `<pre>` muestra el texto con formato predefinido. Conserva espacios, saltos de línea e indentación tal como están escritos:
 
 ```html
 <pre>
@@ -93,13 +93,13 @@ La etiqueta `<pre>` muestra el texto con formato predefinido:
 </pre>
 ```
 
-Ideal para código fuente o poesía.
+Ideal para código fuente, poesía o cualquier texto donde la distribución visual sea importante.
 
 ---
 
 ## Etiquetas de texto
 
-Combinar párrafos con otras etiquetas de texto:
+Los párrafos pueden combinarse con otras etiquetas de texto para resaltar partes concretas sin romper la estructura:
 
 ```html
 <p>
@@ -120,6 +120,8 @@ Combinar párrafos con otras etiquetas de texto:
 ---
 
 ## Párrafos con imágenes
+
+Una imagen puede ir dentro de un párrafo cuando forma parte del contenido en línea, aunque conviene usarlo solo si tiene sentido semántico:
 
 ```html
 <p>

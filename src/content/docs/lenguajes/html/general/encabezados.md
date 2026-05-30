@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Jerarquía de encabezados
 
-HTML ofrece seis niveles de encabezados, de mayor a menor importancia:
+HTML ofrece seis niveles de encabezados, de mayor a menor importancia. La jerarquía no es solo visual: también ayuda a organizar el contenido para lectores de pantalla y motores de búsqueda.
 
 ```html
 <h1>Encabezado nivel 1 — Título principal</h1>
@@ -32,7 +32,7 @@ HTML ofrece seis niveles de encabezados, de mayor a menor importancia:
 
 ## Uso correcto de h1
 
-Solo debe haber un `<h1>` por página, que representa el título principal:
+Solo debe haber un `<h1>` por página. Debe representar el tema central del documento, igual que el título de un libro o el encabezado principal de un artículo.
 
 ```html
 <body>
@@ -53,7 +53,7 @@ Solo debe haber un `<h1>` por página, que representa el título principal:
 
 ## SEO y accesibilidad
 
-Los encabezados son importantes para motores de búsqueda y lectores de pantalla:
+Los encabezados son importantes para motores de búsqueda y lectores de pantalla. Una secuencia lógica permite entender rápidamente la estructura del contenido.
 
 ```html
 <!-- Bien: jerarquía lógica -->
@@ -74,11 +74,13 @@ Los encabezados son importantes para motores de búsqueda y lectores de pantalla
 <h1>Sección 2</h1>
 ```
 
+Cuando saltas niveles sin motivo, el documento sigue funcionando, pero pierde claridad. Eso afecta tanto la navegación por teclado como la lectura automática del contenido.
+
 ---
 
 ## Tamaños por defecto
 
-Cada nivel tiene un tamaño de fuente predeterminado:
+Cada nivel tiene un tamaño de fuente predeterminado, pero no debes usar encabezados solo por tamaño. Su función principal es semántica, no visual.
 
 ```html
 <h1 style="font-size: 2em;">h1 — 2em</h1>
@@ -89,11 +91,13 @@ Cada nivel tiene un tamaño de fuente predeterminado:
 <h6 style="font-size: 0.67em;">h6 — 0.67em</h6>
 ```
 
-Estos tamaños se personalizan con CSS.
+Estos tamaños se personalizan con CSS, pero la jerarquía del documento debe mantenerse.
 
 ---
 
 ## Encabezados con enlaces
+
+Los encabezados también pueden contener enlaces, por ejemplo en índices o tablas de contenido:
 
 ```html
 <h2>
