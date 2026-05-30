@@ -17,6 +17,8 @@ Al completar esta guía podrás:
 
 ## Estructura semántica básica
 
+Un layout típico divide la página en zonas reconocibles. La estructura semántica ayuda a entender la intención del contenido:
+
 ```html
 <body>
   <header>Cabecera</header>
@@ -29,6 +31,8 @@ Al completar esta guía podrás:
 ---
 
 ## Layout de una columna
+
+Un layout de una columna es el más simple y sigue siendo muy útil para páginas de contenido, documentación o artículos:
 
 ```html
 <style>
@@ -60,6 +64,8 @@ Al completar esta guía podrás:
 ---
 
 ## Layout de dos columnas
+
+El patrón de dos columnas suele usarse para sidebar + contenido principal, muy común en documentación y blogs:
 
 ```html
 <style>
@@ -98,6 +104,8 @@ Al completar esta guía podrás:
 
 ## Header
 
+El `header` suele incluir identidad del sitio, logo y navegación principal:
+
 ```html
 <header>
   <div class="container">
@@ -115,6 +123,8 @@ Al completar esta guía podrás:
 
 ## Nav
 
+`nav` agrupa enlaces de navegación principal o secundaria:
+
 ```html
 <nav>
   <ul>
@@ -129,6 +139,8 @@ Al completar esta guía podrás:
 ---
 
 ## Main
+
+`main` debe contener el contenido principal único de la página. Idealmente debe haber uno solo por documento:
 
 ```html
 <main>
@@ -147,6 +159,8 @@ Al completar esta guía podrás:
 ---
 
 ## Footer
+
+`footer` suele contener enlaces secundarios, copyright o información de contacto:
 
 ```html
 <footer>
@@ -171,6 +185,8 @@ Al completar esta guía podrás:
 
 ## Box model
 
+El box model define cómo se calcula el tamaño visual de un elemento. Es clave para entender márgenes, padding y bordes:
+
 ```css
 .elemento {
   /* content: el contenido */
@@ -194,6 +210,8 @@ Al completar esta guía podrás:
 ---
 
 ## Resumen
+
+Piensa el layout como una composición de regiones: cabecera, navegación, contenido, soporte y pie.
 
 | Elemento | Rol |
 |---|---|

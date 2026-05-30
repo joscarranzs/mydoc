@@ -17,6 +17,8 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
+`<button>` representa una acción interactiva. A diferencia de `input type="button"`, puede contener texto, iconos y hasta elementos HTML pequeños dentro.
+
 ```html
 <button>Haz clic</button>
 <button type="submit">Enviar</button>
@@ -27,6 +29,8 @@ Al completar esta guía podrás:
 ---
 
 ## Atributo type
+
+El atributo `type` define qué hace el botón dentro de un formulario. Es importante escribirlo siempre para evitar comportamientos inesperados:
 
 ```html
 <!-- submit: envía el formulario (valor por defecto) -->
@@ -39,11 +43,13 @@ Al completar esta guía podrás:
 <button type="button">Calcular</button>
 ```
 
-Siempre especificar `type` si el botón está dentro de un formulario para evitar envíos accidentales.
+Siempre especifica `type` si el botón está dentro de un formulario para evitar envíos accidentales.
 
 ---
 
 ## Atributos importantes
+
+Además de `type`, hay atributos útiles para controlar estado, datos enviados y relación con formularios:
 
 ```html
 <!-- disabled: botón deshabilitado -->
@@ -63,6 +69,8 @@ Siempre especificar `type` si el botón está dentro de un formulario para evita
 
 ## button vs input
 
+`<button>` es más flexible porque permite contenido HTML; `input type="button"` es más simple y solo muestra texto plano:
+
 ```html
 <!-- button: puede contener HTML -->
 <button>
@@ -74,11 +82,13 @@ Siempre especificar `type` si el botón está dentro de un formulario para evita
 <input type="button" value="Guardar">
 ```
 
-Usa `<button>` cuando necesites contenido HTML (iconos, imágenes, texto formateado).
+Usa `<button>` cuando necesites contenido HTML (iconos, imágenes, texto formateado) o más control visual.
 
 ---
 
 ## Botones con JavaScript
+
+Los botones suelen disparar acciones de interfaz: alertas, cambios visuales, validaciones o navegación.
 
 ```html
 <button type="button" onclick="saludar()">Saludar</button>
@@ -99,6 +109,8 @@ Usa `<button>` cuando necesites contenido HTML (iconos, imágenes, texto formate
 ---
 
 ## Estilos CSS básicos
+
+Un botón sin estilo funciona, pero suele necesitar CSS para adaptarse al diseño visual de la interfaz:
 
 ```html
 <style>
@@ -129,6 +141,8 @@ Usa `<button>` cuando necesites contenido HTML (iconos, imágenes, texto formate
 
 ## Botón como enlace
 
+Aunque un botón no es un enlace, a veces se usa para disparar navegación por JavaScript:
+
 ```html
 <!-- Navegar a otra página -->
 <button type="button" onclick="window.location.href='/contacto'">
@@ -144,6 +158,8 @@ Usa `<button>` cuando necesites contenido HTML (iconos, imágenes, texto formate
 ---
 
 ## Resumen
+
+Si el elemento ejecuta una acción, usa `button`. Si el elemento navega, usa `a`.
 
 | Atributo | Descripción |
 |---|---|

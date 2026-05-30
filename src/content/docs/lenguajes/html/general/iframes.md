@@ -17,17 +17,21 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
+`<iframe>` inserta otra página o documento dentro de la página actual. Es útil, pero debe usarse con cuidado porque introduce contenido externo.
+
 ```html
 <iframe src="https://ejemplo.com" title="Descripción">
   Tu navegador no soporta iframes.
 </iframe>
 ```
 
-El contenido entre las etiquetas se muestra si el iframe no es compatible.
+El contenido entre las etiquetas se muestra si el navegador no soporta iframes.
 
 ---
 
 ## Atributos básicos
+
+Siempre añade `title` para describir el contenido incrustado. Eso ayuda a accesibilidad y a entender el iframe sin verlo:
 
 ```html
 <iframe
@@ -42,6 +46,8 @@ El contenido entre las etiquetas se muestra si el iframe no es compatible.
 ---
 
 ## Seguridad
+
+Los iframes pueden ejecutar contenido ajeno, así que conviene limitar permisos cuando sea posible:
 
 ```html
 <!-- allow: permisos específicos -->
@@ -59,7 +65,7 @@ El contenido entre las etiquetas se muestra si el iframe no es compatible.
 </iframe>
 ```
 
-Valores de sandbox:
+Valores de `sandbox`:
 - `allow-scripts`: permite JavaScript
 - `allow-same-origin`: trata como mismo origen
 - `allow-forms`: permite formularios
@@ -70,7 +76,7 @@ Valores de sandbox:
 
 ## srcdoc
 
-Contenido HTML directo sin archivo externo:
+Contenido HTML directo sin archivo externo. Es útil para ejemplos cortos o contenido generado dinámicamente:
 
 ```html
 <iframe
@@ -83,6 +89,8 @@ Contenido HTML directo sin archivo externo:
 ---
 
 ## YouTube
+
+Los servicios como YouTube suelen ofrecer código de embed listo para pegar. Solo revisa dimensiones y permisos:
 
 ```html
 <iframe
@@ -100,6 +108,8 @@ Contenido HTML directo sin archivo externo:
 
 ## Google Maps
 
+Google Maps también se incrusta con iframe. Suele usarse en páginas de contacto:
+
 ```html
 <iframe
   width="600"
@@ -116,6 +126,8 @@ Contenido HTML directo sin archivo externo:
 
 ## loading lazy
 
+`loading="lazy"` retrasa la carga hasta que el iframe se acerca al viewport, mejorando el rendimiento inicial:
+
 ```html
 <!-- Carga el iframe solo cuando está cerca del viewport -->
 <iframe
@@ -130,7 +142,7 @@ Contenido HTML directo sin archivo externo:
 
 ## name como destino
 
-El atributo `name` permite usar el iframe como destino de un enlace:
+El atributo `name` permite usar el iframe como destino de un enlace. Esto evita recargar toda la página cuando solo quieres cambiar una vista integrada:
 
 ```html
 <iframe name="visor" width="800" height="400"></iframe>
@@ -144,6 +156,8 @@ El atributo `name` permite usar el iframe como destino de un enlace:
 ---
 
 ## Resumen
+
+Usa iframes con moderación. Son útiles para incrustar contenido, pero añaden complejidad y potenciales riesgos de seguridad.
 
 | Atributo | Propósito |
 |---|---|

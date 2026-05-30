@@ -17,6 +17,8 @@ Al completar esta guía podrás:
 
 ## Script interno
 
+El script interno sirve para casos pequeños o ejemplos rápidos. El código vive dentro del propio HTML:
+
 ```html
 <script>
   console.log('Hola desde JavaScript');
@@ -24,11 +26,13 @@ Al completar esta guía podrás:
 </script>
 ```
 
-Se puede colocar en `<head>` o al final de `<body>`.
+Se puede colocar en `<head>` o al final de `<body>`, aunque la ubicación afecta al momento de ejecución.
 
 ---
 
 ## Script externo
+
+La forma más común en proyectos reales es usar archivos JavaScript separados:
 
 ```html
 <script src="app.js"></script>
@@ -42,6 +46,8 @@ console.log('Hola desde archivo externo');
 ---
 
 ## Ubicación recomendada
+
+Si el script depende del contenido HTML, colócalo al final del `<body>` o usa `defer`:
 
 ```html
 <!DOCTYPE html>
@@ -64,7 +70,7 @@ console.log('Hola desde archivo externo');
 
 ## defer
 
-El script se descarga en paralelo pero se ejecuta después de parsear el HTML:
+`defer` descarga el script en paralelo pero lo ejecuta después de parsear el HTML:
 
 ```html
 <head>
@@ -81,7 +87,7 @@ Ventajas:
 
 ## async
 
-El script se descarga en paralelo y se ejecuta inmediatamente:
+`async` descarga el script en paralelo y lo ejecuta en cuanto termina de cargar, sin esperar al resto del documento:
 
 ```html
 <head>
@@ -94,6 +100,8 @@ Ideal para scripts independientes como analytics.
 ---
 
 ## defer vs async
+
+La diferencia importa mucho cuando un script depende de otros scripts o del DOM:
 
 ```html
 <!-- defer: ejecuta al final, en orden -->
@@ -115,7 +123,7 @@ Ideal para scripts independientes como analytics.
 
 ## DOMContentLoaded
 
-Ejecutar código cuando el DOM esté listo:
+Ejecutar código cuando el DOM esté listo evita errores al buscar elementos que todavía no existen:
 
 ```html
 <script>
@@ -130,6 +138,8 @@ Ejecutar código cuando el DOM esté listo:
 
 ## Eventos inline
 
+Los eventos inline funcionan, pero mezclan HTML y JavaScript. Para proyectos medianos o grandes, es mejor usar `addEventListener`:
+
 ```html
 <button onclick="alert('Clic!')">Pulsar</button>
 <input type="text" onchange="console.log(this.value)">
@@ -142,7 +152,7 @@ No recomendado para proyectos grandes. Preferir event listeners.
 
 ## type module
 
-Para usar módulos ES6:
+Para usar módulos ES6. Cada archivo puede importar y exportar funciones de forma explícita:
 
 ```html
 <script type="module">
@@ -158,7 +168,7 @@ Para usar módulos ES6:
 
 ## no script
 
-Contenido alternativo si JavaScript está deshabilitado:
+Contenido alternativo si JavaScript está deshabilitado. Es una buena señal de degradación progresiva:
 
 ```html
 <noscript>
@@ -169,6 +179,8 @@ Contenido alternativo si JavaScript está deshabilitado:
 ---
 
 ## Resumen
+
+Elige `defer` para scripts que dependen del DOM, `async` para scripts independientes, y archivos externos para mantener el código ordenado.
 
 | Método | Sintaxis | Cuándo usar |
 |---|---|---|

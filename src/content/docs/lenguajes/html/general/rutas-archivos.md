@@ -17,20 +17,20 @@ Al completar esta guía podrás:
 
 ## Ruta absoluta
 
-URL completa desde el protocolo:
+URL completa desde el protocolo. Funciona fuera del proyecto, pero depende del dominio final:
 
 ```html
 <img src="https://ejemplo.com/imagenes/foto.jpg" alt="Foto">
 <a href="https://ejemplo.com/pagina.html">Enlace</a>
 ```
 
-Siempre funciona, pero cambia si cambia el dominio.
+Siempre funciona mientras la URL exista, pero cambia si cambia el dominio.
 
 ---
 
 ## Ruta relativa desde la raíz
 
-Empieza con `/` y va desde la raíz del sitio:
+Empieza con `/` y va desde la raíz del sitio. Es común cuando trabajas dentro de una misma web:
 
 ```html
 <!-- Sitio: https://midominio.com -->
@@ -44,6 +44,8 @@ Empieza con `/` y va desde la raíz del sitio:
 ---
 
 ## Ruta relativa desde el archivo actual
+
+La ruta relativa depende de la ubicación del archivo actual. Aquí es donde suelen aparecer más errores al empezar:
 
 ```html
 <!-- Estructura de archivos:
@@ -73,7 +75,7 @@ Empieza con `/` y va desde la raíz del sitio:
 
 ## ./ (misma carpeta)
 
-Explícitamente indica la carpeta actual:
+`./` indica explícitamente la carpeta actual. En muchos casos es opcional, pero puede hacer la intención más clara:
 
 ```html
 <!-- ./ es opcional, ambas son equivalentes -->
@@ -85,7 +87,7 @@ Explícitamente indica la carpeta actual:
 
 ## ../ (carpeta padre)
 
-Sube un nivel en la jerarquía:
+`../` sube un nivel en la jerarquía. Es muy útil al enlazar recursos compartidos desde páginas internas:
 
 ```html
 <!-- Estructura:
@@ -106,6 +108,8 @@ Sube un nivel en la jerarquía:
 
 ## ../../ (dos niveles arriba)
 
+Cada `../` sube un nivel. Usa la cantidad necesaria según la profundidad de la carpeta:
+
 ```html
 <!-- Estructura:
   sitio/
@@ -123,6 +127,8 @@ Sube un nivel en la jerarquía:
 ---
 
 ## Organización recomendada
+
+Una estructura de carpetas clara reduce errores de rutas y hace más fácil mantener el proyecto:
 
 ```
 mi-sitio/
@@ -147,6 +153,8 @@ mi-sitio/
 
 ## Errores comunes
 
+La mayoría de errores de rutas vienen de olvidar cuántos niveles hay que subir o desde qué archivo se está enlazando:
+
 ```html
 <!-- Error: falta ../ -->
 <!-- Desde /secciones/contacto.html -->
@@ -161,6 +169,8 @@ mi-sitio/
 ---
 
 ## Resumen
+
+Si trabajas en un sitio real, prioriza rutas relativas bien organizadas para mantener el proyecto portable.
 
 | Ruta | Ejemplo | Significado |
 |---|---|---|

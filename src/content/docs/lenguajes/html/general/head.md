@@ -17,6 +17,8 @@ Al completar esta guía podrás:
 
 ## Estructura completa
 
+`<head>` reúne metadatos y recursos que el navegador necesita antes de mostrar la página:
+
 ```html
 <!DOCTYPE html>
 <html lang="es">
@@ -38,6 +40,8 @@ Al completar esta guía podrás:
 
 ## Meta tags esenciales
 
+Estos son los metadatos mínimos que casi siempre deberías incluir:
+
 ```html
 <!-- Codificación de caracteres -->
 <meta charset="UTF-8">
@@ -55,6 +59,8 @@ Al completar esta guía podrás:
 ---
 
 ## Meta tags SEO
+
+Hay metadatos que ayudan a buscadores, redes sociales y otras herramientas a entender mejor la página:
 
 ```html
 <!-- Palabras clave (ya no relevante para Google) -->
@@ -75,6 +81,8 @@ Al completar esta guía podrás:
 
 ## Open Graph (Facebook, LinkedIn)
 
+Open Graph controla cómo se ve una URL al compartirla en redes sociales o aplicaciones de mensajería:
+
 ```html
 <meta property="og:title" content="Título para redes sociales">
 <meta property="og:description" content="Descripción para compartir">
@@ -88,6 +96,8 @@ Al completar esta guía podrás:
 
 ## Twitter Cards
 
+Twitter Cards sirven para ajustar la vista previa en X/Twitter y plataformas compatibles:
+
 ```html
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Título para Twitter">
@@ -98,6 +108,8 @@ Al completar esta guía podrás:
 ---
 
 ## Link: hojas de estilo
+
+`<link>` se usa para conectar recursos externos. Lo más habitual es cargar CSS y fuentes:
 
 ```html
 <!-- CSS principal -->
@@ -116,6 +128,8 @@ Al completar esta guía podrás:
 
 ## Link: precarga y pre conexión
 
+Estas etiquetas ayudan a mejorar el rendimiento cuando sabes qué recursos vas a necesitar pronto:
+
 ```html
 <!-- Preconexión a origen externo -->
 <link rel="preconnect" href="https://api.ejemplo.com">
@@ -130,6 +144,8 @@ Al completar esta guía podrás:
 ---
 
 ## Link: manifest para PWA
+
+El `manifest` describe cómo se comporta la web cuando se instala como aplicación:
 
 ```html
 <link rel="manifest" href="site.webmanifest">
@@ -153,6 +169,8 @@ Al completar esta guía podrás:
 ---
 
 ## Orden recomendado
+
+Un orden consistente hace el `head` más fácil de leer y mantener:
 
 ```html
 <head>
@@ -179,6 +197,8 @@ Al completar esta guía podrás:
 ---
 
 ## Resumen
+
+En la práctica, `head` afecta a SEO, rendimiento, compartición social y apariencia básica de la pestaña.
 
 | Elemento | Propósito |
 |---|---|
