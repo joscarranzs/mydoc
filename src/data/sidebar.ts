@@ -223,7 +223,122 @@ export const sidebarData: Module[] = [
     title: 'HTML',
     slug: 'lenguajes/html',
     description: 'Lenguaje de marcado para la web.',
-    submodules: [],
+    subcategories: [
+      {
+        title: 'Fundamentos',
+        submodules: [
+          { title: 'Inicio', slug: 'general/inicio', description: 'Visión general de HTML.' },
+          { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es HTML y su historia.' },
+          { title: 'Editores', slug: 'general/editores', description: 'Editores de código recomendados.' },
+          { title: 'Básico', slug: 'general/basico', description: 'Estructura básica de un documento HTML.' },
+          { title: 'Elementos', slug: 'general/elementos', description: 'Etiquetas y elementos HTML.' },
+          { title: 'Atributos', slug: 'general/atributos', description: 'Atributos de elementos HTML.' },
+        ],
+      },
+      {
+        title: 'Texto',
+        submodules: [
+          { title: 'Encabezados', slug: 'general/encabezados', description: 'h1 a h6.' },
+          { title: 'Párrafos', slug: 'general/parrafos', description: 'Etiqueta p y saltos de línea.' },
+          { title: 'Estilos', slug: 'general/estilos', description: 'El atributo style.' },
+          { title: 'Formato', slug: 'general/formato', description: 'Negrita, cursiva, subrayado.' },
+          { title: 'Citas', slug: 'general/citas', description: 'blockquote, q, cite.' },
+          { title: 'Comentarios', slug: 'general/comentarios', description: 'Comentarios en HTML.' },
+        ],
+      },
+      {
+        title: 'Contenido',
+        submodules: [
+          { title: 'Colores', slug: 'general/colores', description: 'Nombres, RGB, HEX, HSL.' },
+          { title: 'CSS', slug: 'general/css', description: 'Vinculación de estilos.' },
+          { title: 'Enlaces', slug: 'general/enlaces', description: 'Hipervínculos con a.' },
+          { title: 'Imágenes', slug: 'general/imagenes', description: 'img, src, alt.' },
+          { title: 'Favicon', slug: 'general/favicon', description: 'Icono de página.' },
+          { title: 'Título de página', slug: 'general/titulo-pagina', description: 'Etiqueta title.' },
+        ],
+      },
+      {
+        title: 'Estructura',
+        submodules: [
+          { title: 'Tablas', slug: 'general/tablas', description: 'table, tr, td, th.' },
+          { title: 'Listas', slug: 'general/listas', description: 'ul, ol, li.' },
+          { title: 'Block e inline', slug: 'general/block-inline', description: 'Elementos de bloque y en línea.' },
+          { title: 'Div', slug: 'general/div', description: 'Contenedor genérico.' },
+          { title: 'Clases', slug: 'general/clases', description: 'El atributo class.' },
+          { title: 'Id', slug: 'general/id', description: 'El atributo id.' },
+        ],
+      },
+      {
+        title: 'Componentes',
+        submodules: [
+          { title: 'Botones', slug: 'general/botones', description: 'button y sus variantes.' },
+          { title: 'Iframes', slug: 'general/iframes', description: 'Incrustar contenido externo.' },
+          { title: 'JavaScript', slug: 'general/javascript', description: 'Script en HTML.' },
+          { title: 'Rutas de archivos', slug: 'general/rutas-archivos', description: 'Rutas absolutas y relativas.' },
+          { title: 'Head', slug: 'general/head', description: 'Meta, title, link.' },
+          { title: 'Layout', slug: 'general/layout', description: 'Estructura de página.' },
+        ],
+      },
+      {
+        title: 'Diseño',
+        submodules: [
+          { title: 'Responsive', slug: 'general/responsive', description: 'Meta viewport.' },
+          { title: 'Código de computadora', slug: 'general/codigo-computadora', description: 'code, pre, kbd.' },
+          { title: 'Semántica', slug: 'general/semantica', description: 'header, nav, main, section.' },
+          { title: 'Guía de estilo', slug: 'general/guia-estilo', description: 'Buenas prácticas HTML.' },
+        ],
+      },
+      {
+        title: 'Símbolos',
+        submodules: [
+          { title: 'Entidades', slug: 'general/entidades', description: 'Códigos de caracteres especiales.' },
+          { title: 'Símbolos', slug: 'general/simbolos', description: 'Símbolos matemáticos y monetarios.' },
+          { title: 'Emojis', slug: 'general/emojis', description: 'Emojis en HTML.' },
+          { title: 'Conjuntos de caracteres', slug: 'general/conjuntos-caracteres', description: 'Charset y codificación.' },
+          { title: 'Codificación URL', slug: 'general/codificacion-url', description: 'Porcentajes en URLs.' },
+          { title: 'vs XHTML', slug: 'general/vs-xhtml', description: 'Diferencias con XHTML.' },
+        ],
+      },
+      {
+        title: 'Formularios',
+        submodules: [
+          { title: 'Formularios', slug: 'general/formularios', description: 'form, action, method.' },
+          { title: 'Atributos de formulario', slug: 'general/atributos-formulario', description: 'target, novalidate, autocomplete.' },
+          { title: 'Elementos de formulario', slug: 'general/elementos-formulario', description: 'input, select, textarea.' },
+          { title: 'Tipos de input', slug: 'general/tipos-input', description: 'text, email, password, number.' },
+          { title: 'Atributos de input', slug: 'general/atributos-input', description: 'placeholder, required, pattern.' },
+          { title: 'Atributos de form input', slug: 'general/atributos-form-input', description: 'formaction, formmethod, formtarget.' },
+        ],
+      },
+      {
+        title: 'Gráficos',
+        submodules: [
+          { title: 'Canvas', slug: 'general/canvas', description: 'Dibujo con canvas.' },
+          { title: 'SVG', slug: 'general/svg', description: 'Gráficos vectoriales.' },
+        ],
+      },
+      {
+        title: 'Multimedia',
+        submodules: [
+          { title: 'Media', slug: 'general/media', description: 'Elementos multimedia.' },
+          { title: 'Video', slug: 'general/video', description: 'video y source.' },
+          { title: 'Audio', slug: 'general/audio', description: 'audio y source.' },
+          { title: 'Plugins', slug: 'general/plugins', description: 'object, embed.' },
+          { title: 'YouTube', slug: 'general/youtube', description: 'Incrustar videos de YouTube.' },
+        ],
+      },
+      {
+        title: 'APIs',
+        submodules: [
+          { title: 'Web APIs', slug: 'general/web-apis', description: 'APIs del navegador en HTML.' },
+          { title: 'Geolocalización', slug: 'general/geolocalizacion', description: 'API de geolocalización.' },
+          { title: 'Drag and Drop', slug: 'general/drag-drop', description: 'Arrastrar y soltar.' },
+          { title: 'Web Storage', slug: 'general/web-storage', description: 'localStorage y sessionStorage.' },
+          { title: 'Web Workers', slug: 'general/web-workers', description: 'Trabajo en segundo plano.' },
+          { title: 'SSE', slug: 'general/sse', description: 'Server-Sent Events.' },
+        ],
+      },
+    ],
   },
   {
     title: 'CSS',
