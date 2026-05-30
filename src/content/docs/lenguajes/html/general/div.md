@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
-`<div>` es un contenedor de bloque sin significado semántico:
+`<div>` es un contenedor de bloque sin significado semántico. Se usa como recurso de agrupación cuando ninguna etiqueta semántica encaja mejor:
 
 ```html
 <div>
@@ -30,7 +30,7 @@ Al completar esta guía podrás:
 
 ## Agrupar para estilos
 
-El uso más común: agrupar elementos para aplicar CSS:
+El uso más común es agrupar elementos para aplicar CSS a un conjunto entero:
 
 ```html
 <style>
@@ -57,6 +57,8 @@ El uso más común: agrupar elementos para aplicar CSS:
 ---
 
 ## Div para layouts
+
+`div` sigue siendo muy útil para layouts, especialmente cuando quieres dividir una interfaz en columnas o zonas visuales:
 
 ```html
 <style>
@@ -93,6 +95,8 @@ El uso más común: agrupar elementos para aplicar CSS:
 
 ## Div vs etiquetas semánticas
 
+Siempre que exista una etiqueta semántica adecuada, conviene preferirla. `div` debe ser la opción genérica, no la primera por defecto:
+
 ```html
 <!-- Sin semántica: difícil de entender -->
 <div id="header">...</div>
@@ -111,7 +115,7 @@ El uso más común: agrupar elementos para aplicar CSS:
 
 ## Div anidados
 
-Útil para estructuras complejas:
+Útil para estructuras complejas. A medida que una interfaz crece, los `div` ayudan a organizar bloques visuales, aunque conviene mantener nombres claros en `class`:
 
 ```html
 <div class="pagina">
@@ -133,7 +137,7 @@ El uso más común: agrupar elementos para aplicar CSS:
 
 ## Div sin clase
 
-Un div sin atributos solo añade un salto de bloque:
+Un `div` sin atributos solo añade un salto de bloque. Sin CSS o semántica, no aporta significado por sí mismo:
 
 ```html
 <p>Texto antes</p>
@@ -148,6 +152,8 @@ Sin CSS, el div no tiene efecto visual más allá del comportamiento de bloque.
 ---
 
 ## Centrar un div
+
+Una técnica clásica es usar un ancho fijo y `margin: 0 auto` para centrar horizontalmente un contenedor:
 
 ```html
 <div style="
@@ -164,6 +170,8 @@ Sin CSS, el div no tiene efecto visual más allá del comportamiento de bloque.
 ---
 
 ## Resumen
+
+Usa `div` para agrupar y maquetar, pero no para describir contenido cuando exista una etiqueta más precisa.
 
 | Característica | Descripción |
 |---|---|

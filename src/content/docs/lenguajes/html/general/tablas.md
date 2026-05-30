@@ -17,6 +17,8 @@ Al completar esta guía podrás:
 
 ## Estructura básica
 
+Una tabla representa datos organizados en filas y columnas. Úsala cuando la información tenga una relación clara entre campos, como inventarios, horarios o listas comparativas.
+
 ```html
 <table>
   <tr>
@@ -41,7 +43,7 @@ Al completar esta guía podrás:
 
 ## table
 
-Define la tabla. Con bordes por defecto o personalizados:
+Define la tabla completa. Normalmente se combina con CSS para controlar bordes, separación y alineación:
 
 ```html
 <table style="border-collapse: collapse; width: 100%;">
@@ -53,7 +55,7 @@ Define la tabla. Con bordes por defecto o personalizados:
 
 ## tr — Fila
 
-Cada `<tr>` es una fila de la tabla:
+Cada `<tr>` es una fila de la tabla. Dentro de una fila van celdas de encabezado o de datos:
 
 ```html
 <table>
@@ -72,7 +74,7 @@ Cada `<tr>` es una fila de la tabla:
 
 ## th — Encabezado
 
-Define una celda de encabezado (negrita y centrada por defecto):
+Define una celda de encabezado. Ayuda a describir qué contiene cada columna o fila:
 
 ```html
 <tr>
@@ -86,7 +88,7 @@ Define una celda de encabezado (negrita y centrada por defecto):
 
 ## td — Celda
 
-Define una celda de datos:
+Define una celda de datos. Es la celda normal que contiene el contenido de la tabla:
 
 ```html
 <tr>
@@ -100,7 +102,7 @@ Define una celda de datos:
 
 ## colspan
 
-Combina columnas:
+Combina columnas cuando una celda debe ocupar más de una columna:
 
 ```html
 <table>
@@ -120,7 +122,7 @@ Combina columnas:
 
 ## rowspan
 
-Combina filas:
+Combina filas cuando una celda debe extenderse verticalmente en varias filas:
 
 ```html
 <table>
@@ -140,7 +142,7 @@ Combina filas:
 
 ## caption
 
-Título de la tabla, visible para el usuario:
+Título de la tabla, visible para el usuario. Es una forma sencilla de explicar de qué trata la tabla:
 
 ```html
 <table>
@@ -160,7 +162,7 @@ Título de la tabla, visible para el usuario:
 
 ## thead, tbody, tfoot
 
-Agrupan filas por sección:
+Agrupan filas por sección. No cambian demasiado la apariencia, pero mejoran la semántica y facilitan estilos o scripts posteriores:
 
 ```html
 <table>
@@ -192,6 +194,8 @@ Agrupan filas por sección:
 ---
 
 ## Resumen
+
+En tablas reales, `th`, `caption`, `thead` y `tbody` ayudan mucho a la accesibilidad y al mantenimiento del código.
 
 | Etiqueta | Propósito |
 |---|---|

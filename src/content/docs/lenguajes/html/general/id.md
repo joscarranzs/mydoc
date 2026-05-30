@@ -17,13 +17,13 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
-El atributo `id` asigna un identificador único a un elemento:
+El atributo `id` asigna un identificador único a un elemento. Piensa en él como una etiqueta exclusiva para una sola pieza de la página:
 
 ```html
 <p id="introduccion">Este es el primer párrafo de la introducción.</p>
 ```
 
-En CSS se selecciona con `#`:
+En CSS se selecciona con `#`. Como el id es único, el selector apunta a un solo elemento:
 
 ```css
 #introduccion {
@@ -36,7 +36,7 @@ En CSS se selecciona con `#`:
 
 ## Unicidad
 
-Cada id debe ser único en la página. No puede haber dos elementos con el mismo id:
+Cada `id` debe ser único en la página. Duplicarlo puede causar errores al seleccionar elementos o enlazar anclas:
 
 ```html
 <!-- Correcto: cada id es único -->
@@ -53,6 +53,8 @@ Cada id debe ser único en la página. No puede haber dos elementos con el mismo
 
 ## id vs class
 
+`id` y `class` parecen similares, pero sirven para cosas distintas: uno identifica, el otro reutiliza.
+
 | Característica | id | class |
 |---|---|---|
 | Unicidad | Único por página | Puede repetirse |
@@ -66,7 +68,7 @@ Cada id debe ser único en la página. No puede haber dos elementos con el mismo
 
 ## Anclas internas
 
-El uso más común de id: navegar a secciones de la página:
+El uso más común de `id` es navegar a secciones de la página con anclas internas:
 
 ```html
 <nav>
@@ -95,7 +97,7 @@ El uso más común de id: navegar a secciones de la página:
 
 ## id con JavaScript
 
-Seleccionar un elemento por id para manipularlo:
+Seleccionar un elemento por id es muy común cuando quieres manipular un nodo concreto:
 
 ```html
 <p id="mensaje">Texto original</p>
@@ -114,7 +116,7 @@ Seleccionar un elemento por id para manipularlo:
 
 ## id para formularios
 
-El atributo `for` de `<label>` se vincula con el id del `<input>`:
+El atributo `for` de `<label>` se vincula con el `id` del `<input>`. Esto mejora accesibilidad y hace clicable la etiqueta:
 
 ```html
 <label for="nombre">Nombre:</label>
@@ -134,7 +136,7 @@ El atributo `for` de `<label>` se vincula con el id del `<input>`:
 
 ## id en URLs
 
-Se puede enlazar a un id desde otra página:
+Se puede enlazar a un `id` desde otra página o desde la misma URL:
 
 ```html
 <!-- Desde otra página -->
@@ -154,7 +156,7 @@ Se puede enlazar a un id desde otra página:
 
 ## Fragmentos de URL
 
-El id aparece en la barra de direcciones:
+El `id` aparece en la barra de direcciones cuando navegas a una sección concreta:
 
 ```
 https://ejemplo.com/pagina.html#contacto
@@ -165,6 +167,8 @@ https://ejemplo.com/pagina.html#contacto
 ---
 
 ## Resumen
+
+Usa `id` para elementos únicos, enlaces internos y referencias directas desde JavaScript.
 
 | Aspecto | Descripción |
 |---|---|

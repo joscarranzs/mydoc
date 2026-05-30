@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Elementos de bloque
 
-Ocupan todo el ancho disponible y empiezan en nueva línea:
+Ocupan todo el ancho disponible y empiezan en nueva línea. Suelen usarse para agrupar secciones o párrafos completos:
 
 ```html
 <div>Bloque</div>
@@ -35,7 +35,7 @@ Ocupan todo el ancho disponible y empiezan en nueva línea:
 
 ## Elementos en línea
 
-Ocupan solo el ancho necesario y fluyen con el texto:
+Ocupan solo el ancho necesario y fluyen con el texto. Son ideales para contenido pequeño dentro de frases:
 
 ```html
 <span>Texto</span>
@@ -53,6 +53,8 @@ Ocupan solo el ancho necesario y fluyen con el texto:
 ---
 
 ## Comportamiento visual
+
+La diferencia se ve mejor cuando los colocas uno junto a otro:
 
 ```html
 <!-- Elementos de bloque: cada uno en su propia línea -->
@@ -72,6 +74,8 @@ Ocupan solo el ancho necesario y fluyen con el texto:
 
 ## Anidamiento correcto
 
+Las reglas de anidamiento suelen ser simples: los elementos de bloque contienen bien a los en línea, pero no siempre al revés.
+
 ```html
 <!-- Correcto: block contiene inline -->
 <div>
@@ -89,6 +93,8 @@ Ocupan solo el ancho necesario y fluyen con el texto:
 ---
 
 ## Anidamiento incorrecto
+
+Si rompes estas reglas, el navegador puede corregir el HTML, pero el resultado será impredecible o semánticamente incorrecto.
 
 ```html
 <!-- Incorrecto: inline contiene block -->
@@ -111,7 +117,7 @@ Ocupan solo el ancho necesario y fluyen con el texto:
 
 ## display con CSS
 
-Se puede cambiar el comportamiento con CSS:
+Se puede cambiar el comportamiento con CSS. Esto es útil cuando quieres adaptar un elemento sin cambiar su etiqueta:
 
 ```html
 <style>
@@ -140,6 +146,8 @@ Se puede cambiar el comportamiento con CSS:
 
 ## display: none vs visibility: hidden
 
+Ambas opciones ocultan elementos, pero no hacen lo mismo. Una elimina el espacio y la otra lo conserva:
+
 ```html
 <!-- invisible y no ocupa espacio -->
 <div style="display: none;">No se ve ni ocupa espacio</div>
@@ -154,6 +162,8 @@ Se puede cambiar el comportamiento con CSS:
 ---
 
 ## Resumen
+
+Cuando tengas dudas, piensa en el flujo del contenido: bloque para agrupar, inline para acompañar texto, inline-block para casos intermedios.
 
 | Característica | Bloque | En línea | inline-block |
 |---|---|---|---|

@@ -17,7 +17,7 @@ Al completar esta guía podrás:
 
 ## Lista desordenada (ul)
 
-Elementos sin orden específico, con viñetas:
+Elementos sin orden específico, con viñetas. Úsalas cuando el orden no cambie el significado:
 
 ```html
 <ul>
@@ -31,7 +31,7 @@ Elementos sin orden específico, con viñetas:
 
 ## Lista ordenada (ol)
 
-Elementos numerados:
+Elementos numerados. Son útiles cuando los pasos o la secuencia sí importan:
 
 ```html
 <ol>
@@ -45,7 +45,7 @@ Elementos numerados:
 
 ## Listas anidadas
 
-Listas dentro de listas:
+Las listas pueden contener sublistas. Esto sirve para clasificar información por categorías o subcategorías:
 
 ```html
 <ul>
@@ -95,7 +95,7 @@ Listas dentro de listas:
 
 ## Lista de descripción (dl)
 
-Pares término-definición:
+Pares término-definición. Se usa para glosarios, definiciones técnicas o preguntas frecuentes breves:
 
 ```html
 <dl>
@@ -114,6 +114,8 @@ Pares término-definición:
 
 ## Estilo de viñetas con CSS
 
+Las viñetas pueden personalizarse con CSS cuando el diseño lo requiere:
+
 ```html
 <ul style="list-style-type: disc;">   <!-- Círculo lleno (defecto) -->
 <ul style="list-style-type: circle;"> <!-- Círculo vacío -->
@@ -131,7 +133,7 @@ Pares término-definición:
 
 ## Listas en navegación
 
-Combinadas con enlaces para menús:
+Las listas son una base muy común para menús de navegación porque agrupan enlaces de forma ordenada y accesible:
 
 ```html
 <nav>

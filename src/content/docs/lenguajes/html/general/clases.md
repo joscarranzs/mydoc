@@ -17,13 +17,13 @@ Al completar esta guía podrás:
 
 ## Sintaxis
 
-El atributo `class` asigna una o más clases a un elemento:
+El atributo `class` asigna una o más clases a un elemento. Es la base para reutilizar estilos y seleccionar grupos de elementos:
 
 ```html
 <p class="destacado">Este párrafo tiene estilo de clase.</p>
 ```
 
-En CSS se seleccionan con un punto (`.`):
+En CSS se seleccionan con un punto (`.`). Una clase puede reutilizarse en muchos elementos:
 
 ```css
 .destacado {
@@ -37,7 +37,7 @@ En CSS se seleccionan con un punto (`.`):
 
 ## Múltiples clases
 
-Un elemento puede tener varias clases separadas por espacio:
+Un elemento puede tener varias clases separadas por espacio. Esto permite mezclar estilos base y variantes:
 
 ```html
 <p class="texto-grande color-azul margen-inferior">
@@ -55,7 +55,7 @@ Un elemento puede tener varias clases separadas por espacio:
 
 ## Clases reutilizables
 
-Las clases están diseñadas para reutilizarse:
+Las clases están diseñadas para reutilizarse. Es una de las razones por las que `class` es más flexible que `id`:
 
 ```html
 <ul>
@@ -77,7 +77,7 @@ Las clases están diseñadas para reutilizarse:
 
 ## Combinación de clases
 
-Las clases se combinan para crear variaciones:
+Las clases se combinan para crear variaciones sin duplicar estilos:
 
 ```html
 <button class="btn btn-primario">Guardar</button>
@@ -102,7 +102,7 @@ Las clases se combinan para crear variaciones:
 
 ## Clases en diferentes elementos
 
-La misma clase funciona en distintos tipos de elemento:
+La misma clase funciona en distintos tipos de elemento. Eso facilita crear patrones visuales consistentes:
 
 ```html
 <h2 class="resaltado">Título resaltado</h2>
@@ -122,7 +122,7 @@ La misma clase funciona en distintos tipos de elemento:
 
 ## Clases con descendencia
 
-Seleccionar elementos dentro de una clase:
+Seleccionar elementos dentro de una clase ayuda a estilizar componentes completos sin afectar al resto de la página:
 
 ```css
 .tarjeta {
@@ -149,7 +149,7 @@ Seleccionar elementos dentro de una clase:
 
 ## Clases para JavaScript
 
-Las clases también se usan para seleccionar elementos con JavaScript:
+Las clases también se usan para seleccionar elementos con JavaScript. Esto es útil cuando necesitas actuar sobre varios elementos a la vez:
 
 ```html
 <button class="btn-accion" data-id="1">Acción 1</button>
@@ -166,7 +166,7 @@ Las clases también se usan para seleccionar elementos con JavaScript:
 
 ## classList (JavaScript)
 
-Para manipular clases dinámicamente:
+`classList` permite agregar, quitar o alternar clases de forma dinámica sin reescribir el atributo completo:
 
 ```html
 <div id="mensaje" class="alerta">Mensaje importante</div>
@@ -191,6 +191,8 @@ Para manipular clases dinámicamente:
 ---
 
 ## Resumen
+
+Usa `class` cuando el estilo o el comportamiento debe repetirse en varios elementos.
 
 | Característica | class | id |
 |---|---|---|
