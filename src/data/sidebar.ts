@@ -132,7 +132,92 @@ export const sidebarData: Module[] = [
     title: 'TypeScript',
     slug: 'lenguajes/typescript',
     description: 'JavaScript con tipos estáticos.',
-    submodules: [],
+    subcategories: [
+      {
+        title: 'Fundamentos',
+        submodules: [
+          { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es TypeScript y por qué usarlo.' },
+          { title: 'Primeros pasos', slug: 'general/primeros-pasos', description: 'Instalación y configuración inicial.' },
+          { title: 'Tipos simples', slug: 'general/tipos-simples', description: 'Tipos primitivos en TypeScript.' },
+          { title: 'Explícito e inferencia', slug: 'general/explicito-inferencia', description: 'Anotaciones y deducción de tipos.' },
+          { title: 'Tipos especiales', slug: 'general/tipos-especiales', description: 'any, unknown, void, never.' },
+        ],
+      },
+      {
+        title: 'Tipos',
+        submodules: [
+          { title: 'Arrays', slug: 'general/arrays', description: 'Tipos para arreglos.' },
+          { title: 'Tuplas', slug: 'general/tuplas', description: 'Arreglos de longitud fija.' },
+          { title: 'Tipos objeto', slug: 'general/tipos-objeto', description: 'Estructuras con propiedades tipadas.' },
+          { title: 'Enums', slug: 'general/enums', description: 'Conjuntos de valores nombrados.' },
+          { title: 'Tipos unión', slug: 'general/tipos-union', description: 'Valores que pueden ser de varios tipos.' },
+          { title: 'Tipos literales', slug: 'general/tipos-literales', description: 'Valores exactos como tipos.' },
+        ],
+      },
+      {
+        title: 'Estructuras',
+        submodules: [
+          { title: 'Alias e interfaces', slug: 'general/alias-interfaces', description: 'type vs interface.' },
+          { title: 'Funciones', slug: 'general/funciones', description: 'Parámetros y retorno tipados.' },
+          { title: 'Casting', slug: 'general/casting', description: 'Conversión de tipos.' },
+          { title: 'Clases', slug: 'general/clases', description: 'POO con tipos en TypeScript.' },
+          { title: 'Namespaces', slug: 'general/namespaces', description: 'Organización interna de código.' },
+        ],
+      },
+      {
+        title: 'Genéricos',
+        submodules: [
+          { title: 'Genéricos básicos', slug: 'general/genericos-basicos', description: 'Tipos parametrizados.' },
+          { title: 'Tipos de utilidad', slug: 'general/tipos-utilidad', description: 'Partial, Required, Pick, Omit y más.' },
+          { title: 'Keyof', slug: 'general/keyof', description: 'Operador de claves de tipo.' },
+          { title: 'Tipos condicionales', slug: 'general/tipos-condicionales', description: 'Tipos que dependen de condiciones.' },
+          { title: 'Tipos mapeados', slug: 'general/tipos-mapeados', description: 'Transformar tipos existentes.' },
+        ],
+      },
+      {
+        title: 'Avanzado',
+        submodules: [
+          { title: 'Tipos avanzados', slug: 'general/tipos-avanzados', description: 'Técnicas avanzadas de tipos.' },
+          { title: 'Type Guards', slug: 'general/type-guards', description: 'Estrechar tipos en tiempo de ejecución.' },
+          { title: 'Inferencia de tipos', slug: 'general/inferencia-tipos', description: 'Cómo TypeScript deduce tipos.' },
+          { title: 'Firmas de índice', slug: 'general/firmas-indice', description: 'Propiedades dinámicas en objetos.' },
+          { title: 'Fusión de declaraciones', slug: 'general/fusion-declaraciones', description: 'Combinar múltiples declaraciones.' },
+        ],
+      },
+      {
+        title: 'Configuración',
+        submodules: [
+          { title: 'Configuración', slug: 'general/configuracion', description: 'El archivo tsconfig.json.' },
+          { title: 'Definitely Typed', slug: 'general/definitely-typed', description: 'Tipos para librerías JS.' },
+          { title: 'Actualizaciones TS5', slug: 'general/actualizaciones-ts5', description: 'Novedades de TypeScript 5.' },
+          { title: 'Null', slug: 'general/null', description: 'null, undefined y strictNullChecks.' },
+        ],
+      },
+      {
+        title: 'Entornos',
+        submodules: [
+          { title: 'Node.js', slug: 'general/nodejs', description: 'TypeScript en el servidor.' },
+          { title: 'React', slug: 'general/react', description: 'TypeScript con React.' },
+          { title: 'Herramientas', slug: 'general/herramientas', description: 'Linters, bundlers y testing.' },
+          { title: 'Decoradores', slug: 'general/decoradores', description: 'Modificar clases y miembros.' },
+        ],
+      },
+      {
+        title: 'Práctico',
+        submodules: [
+          { title: 'Asíncrono', slug: 'general/asincrono', description: 'Promesas y async/await tipados.' },
+          { title: 'Manejo de errores', slug: 'general/manejo-errores', description: 'Errores tipados y try/catch.' },
+          { title: 'Mejores prácticas', slug: 'general/mejores-practicas', description: 'Buenas prácticas con TypeScript.' },
+        ],
+      },
+      {
+        title: 'Migración',
+        submodules: [
+          { title: 'JS Projects', slug: 'general/js-projects', description: 'Integrar TS en proyectos JS.' },
+          { title: 'Migración', slug: 'general/migracion', description: 'Migrar de JS a TypeScript.' },
+        ],
+      },
+    ],
   },
   {
     title: 'HTML',
