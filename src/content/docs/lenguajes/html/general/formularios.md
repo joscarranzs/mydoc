@@ -166,58 +166,14 @@ Campos obligatorios:
 
 ---
 
-## target
-
-Controla dónde se muestra la respuesta del formulario:
-
-```html
-<!-- _self: misma pestaña (defecto) -->
-<form action="/procesar" target="_self">
-
-<!-- _blank: nueva pestaña -->
-<form action="/procesar" target="_blank">
-
-<!-- _parent: marco padre -->
-<form action="/procesar" target="_parent">
-
-<!-- _top: ventana completa -->
-<form action="/procesar" target="_top">
-
-<!-- iframe con nombre -->
-<iframe name="resultado"></iframe>
-<form action="/procesar" target="resultado">
-```
-
----
-
-## novalidate
-
-Desactiva la validación nativa del navegador:
-
-```html
-<!-- Sin validación -->
-<form action="/procesar" novalidate>
-  <input type="email" required>
-  <input type="url">
-  <button type="submit">Enviar sin validar</button>
-</form>
-```
-
-Útil cuando la validación se maneja con JavaScript.
-
----
-
 ## Resumen
 
 | Atributo | Descripción |
 |---|---|
 | `action` | URL de destino de los datos |
 | `method` | GET o POST |
-| `target` | Dónde mostrar la respuesta |
-| `novalidate` | Desactiva validación nativa |
 | `name` | Identificador del campo (clave valor) |
 | `required` | Campo obligatorio |
-| `autocomplete` | Sugerencias automáticas |
 | `fieldset` | Agrupación visual de campos |
 | `legend` | Título del fieldset |
 
