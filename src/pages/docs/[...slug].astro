@@ -60,10 +60,19 @@ interface TopicItem {
 
 const allTopics: TopicItem[] = [];
 for (const mod of sidebarData) {
-  for (const sub of getAllSubmodules(mod)) {
+  const subs = getAllSubmodules(mod);
+  if (subs.length > 0) {
+    for (const sub of subs) {
+      allTopics.push({
+        title: sub.title,
+        slug: `${mod.slug}/${sub.slug}`,
+        moduleSlug: mod.slug,
+      });
+    }
+  } else {
     allTopics.push({
-      title: sub.title,
-      slug: `${mod.slug}/${sub.slug}`,
+      title: mod.title,
+      slug: mod.slug,
       moduleSlug: mod.slug,
     });
   }
