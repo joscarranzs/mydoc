@@ -47,7 +47,12 @@
   }
 
   .prose-custom pre {
-    @apply bg-swift-elevated border border-swift-border rounded-xl;
+    @apply border border-swift-border rounded-xl;
+    background: #1a1a26 !important;
+  }
+
+  .prose-custom pre code {
+    @apply bg-transparent p-0 text-sm;
   }
 
   .prose-custom blockquote {

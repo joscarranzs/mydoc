@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopicNav from '../../components/TopicNav.astro';
+---
+
+<BaseLayout title="Python" description="Tutorial completo de Python">
+  <div class="mx-auto max-w-3xl space-y-5">
+    <p class="section-label">Python</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+      Tutorial de Python.
+    </h1>
+    <p class="text-lg leading-relaxed text-swift-muted sm:text-xl">
+      Python es un lenguaje versátil y potente. Aprende desde fundamentos hasta POO, bibliotecas científicas y bases de datos.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 max-w-5xl">
+    <TopicNav currentSlug="python" />
+  </div>
+</BaseLayout>
