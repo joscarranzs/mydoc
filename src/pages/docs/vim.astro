@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopicNav from '../../components/TopicNav.astro';
+---
+
+<BaseLayout title="Vim / Neovim" description="Tutorial completo de Vim y Neovim">
+  <div class="mx-auto max-w-3xl space-y-5">
+    <p class="section-label">Vim / Neovim</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+      Tutorial de Vim &amp; Neovim.
+    </h1>
+    <p class="text-lg leading-relaxed text-swift-muted sm:text-xl">
+      El editor de texto modal más potente del ecosistema Unix. Aprende desde la filosofía del
+      modal editing hasta la automatización con Lua, LSP y plugins.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 max-w-5xl">
+    <TopicNav currentSlug="vim" />
+  </div>
+</BaseLayout>

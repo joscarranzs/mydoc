@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { Icon } from 'astro-icon/components';
+import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
   title: string;
@@ -26,6 +27,7 @@ const { title, description } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <ClientRouter />
     <title>{title} · mydocs</title>
   </head>
   <body>

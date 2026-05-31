@@ -460,6 +460,198 @@ export const sidebarModules: SidebarModule[] = [
     ],
   },
   {
+    title: 'Vim / Neovim',
+    slug: 'vim',
+    subcategories: [
+      {
+        title: '1. Fundamentos',
+        children: [
+          { title: 'FILOSOFÍA', slug: 'fundamentals/philosophy' },
+          { title: 'MODOS', slug: 'fundamentals/modes' },
+          { title: 'PRIMEROS PASOS', slug: 'fundamentals/getting-started' },
+          { title: 'AYUDA Y DOCUMENTACIÓN', slug: 'fundamentals/help' },
+          { title: 'CONFIGURACIÓN MÍNIMA', slug: 'fundamentals/minimal-config' },
+        ],
+      },
+      {
+        title: '2. Navegación',
+        children: [
+          { title: 'MOVIMIENTO BÁSICO', slug: 'navigation/basic-motion' },
+          { title: 'PALABRAS', slug: 'navigation/words' },
+          { title: 'PANTALLA Y SCROLL', slug: 'navigation/screen-scroll' },
+          { title: 'BÚSQUEDA COMO MOVIMIENTO', slug: 'navigation/search-motion' },
+          { title: 'f/t MOTIONS', slug: 'navigation/ft-motions' },
+          { title: 'MOVIMIENTO ESTRUCTURAL', slug: 'navigation/structural' },
+          { title: 'SALTOS Y MARCAS', slug: 'navigation/jumps-marks' },
+        ],
+      },
+      {
+        title: '3. Edición',
+        children: [
+          { title: 'INSERCIÓN', slug: 'editing/insertion' },
+          { title: 'ELIMINACIÓN', slug: 'editing/deletion' },
+          { title: 'CAMBIO', slug: 'editing/change' },
+          { title: 'SUSTITUCIÓN Y CASE', slug: 'editing/substitution-case' },
+          { title: 'HISTORIAL', slug: 'editing/history' },
+          { title: 'OPERADORES', slug: 'editing/operators' },
+          { title: 'INDENTACIÓN', slug: 'editing/indentation' },
+        ],
+      },
+      {
+        title: '4. Text Objects',
+        children: [
+          { title: 'PALABRAS', slug: 'text-objects/words' },
+          { title: 'DELIMITADORES', slug: 'text-objects/delimiters' },
+          { title: 'COMILLAS', slug: 'text-objects/quotes' },
+          { title: 'BLOQUES', slug: 'text-objects/blocks' },
+        ],
+      },
+      {
+        title: '5. Modo Visual',
+        children: [
+          { title: 'CHARACTER VISUAL', slug: 'visual-mode/character-visual' },
+          { title: 'LINE VISUAL', slug: 'visual-mode/line-visual' },
+          { title: 'BLOCK VISUAL', slug: 'visual-mode/block-visual' },
+          { title: 'OPERACIONES VISUALES', slug: 'visual-mode/visual-operations' },
+        ],
+      },
+      {
+        title: '6. Registros y Macros',
+        children: [
+          { title: 'REGISTROS', slug: 'registers-macros/registers' },
+          { title: 'CLIPBOARD', slug: 'registers-macros/clipboard' },
+          { title: 'MACROS', slug: 'registers-macros/macros' },
+          { title: 'HISTORIAL', slug: 'registers-macros/history' },
+        ],
+      },
+      {
+        title: '7. Búsqueda y Sustitución',
+        children: [
+          { title: 'SEARCH PATTERNS', slug: 'search-substitute/search' },
+          { title: 'REGEX', slug: 'search-substitute/regex' },
+          { title: 'SUSTITUCIÓN', slug: 'search-substitute/substitute' },
+          { title: 'COMANDOS GLOBALES', slug: 'search-substitute/global-commands' },
+        ],
+      },
+      {
+        title: '8. Buffers, Ventanas y Tabs',
+        children: [
+          { title: 'BUFFERS', slug: 'buffers-windows-tabs/buffers' },
+          { title: 'VENTANAS', slug: 'buffers-windows-tabs/windows' },
+          { title: 'TABS', slug: 'buffers-windows-tabs/tabs' },
+          { title: 'ARGUMENT LIST', slug: 'buffers-windows-tabs/arglist' },
+        ],
+      },
+      {
+        title: '9. Archivos y Shell',
+        children: [
+          { title: 'ABRIR Y GUARDAR', slug: 'files-shell/open-save' },
+          { title: 'EXPLORADORES', slug: 'files-shell/explorers' },
+          { title: 'COMANDOS EXTERNOS', slug: 'files-shell/external-commands' },
+          { title: 'GIT', slug: 'files-shell/git' },
+        ],
+      },
+      {
+        title: '10. Folding',
+        children: [
+          { title: 'CREAR PLIEGUES', slug: 'folding/create' },
+          { title: 'MANIPULAR PLIEGUES', slug: 'folding/manipulate' },
+          { title: 'MÉTODOS DE PLIEGUE', slug: 'folding/methods' },
+        ],
+      },
+      {
+        title: '11. Quickfix, Location y Grep',
+        children: [
+          { title: 'QUICKFIX', slug: 'quickfix-location/quickfix' },
+          { title: 'LOCATION LIST', slug: 'quickfix-location/location-list' },
+          { title: 'GREP INTERNO', slug: 'quickfix-location/grep' },
+        ],
+      },
+      {
+        title: '12. Autocompletado',
+        children: [
+          { title: 'KEYWORD COMPLETION', slug: 'autocompletion/keyword-completion' },
+          { title: 'CTRL-X SUBMODE', slug: 'autocompletion/ctrl-x-submode' },
+          { title: 'LSP COMPLETION', slug: 'autocompletion/lsp-completion' },
+        ],
+      },
+      {
+        title: '13. Configuración',
+        children: [
+          { title: 'OPTIONS', slug: 'configuration/options' },
+          { title: 'KEYMAPS', slug: 'configuration/keymaps' },
+          { title: 'AUTOCMDS', slug: 'configuration/autocommands' },
+          { title: 'SESIONES Y VISTAS', slug: 'configuration/sessions' },
+          { title: 'DIAGNÓSTICO', slug: 'configuration/diagnostics' },
+        ],
+      },
+      {
+        title: '14. Vimscript',
+        children: [
+          { title: 'VARIABLES Y TIPOS', slug: 'vimscript/variables' },
+          { title: 'CONTROL DE FLUJO', slug: 'vimscript/control' },
+          { title: 'FUNCIONES', slug: 'vimscript/functions' },
+          { title: 'COMANDOS PERSONALIZADOS', slug: 'vimscript/custom-commands' },
+          { title: 'EXPRESIONES', slug: 'vimscript/expressions' },
+        ],
+      },
+      {
+        title: '15. Lua (Neovim)',
+        children: [
+          { title: 'API LUA', slug: 'lua/lua-api' },
+          { title: 'CONFIGURACIÓN', slug: 'lua/configuration' },
+          { title: 'KEYMAPS LUA', slug: 'lua/keymaps' },
+          { title: 'AUTOCMDS LUA', slug: 'lua/autocmds' },
+          { title: 'MÓDULOS', slug: 'lua/modules' },
+        ],
+      },
+      {
+        title: '16. LSP',
+        children: [
+          { title: 'SETUP LSP', slug: 'lsp/setup' },
+          { title: 'NAVEGACIÓN LSP', slug: 'lsp/navigation' },
+          { title: 'DIAGNÓSTICOS LSP', slug: 'lsp/diagnostics-lsp' },
+          { title: 'ACCIONES LSP', slug: 'lsp/actions' },
+        ],
+      },
+      {
+        title: '17. Treesitter',
+        children: [
+          { title: 'PARSERS', slug: 'treesitter/parsers' },
+          { title: 'HIGHLIGHTING', slug: 'treesitter/highlighting' },
+          { title: 'TEXT OBJECTS', slug: 'treesitter/text-objects-ts' },
+        ],
+      },
+      {
+        title: '18. Plugins y Ecosistema',
+        children: [
+          { title: 'GESTORES DE PLUGINS', slug: 'plugins/plugin-managers' },
+          { title: 'TELESCOPE', slug: 'plugins/telescope' },
+          { title: 'PLUGINS ESENCIALES', slug: 'plugins/essentials' },
+          { title: 'PLUGINS UI', slug: 'plugins/ui' },
+          { title: 'PLUGINS GIT', slug: 'plugins/git-plugins' },
+        ],
+      },
+      {
+        title: '19. Terminal Integrado',
+        children: [
+          { title: 'TERMINAL BUFFERS', slug: 'terminal/terminal-buffers' },
+          { title: 'TERMINAL MODE', slug: 'terminal/terminal-mode' },
+          { title: 'INTEGRACIÓN', slug: 'terminal/integration' },
+        ],
+      },
+      {
+        title: '20. Avanzado',
+        children: [
+          { title: 'OPERATOR-PENDING', slug: 'advanced/operator-pending' },
+          { title: 'JOBS Y ASYNC', slug: 'advanced/jobs-async' },
+          { title: 'REMOTE PLUGINS', slug: 'advanced/remote-plugins' },
+          { title: 'DESARROLLO DE PLUGINS', slug: 'advanced/plugin-dev' },
+        ],
+      },
+    ],
+  },
+  {
     title: 'Python',
     slug: 'python',
     subcategories: [
