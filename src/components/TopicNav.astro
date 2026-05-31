@@ -1,0 +1,49 @@
+---
+import { sidebarModules } from '../data/sidebar';
+
+export interface Props {
+  currentSlug: string;
+}
+
+const base = (import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`);
+const { currentSlug } = Astro.props;
+const mod = sidebarModules.find((m) => currentSlug.startsWith(m.slug));
+if (!mod) return;
+---
+
+<section class="space-y-10">
+  <p class="section-label">Explorar temas</p>
+
+  {mod.subcategories.map((sub) => (
+    <div class="space-y-3">
+      <p class="text-sm font-semibold uppercase tracking-[0.12em] text-swift-dim">{sub.title}</p>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {sub.children.map((child, idx) => {
+          const full = `${mod.slug}/${child.slug}`;
+          const isActive = currentSlug === full;
+          return (
+            <a
+              href={`${base}docs/${full}`}
+              class:list={[
+                'flex items-center gap-3 rounded-xl border bg-swift-surface px-4 py-3 text-sm font-medium transition-all duration-150 no-underline',
+                isActive
+                  ? 'border-swift-blue bg-swift-blue/5 text-swift-blue'
+                  : 'border-swift-border text-swift-muted hover:border-swift-border-hover hover:bg-swift-elevated hover:text-white',
+              ]}
+            >
+              <span
+                class:list={[
+                  'flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-xs font-bold',
+                  isActive ? 'bg-swift-blue text-white' : 'bg-swift-blue-muted text-swift-blue',
+                ]}
+              >
+                {idx + 1}
+              </span>
+              <span>{child.title}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  ))}
+</section>

@@ -1,126 +1,96 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sidebarData, getAllSubmodules } from '../data/sidebar';
 
 const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+
+const languages = [
+  { title: 'HTML', desc: 'Lenguaje de marcado para la web.' },
+  { title: 'CSS', desc: 'Lenguaje de estilos para la web.' },
+  { title: 'JavaScript', desc: 'Lenguaje de programación web por excelencia.' },
+  { title: 'TypeScript', desc: 'JavaScript con tipos estáticos.' },
+  { title: 'Python', desc: 'Versátil, simple y poderoso.' },
+  { title: 'Java', desc: 'Lenguaje orientado a objetos, multiplataforma.' },
+  { title: 'C', desc: 'Lenguaje de bajo nivel, base de muchos sistemas.' },
+  { title: 'Rust', desc: 'Seguridad y rendimiento sin basura.' },
+  { title: 'Lua', desc: 'Pequeño, rápido y embebible.' },
+];
 ---
 
-<BaseLayout title="Inicio" description="Documentación personal de programación. Referencias, guías y ejemplos sobre lenguajes, herramientas y sistemas.">
-  <div class="space-y-16 sm:space-y-20">
+<BaseLayout title="Inicio">
+  <div class="space-y-20">
 
     <!-- Hero -->
-    <section class="py-6 sm:py-10">
-      <div class="space-y-6 max-w-3xl">
-        <div class="inline-flex items-center gap-2 text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full">
-          <span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
-          mydocs
-        </div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-medium text-gray-900 leading-[1.1]">
-          Documentación personal de programación.
-        </h1>
-        <p class="text-lg sm:text-xl text-gray-500 max-w-2xl leading-relaxed">
-          Referencias, guías y ejemplos sobre lenguajes de programación, herramientas de desarrollo y sistemas operativos.
-        </p>
-      </div>
+    <section class="space-y-5">
+      <p class="section-label">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        mydocs
+      </p>
+      <h1 class="text-5xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl md:leading-[1.05]">
+        Guías de programación.
+      </h1>
+      <p class="text-lg leading-relaxed text-swift-muted sm:text-xl sm:leading-8">
+        Contenido técnico estructurado para aprender programación de forma progresiva y sólida.
+      </p>
     </section>
 
-    <!-- Qué es -->
-    <section class="space-y-8">
-      <div class="max-w-3xl space-y-6">
-        <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Qué es</h2>
-          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            Una página personal donde estructuro el contenido que necesito tener a mano.
-          </p>
-        </div>
-        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
-          <p>
-            Esto es un repositorio personal de documentación. Aquí organizo los temas que estudio, las guías que consulto con frecuencia y los ejemplos que me sirven como referencia rápida cuando estoy trabajando. No hay un plan de estudios detrás ni una secuencia obligatoria. Cada tema está aquí porque me interesa y lo ordené como mejor me funciona.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Qué no es -->
-    <section class="space-y-8">
-      <div class="max-w-3xl space-y-6">
-        <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Qué no es</h2>
-          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            No busca reemplazar nada ni innovar en nada.
-          </p>
-        </div>
-        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
-          <p>
-            Esta web no pretende ser mejor que la documentación oficial de cada lenguaje, ni reemplazar recursos como MDN, freeCodeCamp o la documentación de Mozilla. Tampoco busca innovar en la forma de enseñar o ser un curso estructurado. Es solo mi propia estructura: los temas ordenados a mi manera, con mis ejemplos, mis explicaciones y mi enfoque.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Por qué organizar tu propia información -->
-    <section class="space-y-8">
-      <div class="max-w-3xl space-y-6">
-        <div class="space-y-3">
-          <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider">Por qué hacerlo</h2>
-          <p class="text-2xl sm:text-3xl font-display font-medium text-gray-900 leading-snug">
-            Organizar tu propia información es mejor que depender solo de fuentes externas.
-          </p>
-        </div>
-        <div class="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
-          <p>
-            La documentación oficial es completa, pero no está hecha para ti. Está hecha para ser exhaustiva. Cuando buscas algo en MDN o en la documentación de un lenguaje, encuentras la especificación completa, con todos los casos borde, todas las variantes, todas las advertencias. Eso es útil, pero no es eficiente cuando lo que necesitas es recordar cómo se hace algo concreto que ya sabes pero no recuerdas la sintaxis exacta.
-          </p>
-          <p>
-            Al organizar tu propia documentación, filtras el contenido por lo que realmente necesitas. Puedes incluir solo los fragmentos que usas, escribir ejemplos con tus casos de uso reales, y estructurar la información en el orden que tiene sentido para ti. El resultado es una referencia mucho más rápida de consultar porque tú mismo la diseñaste.
-          </p>
-          <p>
-            Además, el proceso de escribir tu propia documentación refuerza el aprendizaje. No es lo mismo leer un concepto que explicarlo con tus palabras y ejemplos. Al construir tu propia referencia, terminas entendiendo mejor los temas porque te obligaste a organizarlos y redactarlos.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Acceso a documentación -->
+    <!-- Overview cards -->
     <section class="space-y-6">
-      <div class="google-card p-8 sm:p-10">
-        <div class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-display font-medium text-gray-900">Explorar documentación</h2>
-          <p class="text-gray-500">
-            Selecciona una categoría para acceder a los temas disponibles.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            {sidebarData.map((mod) => {
-              const subs = getAllSubmodules(mod);
-              return (
-                <a href={`${baseUrl}/docs/${mod.slug}`} class="flex items-center gap-3 p-3 rounded-google hover:bg-gray-50 transition-colors group">
-                  <div class="w-8 h-8 bg-gblue-50 rounded-google flex items-center justify-center shrink-0 group-hover:bg-gblue-100 transition-colors">
-                    <svg class="w-4 h-4 text-gblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="font-medium text-gray-900 group-hover:text-gblue transition-colors text-sm">{mod.title}</div>
-                    <div class="text-xs text-gray-400">{subs.length} tema{subs.length !== 1 ? 's' : ''}</div>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        </div>
+      <p class="section-label">Lenguajes</p>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {languages.map((lang) => {
+          let slug = '#';
+          if (lang.title === 'HTML') slug = `${base}docs/html`;
+          if (lang.title === 'CSS') slug = `${base}docs/css`;
+          if (lang.title === 'JavaScript') slug = `${base}docs/javascript`;
+          return (
+          <a href={slug} class="doc-card no-underline">
+            <span class="doc-card-icon">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </span>
+            <div class="space-y-1">
+              <h2 class="text-base font-semibold text-white">{lang.title}</h2>
+              <p class="text-sm leading-relaxed text-swift-muted">{lang.desc}</p>
+            </div>
+          </a>
+          );
+        })}
       </div>
     </section>
 
-    <!-- Footer -->
-    <section class="border-t border-gray-200 pt-8 pb-4">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-gray-400">
-        <div class="flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-          Construido con Astro
-        </div>
-        <div>
-          &copy; 2025 mydocs — Documentación personal de programación
-        </div>
+    <!-- More sections placeholder -->
+    <section class="space-y-6">
+      <p class="section-label">Herramientas</p>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="doc-card no-underline">
+          <span class="doc-card-icon">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+            </svg>
+          </span>
+          <div class="space-y-1">
+            <h2 class="text-base font-semibold text-white">Git</h2>
+            <p class="text-sm leading-relaxed text-swift-muted">Control de versiones distribuido.</p>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card no-underline">
+          <span class="doc-card-icon">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          </span>
+          <div class="space-y-1">
+            <h2 class="text-base font-semibold text-white">VIM</h2>
+            <p class="text-sm leading-relaxed text-swift-muted">Editor de texto en terminal.</p>
+          </div>
+        </a>
       </div>
     </section>
 

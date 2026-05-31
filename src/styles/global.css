@@ -3,120 +3,90 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
   body {
-    @apply bg-surface text-gray-900 font-sans antialiased;
+    @apply bg-swift-bg text-swift-text font-sans antialiased;
   }
 
   ::selection {
-    @apply bg-gblue-100 text-gblue-900;
+    @apply bg-swift-blue/20 text-white;
   }
-}
-
-/* ─── Code blocks ─── */
-pre {
-  background-color: #F8F9FA !important;
-  border: 1px solid #DADCE0 !important;
-  border-radius: 8px !important;
-  color: #3C4043 !important;
-  padding: 1rem !important;
-  overflow-x: auto !important;
-}
-
-pre code {
-  background-color: transparent !important;
-  padding: 0 !important;
-  color: inherit !important;
-  font-size: inherit !important;
-}
-
-code {
-  @apply bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
-}
-
-/* ─── Scrollbars ─── */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #DADCE0;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #BDC1C6;
-}
-
-/* Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #DADCE0 transparent;
-}
-
-/* ─── Sidebar scrollbar ─── */
-#sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-#sidebar::-webkit-scrollbar-thumb {
-  background: #DADCE0;
-  border-radius: 4px;
-}
-
-#sidebar::-webkit-scrollbar-thumb:hover {
-  background: #BDC1C6;
-}
-
-#sidebar {
-  scrollbar-width: thin;
-  scrollbar-color: #DADCE0 transparent;
 }
 
 @layer components {
-  .google-card {
-    @apply bg-surface rounded-google border border-gray-200 shadow-google-sm
-           hover:shadow-google transition-shadow duration-200;
+  .nav-link {
+    @apply text-sm font-medium text-swift-muted transition-colors duration-150 hover:text-white;
   }
 
-  .sidebar-category {
-    @apply px-6 py-2 text-sm font-bold uppercase tracking-wider text-blue-400
-           transition-colors duration-150;
+  .doc-card {
+    @apply flex flex-col gap-3 rounded-xl border border-swift-border bg-swift-surface p-5 transition-all duration-200 hover:border-swift-border-hover hover:bg-swift-elevated;
   }
 
-  .sidebar-toggle-btn {
-    @apply flex items-center gap-1.5 px-3 py-1 text-sm font-medium text-gray-600
-           hover:text-gray-900 transition-colors duration-150 cursor-pointer;
-    background: none;
-    border: none;
-    text-align: left;
+  .doc-card-icon {
+    @apply flex h-10 w-10 items-center justify-center rounded-lg bg-swift-blue-muted text-swift-blue;
   }
 
-  .sidebar-toggle-btn--cat {
-    @apply w-full;
+  .section-label {
+    @apply flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-swift-muted;
   }
 
-  .sidebar-toggle-btn:focus-visible {
-    @apply outline-2 outline-gblue outline-offset-1;
+  .section-label::after {
+    content: '';
+    @apply h-px flex-1 bg-swift-border;
   }
 
-  .sidebar-toggle-icon {
-    transition: transform 0.2s ease;
+  .prose-custom {
+    @apply prose prose-invert max-w-none;
   }
 
-  .sidebar-content {
-    display: none;
+  .prose-custom a {
+    @apply text-swift-blue font-medium no-underline hover:underline;
   }
 
-  .sidebar-content--open {
-    display: block;
+  .prose-custom code {
+    @apply bg-swift-elevated text-swift-text rounded px-1.5 py-0.5 text-sm;
+  }
+
+  .prose-custom pre {
+    @apply bg-swift-elevated border border-swift-border rounded-xl;
+  }
+
+  .prose-custom blockquote {
+    @apply border-l-2 border-swift-blue text-swift-muted not-italic;
+  }
+
+  .page-nav {
+    @apply mt-12 border-t border-swift-border pt-6;
+  }
+
+  .page-nav-inner {
+    @apply flex items-center justify-between gap-4;
+  }
+
+  .page-nav-link {
+    @apply flex items-center gap-3 rounded-xl border border-swift-border bg-swift-surface px-4 py-3 text-swift-muted transition-colors duration-150 no-underline hover:border-swift-border-hover hover:text-white;
+  }
+
+  .page-nav-next {
+    @apply ml-auto;
+  }
+
+  .page-nav-arrow {
+    @apply shrink-0 text-swift-blue;
+  }
+
+  .page-nav-text {
+    @apply flex flex-col;
+  }
+
+  .page-nav-label {
+    @apply text-xs font-medium uppercase tracking-wider text-swift-dim;
+  }
+
+  .page-nav-title {
+    @apply text-sm font-semibold text-white underline-offset-2 decoration-swift-blue/70;
+  }
+
+  .page-nav-link:hover .page-nav-title {
+    @apply underline;
   }
 }

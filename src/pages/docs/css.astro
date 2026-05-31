@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopicNav from '../../components/TopicNav.astro';
+---
+
+<BaseLayout title="CSS" description="Tutorial completo de CSS">
+  <div class="mx-auto max-w-3xl space-y-5">
+    <p class="section-label">CSS</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+      Tutorial de CSS.
+    </h1>
+    <p class="text-lg leading-relaxed text-swift-muted sm:text-xl">
+      CSS es el lenguaje de estilos de la web. Aprende desde el modelo de caja hasta layout avanzado con Flexbox, Grid y responsive design.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 max-w-5xl">
+    <TopicNav currentSlug="css" />
+  </div>
+</BaseLayout>

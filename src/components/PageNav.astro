@@ -1,0 +1,42 @@
+---
+import { getPrevNext } from '../data/sidebar';
+
+export interface Props {
+  currentSlug: string;
+}
+
+const base = (import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`);
+const { currentSlug } = Astro.props;
+const { prev, next } = getPrevNext(currentSlug);
+---
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    {prev
+      ? (
+        <a href={`${base}docs/${prev.fullSlug}`} class="page-nav-link page-nav-prev">
+          <svg class="page-nav-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span class="page-nav-text">
+            <span class="page-nav-label">Anterior</span>
+            <span class="page-nav-title">{prev.title}</span>
+          </span>
+        </a>
+      )
+      : <div />}
+    {next
+      ? (
+        <a href={`${base}docs/${next.fullSlug}`} class="page-nav-link page-nav-next">
+          <span class="page-nav-text">
+            <span class="page-nav-label">Siguiente</span>
+            <span class="page-nav-title">{next.title}</span>
+          </span>
+          <svg class="page-nav-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      )
+      : <div />}
+  </div>
+</nav>

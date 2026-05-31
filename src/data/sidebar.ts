@@ -1,403 +1,419 @@
-export interface Submodule {
+export interface SidebarTopic {
   title: string;
   slug: string;
-  description?: string;
 }
 
-export interface Subcategory {
+export interface SidebarSubcategory {
   title: string;
-  submodules: Submodule[];
+  children: SidebarTopic[];
 }
 
-export interface Module {
+export interface SidebarModule {
   title: string;
   slug: string;
-  description: string;
-  submodules?: Submodule[];
-  subcategories?: Subcategory[];
+  subcategories: SidebarSubcategory[];
 }
 
-export function getAllSubmodules(mod: Module): Submodule[] {
-  if (mod.subcategories) {
-    return mod.subcategories.flatMap((c) => c.submodules);
-  }
-  return mod.submodules ?? [];
-}
-
-export const sidebarData: Module[] = [
-  {
-    title: 'JavaScript',
-    slug: 'lenguajes/javascript',
-    description: 'Lenguaje de programación web por excelencia.',
-    subcategories: [
-      {
-        title: 'Fundamentos',
-        submodules: [
-          { title: 'Introducción', slug: 'general/introduccion', description: 'Origen, evolución y características.' },
-          { title: 'Sintaxis', slug: 'general/sintaxis', description: 'Estructura básica del código.' },
-          { title: 'Tipos de datos', slug: 'general/tipos-de-datos', description: 'Primitivos y compuestos.' },
-          { title: 'Operadores', slug: 'general/operadores', description: 'Aritméticos, lógicos, de comparación.' },
-        ],
-      },
-      {
-        title: 'Strings y Números',
-        submodules: [
-          { title: 'Strings', slug: 'general/strings', description: 'Manipulación de texto.' },
-          { title: 'Números', slug: 'general/numeros', description: 'Operaciones numéricas.' },
-          { title: 'Math', slug: 'general/math', description: 'Objeto matemático.' },
-          { title: 'Fechas', slug: 'general/fechas', description: 'Objeto Date.' },
-          { title: 'Temporal', slug: 'general/temporal', description: 'API moderna de fechas.' },
-        ],
-      },
-      {
-        title: 'Control de flujo',
-        submodules: [
-          { title: 'Condicionales', slug: 'general/condicionales', description: 'if, else, switch.' },
-          { title: 'Bucles', slug: 'general/bucles', description: 'for, while, do-while.' },
-          { title: 'Iteraciones', slug: 'general/iteraciones', description: 'for...of, for...in, forEach.' },
-        ],
-      },
-      {
-        title: 'Colecciones',
-        submodules: [
-          { title: 'Arrays', slug: 'general/arrays', description: 'Listas ordenadas de valores.' },
-          { title: 'Objetos', slug: 'general/objetos', description: 'Pares clave-valor.' },
-          { title: 'Sets', slug: 'general/sets', description: 'Colecciones de valores únicos.' },
-          { title: 'Maps', slug: 'general/maps', description: 'Mapas clave-valor mejorados.' },
-        ],
-      },
-      {
-        title: 'Funciones',
-        submodules: [
-          { title: 'Funciones', slug: 'general/funciones', description: 'Declaración, parámetros, retorno.' },
-          { title: 'Scope', slug: 'general/scope', description: 'Alcance de variables.' },
-        ],
-      },
-      {
-        title: 'Errores y depuración',
-        submodules: [
-          { title: 'Errores', slug: 'general/errores', description: 'Tipos de errores y manejo.' },
-          { title: 'Depuración', slug: 'general/depuracion', description: 'Herramientas de debug.' },
-        ],
-      },
-      {
-        title: 'POO',
-        submodules: [
-          { title: 'Clases', slug: 'general/clases', description: 'Clases y herencia.' },
-          { title: 'Funciones avanzadas', slug: 'general/funciones-avanzadas', description: 'Closures, currying, composition.' },
-          { title: 'Objetos avanzados', slug: 'general/objetos-avanzados', description: 'Prototipos, descriptors.' },
-          { title: 'Meta y Proxy', slug: 'general/meta-proxy', description: 'Reflect y Proxy.' },
-          { title: 'Typed Arrays', slug: 'general/typed-arrays', description: 'Arrays de tipo fijo.' },
-        ],
-      },
-      {
-        title: 'Asíncrono y módulos',
-        submodules: [
-          { title: 'Asíncrono', slug: 'general/asincrono', description: 'Callbacks, promesas, async/await.' },
-          { title: 'Módulos', slug: 'general/modulos', description: 'Import/export, ES Modules.' },
-        ],
-      },
-      {
-        title: 'DOM',
-        submodules: [
-          { title: 'HTML First', slug: 'general/html-first', description: 'Integración HTML/JS básica.' },
-          { title: 'HTML DOM', slug: 'general/html-dom', description: 'Manipulación del DOM.' },
-          { title: 'Navegación DOM', slug: 'general/navegacion-dom', description: 'Recorrer el árbol DOM.' },
-          { title: 'Eventos HTML', slug: 'general/eventos-html', description: 'Event listeners.' },
-          { title: 'Windows', slug: 'general/windows', description: 'Objeto window.' },
-        ],
-      },
-      {
-        title: 'APIs Web',
-        submodules: [
-          { title: 'Web API', slug: 'general/web-api', description: 'APIs del navegador.' },
-          { title: 'AJAX', slug: 'general/ajax', description: 'Peticiones asíncronas.' },
-          { title: 'JSON', slug: 'general/json', description: 'Intercambio de datos.' },
-          { title: 'jQuery', slug: 'general/jquery', description: 'Librería de DOM.' },
-          { title: 'Gráficos', slug: 'general/graficos', description: 'Canvas, SVG.' },
-        ],
-      },
-      {
-        title: 'Referencia',
-        submodules: [
-          { title: 'Guía de estilo', slug: 'general/guia-de-estilo', description: 'Convenciones de código.' },
-          { title: 'Referencia', slug: 'general/referencia', description: 'API completa de JS.' },
-          { title: 'Versiones', slug: 'general/versiones', description: 'Historial de ECMAScript.' },
-          { title: 'Proyectos', slug: 'general/proyectos', description: 'Proyectos prácticos.' },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'TypeScript',
-    slug: 'lenguajes/typescript',
-    description: 'JavaScript con tipos estáticos.',
-    subcategories: [
-      {
-        title: 'Fundamentos',
-        submodules: [
-          { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es TypeScript y por qué usarlo.' },
-          { title: 'Primeros pasos', slug: 'general/primeros-pasos', description: 'Instalación y configuración inicial.' },
-          { title: 'Tipos simples', slug: 'general/tipos-simples', description: 'Tipos primitivos en TypeScript.' },
-          { title: 'Explícito e inferencia', slug: 'general/explicito-inferencia', description: 'Anotaciones y deducción de tipos.' },
-          { title: 'Tipos especiales', slug: 'general/tipos-especiales', description: 'any, unknown, void, never.' },
-        ],
-      },
-      {
-        title: 'Tipos',
-        submodules: [
-          { title: 'Arrays', slug: 'general/arrays', description: 'Tipos para arreglos.' },
-          { title: 'Tuplas', slug: 'general/tuplas', description: 'Arreglos de longitud fija.' },
-          { title: 'Tipos objeto', slug: 'general/tipos-objeto', description: 'Estructuras con propiedades tipadas.' },
-          { title: 'Enums', slug: 'general/enums', description: 'Conjuntos de valores nombrados.' },
-          { title: 'Tipos unión', slug: 'general/tipos-union', description: 'Valores que pueden ser de varios tipos.' },
-          { title: 'Tipos literales', slug: 'general/tipos-literales', description: 'Valores exactos como tipos.' },
-        ],
-      },
-      {
-        title: 'Estructuras',
-        submodules: [
-          { title: 'Alias e interfaces', slug: 'general/alias-interfaces', description: 'type vs interface.' },
-          { title: 'Funciones', slug: 'general/funciones', description: 'Parámetros y retorno tipados.' },
-          { title: 'Casting', slug: 'general/casting', description: 'Conversión de tipos.' },
-          { title: 'Clases', slug: 'general/clases', description: 'POO con tipos en TypeScript.' },
-          { title: 'Namespaces', slug: 'general/namespaces', description: 'Organización interna de código.' },
-        ],
-      },
-      {
-        title: 'Genéricos',
-        submodules: [
-          { title: 'Genéricos básicos', slug: 'general/genericos-basicos', description: 'Tipos parametrizados.' },
-          { title: 'Tipos de utilidad', slug: 'general/tipos-utilidad', description: 'Partial, Required, Pick, Omit y más.' },
-          { title: 'Keyof', slug: 'general/keyof', description: 'Operador de claves de tipo.' },
-          { title: 'Tipos condicionales', slug: 'general/tipos-condicionales', description: 'Tipos que dependen de condiciones.' },
-          { title: 'Tipos mapeados', slug: 'general/tipos-mapeados', description: 'Transformar tipos existentes.' },
-        ],
-      },
-      {
-        title: 'Avanzado',
-        submodules: [
-          { title: 'Tipos avanzados', slug: 'general/tipos-avanzados', description: 'Técnicas avanzadas de tipos.' },
-          { title: 'Type Guards', slug: 'general/type-guards', description: 'Estrechar tipos en tiempo de ejecución.' },
-          { title: 'Inferencia de tipos', slug: 'general/inferencia-tipos', description: 'Cómo TypeScript deduce tipos.' },
-          { title: 'Firmas de índice', slug: 'general/firmas-indice', description: 'Propiedades dinámicas en objetos.' },
-          { title: 'Fusión de declaraciones', slug: 'general/fusion-declaraciones', description: 'Combinar múltiples declaraciones.' },
-        ],
-      },
-      {
-        title: 'Configuración',
-        submodules: [
-          { title: 'Configuración', slug: 'general/configuracion', description: 'El archivo tsconfig.json.' },
-          { title: 'Definitely Typed', slug: 'general/definitely-typed', description: 'Tipos para librerías JS.' },
-          { title: 'Actualizaciones TS5', slug: 'general/actualizaciones-ts5', description: 'Novedades de TypeScript 5.' },
-          { title: 'Null', slug: 'general/null', description: 'null, undefined y strictNullChecks.' },
-        ],
-      },
-      {
-        title: 'Entornos',
-        submodules: [
-          { title: 'Node.js', slug: 'general/nodejs', description: 'TypeScript en el servidor.' },
-          { title: 'React', slug: 'general/react', description: 'TypeScript con React.' },
-          { title: 'Herramientas', slug: 'general/herramientas', description: 'Linters, bundlers y testing.' },
-          { title: 'Decoradores', slug: 'general/decoradores', description: 'Modificar clases y miembros.' },
-        ],
-      },
-      {
-        title: 'Práctico',
-        submodules: [
-          { title: 'Asíncrono', slug: 'general/asincrono', description: 'Promesas y async/await tipados.' },
-          { title: 'Manejo de errores', slug: 'general/manejo-errores', description: 'Errores tipados y try/catch.' },
-          { title: 'Mejores prácticas', slug: 'general/mejores-practicas', description: 'Buenas prácticas con TypeScript.' },
-        ],
-      },
-      {
-        title: 'Migración',
-        submodules: [
-          { title: 'JS Projects', slug: 'general/js-projects', description: 'Integrar TS en proyectos JS.' },
-          { title: 'Migración', slug: 'general/migracion', description: 'Migrar de JS a TypeScript.' },
-        ],
-      },
-    ],
-  },
+export const sidebarModules: SidebarModule[] = [
   {
     title: 'HTML',
-    slug: 'lenguajes/html',
-    description: 'Lenguaje de marcado para la web.',
+    slug: 'html',
     subcategories: [
       {
-        title: 'Fundamentos',
-        submodules: [
-          { title: 'Inicio', slug: 'general/inicio', description: 'Visión general de HTML.' },
-          { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es HTML y su historia.' },
-          { title: 'Editores', slug: 'general/editores', description: 'Editores de código recomendados.' },
-          { title: 'Básico', slug: 'general/basico', description: 'Estructura básica de un documento HTML.' },
-          { title: 'Elementos', slug: 'general/elementos', description: 'Etiquetas y elementos HTML.' },
-          { title: 'Atributos', slug: 'general/atributos', description: 'Atributos de elementos HTML.' },
+        title: '1. Sintaxis y Fundamentos',
+        children: [
+          { title: 'INTRODUCCIÓN', slug: 'sintaxis/introduction' },
+          { title: 'BÁSICO', slug: 'sintaxis/basic' },
+          { title: 'ELEMENTOS', slug: 'sintaxis/elements' },
+          { title: 'ATRIBUTOS', slug: 'sintaxis/attributes' },
+          { title: 'ENTIDADES', slug: 'sintaxis/entities' },
+          { title: 'COMENTARIOS', slug: 'sintaxis/comments' },
+          { title: 'CHARSET', slug: 'sintaxis/charsets' },
+          { title: 'RUTAS', slug: 'sintaxis/file-paths' },
         ],
       },
       {
-        title: 'Texto',
-        submodules: [
-          { title: 'Encabezados', slug: 'general/encabezados', description: 'h1 a h6.' },
-          { title: 'Párrafos', slug: 'general/parrafos', description: 'Etiqueta p y saltos de línea.' },
-          { title: 'Estilos', slug: 'general/estilos', description: 'El atributo style.' },
-          { title: 'Formato', slug: 'general/formato', description: 'Negrita, cursiva, subrayado.' },
-          { title: 'Citas', slug: 'general/citas', description: 'blockquote, q, cite.' },
-          { title: 'Comentarios', slug: 'general/comentarios', description: 'Comentarios en HTML.' },
+        title: '2. Estructura del Documento',
+        children: [
+          { title: 'DOCTYPE', slug: 'estructura/doctype' },
+          { title: 'HTML', slug: 'estructura/html-element' },
+          { title: 'HEAD', slug: 'estructura/head' },
+          { title: 'TITLE', slug: 'estructura/page-title' },
+          { title: 'FAVICON', slug: 'estructura/favicon' },
+          { title: 'BODY', slug: 'estructura/body-element' },
         ],
       },
       {
-        title: 'Contenido',
-        submodules: [
-          { title: 'Colores', slug: 'general/colores', description: 'Nombres, RGB, HEX, HSL.' },
-          { title: 'CSS', slug: 'general/css', description: 'Vinculación de estilos.' },
-          { title: 'Enlaces', slug: 'general/enlaces', description: 'Hipervínculos con a.' },
-          { title: 'Imágenes', slug: 'general/imagenes', description: 'img, src, alt.' },
-          { title: 'Favicon', slug: 'general/favicon', description: 'Icono de página.' },
-          { title: 'Título de página', slug: 'general/titulo-pagina', description: 'Etiqueta title.' },
+        title: '3. Contenido del Body',
+        children: [
+          { title: 'ENCABEZADOS', slug: 'contenido/headings' },
+          { title: 'PÁRRAFOS', slug: 'contenido/paragraphs' },
+          { title: 'FORMATO', slug: 'contenido/formatting' },
+          { title: 'CITAS', slug: 'contenido/quotations' },
+          { title: 'CÓDIGO DE COMPUTADORA', slug: 'contenido/computercode' },
+          { title: 'ENLACES', slug: 'contenido/links' },
+          { title: 'IMÁGENES', slug: 'contenido/images' },
+          { title: 'LISTAS', slug: 'contenido/lists' },
+          { title: 'TABLAS', slug: 'contenido/tables' },
+          { title: 'BOTONES', slug: 'contenido/buttons' },
+          { title: 'IFRAMES', slug: 'contenido/iframes' },
+          { title: 'JAVASCRIPT', slug: 'contenido/javascript' },
         ],
       },
       {
-        title: 'Estructura',
-        submodules: [
-          { title: 'Tablas', slug: 'general/tablas', description: 'table, tr, td, th.' },
-          { title: 'Listas', slug: 'general/listas', description: 'ul, ol, li.' },
-          { title: 'Block e inline', slug: 'general/block-inline', description: 'Elementos de bloque y en línea.' },
-          { title: 'Div', slug: 'general/div', description: 'Contenedor genérico.' },
-          { title: 'Clases', slug: 'general/clases', description: 'El atributo class.' },
-          { title: 'Id', slug: 'general/id', description: 'El atributo id.' },
+        title: '4. Organización y Maquetación',
+        children: [
+          { title: 'BLOQUE Y EN LÍNEA', slug: 'organizacion/block-inline' },
+          { title: 'DIV', slug: 'organizacion/div' },
+          { title: 'CLASES', slug: 'organizacion/classes' },
+          { title: 'ID', slug: 'organizacion/id' },
+          { title: 'DISEÑO (LAYOUT)', slug: 'organizacion/layout' },
+          { title: 'RESPONSIVO', slug: 'organizacion/responsive' },
+          { title: 'SEMÁNTICA', slug: 'organizacion/semantics' },
+          { title: 'HEADER', slug: 'organizacion/header' },
+          { title: 'MAIN', slug: 'organizacion/main' },
+          { title: 'SECTION', slug: 'organizacion/section' },
+          { title: 'ARTICLE', slug: 'organizacion/article' },
+          { title: 'ASIDE', slug: 'organizacion/aside' },
+          { title: 'FOOTER', slug: 'organizacion/footer' },
+          { title: 'GUÍA DE ESTILO', slug: 'organizacion/style-guide' },
         ],
       },
       {
-        title: 'Componentes',
-        submodules: [
-          { title: 'Botones', slug: 'general/botones', description: 'button y sus variantes.' },
-          { title: 'Iframes', slug: 'general/iframes', description: 'Incrustar contenido externo.' },
-          { title: 'JavaScript', slug: 'general/javascript', description: 'Script en HTML.' },
-          { title: 'Rutas de archivos', slug: 'general/rutas-archivos', description: 'Rutas absolutas y relativas.' },
-          { title: 'Head', slug: 'general/head', description: 'Meta, title, link.' },
-          { title: 'Layout', slug: 'general/layout', description: 'Estructura de página.' },
+        title: '5. Presentación',
+        children: [
+          { title: 'ESTILOS', slug: 'presentacion/styles' },
+          { title: 'COLORES', slug: 'presentacion/colors' },
+          { title: 'CSS', slug: 'presentacion/css' },
         ],
       },
       {
-        title: 'Diseño',
-        submodules: [
-          { title: 'Responsive', slug: 'general/responsive', description: 'Meta viewport.' },
-          { title: 'Código de computadora', slug: 'general/codigo-computadora', description: 'code, pre, kbd.' },
-          { title: 'Semántica', slug: 'general/semantica', description: 'header, nav, main, section.' },
-          { title: 'Guía de estilo', slug: 'general/guia-estilo', description: 'Buenas prácticas HTML.' },
+        title: '6. Formularios',
+        children: [
+          { title: 'FORMULARIOS', slug: 'formularios/forms' },
+          { title: 'ELEMENTOS DE FORMULARIO', slug: 'formularios/form-elements' },
+          { title: 'ATRIBUTOS DE FORMULARIO', slug: 'formularios/form-attributes' },
+          { title: 'TIPOS DE INPUT', slug: 'formularios/input-types' },
+          { title: 'ATRIBUTOS DE INPUT', slug: 'formularios/input-attributes' },
+          { title: 'ATRIBUTOS DE FORM INPUT', slug: 'formularios/input-form-attributes' },
         ],
       },
       {
-        title: 'Símbolos',
-        submodules: [
-          { title: 'Entidades', slug: 'general/entidades', description: 'Códigos de caracteres especiales.' },
-          { title: 'Símbolos', slug: 'general/simbolos', description: 'Símbolos matemáticos y monetarios.' },
-          { title: 'Emojis', slug: 'general/emojis', description: 'Emojis en HTML.' },
-          { title: 'Conjuntos de caracteres', slug: 'general/conjuntos-caracteres', description: 'Charset y codificación.' },
-          { title: 'Codificación URL', slug: 'general/codificacion-url', description: 'Porcentajes en URLs.' },
-          { title: 'vs XHTML', slug: 'general/vs-xhtml', description: 'Diferencias con XHTML.' },
+        title: '7. Multimedia',
+        children: [
+          { title: 'MULTIMEDIA', slug: 'multimedia/media' },
+          { title: 'VIDEO', slug: 'multimedia/video' },
+          { title: 'AUDIO', slug: 'multimedia/audio' },
+          { title: 'YOUTUBE', slug: 'multimedia/youtube' },
+          { title: 'PLUG-INS', slug: 'multimedia/plugins' },
         ],
       },
       {
-        title: 'Formularios',
-        submodules: [
-          { title: 'Formularios', slug: 'general/formularios', description: 'form, action, method.' },
-          { title: 'Atributos de formulario', slug: 'general/atributos-formulario', description: 'target, novalidate, autocomplete.' },
-          { title: 'Elementos de formulario', slug: 'general/elementos-formulario', description: 'input, select, textarea.' },
-          { title: 'Tipos de input', slug: 'general/tipos-input', description: 'text, email, password, number.' },
-          { title: 'Atributos de input', slug: 'general/atributos-input', description: 'placeholder, required, pattern.' },
-          { title: 'Atributos de form input', slug: 'general/atributos-form-input', description: 'formaction, formmethod, formtarget.' },
+        title: '8. Gráficos',
+        children: [
+          { title: 'CANVAS', slug: 'graficos/canvas' },
+          { title: 'SVG', slug: 'graficos/svg' },
         ],
       },
       {
-        title: 'Gráficos',
-        submodules: [
-          { title: 'Canvas', slug: 'general/canvas', description: 'Dibujo con canvas.' },
-          { title: 'SVG', slug: 'general/svg', description: 'Gráficos vectoriales.' },
-        ],
-      },
-      {
-        title: 'Multimedia',
-        submodules: [
-          { title: 'Media', slug: 'general/media', description: 'Elementos multimedia.' },
-          { title: 'Video', slug: 'general/video', description: 'video y source.' },
-          { title: 'Audio', slug: 'general/audio', description: 'audio y source.' },
-          { title: 'Plugins', slug: 'general/plugins', description: 'object, embed.' },
-          { title: 'YouTube', slug: 'general/youtube', description: 'Incrustar videos de YouTube.' },
-        ],
-      },
-      {
-        title: 'APIs',
-        submodules: [
-          { title: 'Web APIs', slug: 'general/web-apis', description: 'APIs del navegador en HTML.' },
-          { title: 'Geolocalización', slug: 'general/geolocalizacion', description: 'API de geolocalización.' },
-          { title: 'Drag and Drop', slug: 'general/drag-drop', description: 'Arrastrar y soltar.' },
-          { title: 'Web Storage', slug: 'general/web-storage', description: 'localStorage y sessionStorage.' },
-          { title: 'Web Workers', slug: 'general/web-workers', description: 'Trabajo en segundo plano.' },
-          { title: 'SSE', slug: 'general/sse', description: 'Server-Sent Events.' },
+        title: '9. APIs del Navegador',
+        children: [
+          { title: 'WEB APIS', slug: 'apis/web-apis' },
+          { title: 'GEOLOCALIZACIÓN', slug: 'apis/geolocation' },
+          { title: 'ARRASTRAR Y SOLTAR', slug: 'apis/drag-drop' },
+          { title: 'ALMACENAMIENTO WEB', slug: 'apis/web-storage' },
+          { title: 'WEB WORKERS', slug: 'apis/web-workers' },
+          { title: 'SSE', slug: 'apis/sse' },
         ],
       },
     ],
   },
   {
     title: 'CSS',
-    slug: 'lenguajes/css',
-    description: 'Lenguaje de estilos para la web.',
-    submodules: [],
-  },
-  {
-    title: 'Java',
-    slug: 'lenguajes/java',
-    description: 'Lenguaje orientado a objetos, multiplataforma.',
-    submodules: [],
-  },
-  {
-    title: 'C',
-    slug: 'lenguajes/c',
-    description: 'Lenguaje de bajo nivel, base de muchos sistemas.',
-    submodules: [],
-  },
-  {
-    title: 'Python',
-    slug: 'lenguajes/python',
-    description: 'Versátil, simple y poderoso.',
-    submodules: [],
-  },
-  {
-    title: 'Rust',
-    slug: 'lenguajes/rust',
-    description: 'Seguridad y rendimiento sin basura.',
-    submodules: [],
-  },
-  {
-    title: 'Lua',
-    slug: 'lenguajes/lua',
-    description: 'Pequeño, rápido y embebible.',
-    submodules: [],
-  },
-  {
-    title: 'VIM',
-    slug: 'herramientas/vim',
-    description: 'Editor de texto basado en terminal.',
-    submodules: [
-      { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es VIM y por qué usarlo.' },
+    slug: 'css',
+    subcategories: [
+      {
+        title: '1. Sintaxis y Fundamentos',
+        children: [
+          { title: 'INTRODUCCIÓN', slug: 'sintaxis/intro' },
+          { title: 'SINTAXIS', slug: 'sintaxis/syntax' },
+          { title: 'SELECTORES', slug: 'sintaxis/selectors' },
+          { title: 'CÓMO USAR CSS', slug: 'sintaxis/how-to' },
+          { title: 'COMENTARIOS', slug: 'sintaxis/comments' },
+          { title: 'UNIDADES', slug: 'sintaxis/units' },
+          { title: 'HERENCIA', slug: 'sintaxis/inheritance' },
+          { title: 'ESPECIFICIDAD', slug: 'sintaxis/specificity' },
+        ],
+      },
+      {
+        title: '2. Modelo de Caja',
+        children: [
+          { title: 'BOX MODEL', slug: 'modelo-caja/box-model' },
+          { title: 'MARGINS', slug: 'modelo-caja/margins' },
+          { title: 'PADDING', slug: 'modelo-caja/padding' },
+          { title: 'BORDERS', slug: 'modelo-caja/borders' },
+          { title: 'OUTLINE', slug: 'modelo-caja/outline' },
+          { title: 'ALTO Y ANCHO', slug: 'modelo-caja/height-width' },
+          { title: 'BOX SIZING', slug: 'modelo-caja/box-sizing' },
+          { title: 'ESQUINAS REDONDEADAS', slug: 'modelo-caja/rounded-corners' },
+        ],
+      },
+      {
+        title: '3. Colores, Fondos y Efectos',
+        children: [
+          { title: 'COLORES', slug: 'colores/colors' },
+          { title: 'BACKGROUNDS', slug: 'colores/backgrounds' },
+          { title: 'GRADIENTES', slug: 'colores/gradients' },
+          { title: 'SOMBRAS', slug: 'colores/shadows' },
+          { title: 'OPACITY', slug: 'colores/opacity' },
+          { title: 'BORDER IMAGES', slug: 'colores/border-images' },
+          { title: 'MASKING', slug: 'colores/masking' },
+        ],
+      },
+      {
+        title: '4. Texto y Tipografía',
+        children: [
+          { title: 'TEXTO', slug: 'texto/text' },
+          { title: 'FUENTES', slug: 'texto/fonts' },
+          { title: 'ICONOS', slug: 'texto/icons' },
+          { title: 'TEXT EFFECTS', slug: 'texto/text-effects' },
+          { title: 'CUSTOM FONTS', slug: 'texto/custom-fonts' },
+        ],
+      },
+      {
+        title: '5. Layout y Posicionamiento',
+        children: [
+          { title: 'DISPLAY', slug: 'layout/display' },
+          { title: 'POSITION', slug: 'layout/position' },
+          { title: 'POSITION OFFSETS', slug: 'layout/position-offsets' },
+          { title: 'Z-INDEX', slug: 'layout/zorder' },
+          { title: 'OVERFLOW', slug: 'layout/overflow' },
+          { title: 'FLOAT', slug: 'layout/float' },
+          { title: 'INLINE-BLOCK', slug: 'layout/inline-block' },
+          { title: 'ALINEACIÓN', slug: 'layout/align' },
+          { title: 'COMBINADORES', slug: 'layout/combinators' },
+          { title: 'MAX-WIDTH', slug: 'layout/max-width' },
+          { title: 'COLUMNAS MÚLTIPLES', slug: 'layout/multiple-columns' },
+          { title: 'WEBSITE LAYOUT', slug: 'layout/website-layout' },
+        ],
+      },
+      {
+        title: '6. Flexbox y Grid',
+        children: [
+          { title: 'FLEXBOX INTRO', slug: 'flexbox-grid/flexbox-intro' },
+          { title: 'FLEX CONTAINER', slug: 'flexbox-grid/flex-container' },
+          { title: 'FLEX ITEMS', slug: 'flexbox-grid/flex-items' },
+          { title: 'FLEX RESPONSIVE', slug: 'flexbox-grid/flex-responsive' },
+          { title: 'GRID INTRO', slug: 'flexbox-grid/grid-intro' },
+          { title: 'GRID CONTAINER', slug: 'flexbox-grid/grid-container' },
+          { title: 'GRID ITEMS', slug: 'flexbox-grid/grid-items' },
+          { title: 'GRID 12-COLUMN LAYOUT', slug: 'flexbox-grid/grid-12-column' },
+        ],
+      },
+      {
+        title: '7. Componentes UI',
+        children: [
+          { title: 'ENLACES', slug: 'componentes/links' },
+          { title: 'LISTAS', slug: 'componentes/lists' },
+          { title: 'TABLAS', slug: 'componentes/tables' },
+          { title: 'NAVEGACIÓN', slug: 'componentes/navigation' },
+          { title: 'DROPDOWNS', slug: 'componentes/dropdowns' },
+          { title: 'FORMULARIOS', slug: 'componentes/forms' },
+          { title: 'BOTONES', slug: 'componentes/buttons' },
+          { title: 'TOOLTIPS', slug: 'componentes/tooltips' },
+          { title: 'PAGINACIÓN', slug: 'componentes/pagination' },
+          { title: 'GALERÍA DE IMÁGENES', slug: 'componentes/image-gallery' },
+          { title: 'SPRITES', slug: 'componentes/image-sprites' },
+          { title: 'COUNTERS', slug: 'componentes/counters' },
+        ],
+      },
+      {
+        title: '8. Imágenes',
+        children: [
+          { title: 'ESTILOS DE IMAGEN', slug: 'imagenes/image-styling' },
+          { title: 'MODAL DE IMAGEN', slug: 'imagenes/image-modal' },
+          { title: 'CENTRADO DE IMAGEN', slug: 'imagenes/image-centering' },
+          { title: 'FILTROS DE IMAGEN', slug: 'imagenes/image-filters' },
+          { title: 'FORMAS DE IMAGEN', slug: 'imagenes/image-shapes' },
+          { title: 'OBJECT-FIT', slug: 'imagenes/object-fit' },
+          { title: 'OBJECT-POSITION', slug: 'imagenes/object-position' },
+        ],
+      },
+      {
+        title: '9. Animaciones y Transformaciones',
+        children: [
+          { title: '2D TRANSFORMS', slug: 'animaciones/2d-transforms' },
+          { title: '3D TRANSFORMS', slug: 'animaciones/3d-transforms' },
+          { title: 'TRANSITIONS', slug: 'animaciones/transitions' },
+          { title: 'ANIMATIONS', slug: 'animaciones/animations' },
+        ],
+      },
+      {
+        title: '10. Pseudoclases y Selectores Avanzados',
+        children: [
+          { title: 'PSEUDO-CLASSES', slug: 'pseudoclases/pseudo-classes' },
+          { title: 'PSEUDO-ELEMENTS', slug: 'pseudoclases/pseudo-elements' },
+          { title: 'ATTRIBUTE SELECTORS', slug: 'pseudoclases/attribute-selectors' },
+        ],
+      },
+      {
+        title: '11. Responsive',
+        children: [
+          { title: 'MEDIA QUERIES', slug: 'responsive/media-queries' },
+          { title: 'RWD INTRO', slug: 'responsive/rwd-intro' },
+          { title: 'RWD VIEWPORT', slug: 'responsive/rwd-viewport' },
+          { title: 'RWD GRID VIEW', slug: 'responsive/rwd-grid-view' },
+          { title: 'RWD MEDIA QUERIES', slug: 'responsive/rwd-media-queries' },
+          { title: 'RWD IMAGES', slug: 'responsive/rwd-images' },
+          { title: 'RWD VIDEOS', slug: 'responsive/rwd-videos' },
+          { title: 'RWD FRAMEWORKS', slug: 'responsive/rwd-frameworks' },
+          { title: 'RWD TEMPLATES', slug: 'responsive/rwd-templates' },
+        ],
+      },
+      {
+        title: '12. Avanzado',
+        children: [
+          { title: 'USER INTERFACE', slug: 'avanzado/user-interface' },
+          { title: 'VARIABLES', slug: 'avanzado/variables' },
+          { title: '@PROPERTY', slug: 'avanzado/property' },
+          { title: '@SUPPORTS', slug: 'avanzado/supports' },
+        ],
+      },
     ],
   },
   {
-    title: 'Git',
-    slug: 'herramientas/git',
-    description: 'Sistema de control de versiones distribuido.',
-    submodules: [
-      { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es Git y por qué usarlo.' },
-    ],
-  },
-  {
-    title: 'Linux',
-    slug: 'sistemas/linux',
-    description: 'Sistema operativo de código abierto.',
-    submodules: [
-      { title: 'Introducción', slug: 'general/introduccion', description: 'Qué es Linux y sus componentes.' },
+    title: 'JavaScript',
+    slug: 'javascript',
+    subcategories: [
+      {
+        title: '1. Sintaxis y Fundamentos',
+        children: [
+          { title: 'INTRODUCCIÓN', slug: 'sintaxis/intro' },
+          { title: 'CÓMO USAR JS', slug: 'sintaxis/where-to' },
+          { title: 'SINTAXIS', slug: 'sintaxis/syntax' },
+        ],
+      },
+      {
+        title: '2. Valores y Tipos',
+        children: [
+          { title: 'TIPOS DE DATOS', slug: 'valores/data-types' },
+          { title: 'OPERADORES', slug: 'valores/operators' },
+          { title: 'STRINGS', slug: 'valores/strings' },
+          { title: 'NÚMEROS', slug: 'valores/numbers' },
+          { title: 'MATH', slug: 'valores/math' },
+        ],
+      },
+      {
+        title: '3. Fechas',
+        children: [
+          { title: 'FECHAS', slug: 'fechas/dates' },
+          { title: 'TEMPORAL', slug: 'fechas/temporal' },
+        ],
+      },
+      {
+        title: '4. Colecciones',
+        children: [
+          { title: 'ARRAYS', slug: 'colecciones/arrays' },
+          { title: 'SETS', slug: 'colecciones/sets' },
+          { title: 'MAPS', slug: 'colecciones/maps' },
+          { title: 'ITERACIONES', slug: 'colecciones/iterations' },
+        ],
+      },
+      {
+        title: '5. Funciones y Control de Flujo',
+        children: [
+          { title: 'CONDICIONALES', slug: 'funciones/conditions' },
+          { title: 'BUCLES', slug: 'funciones/loops' },
+          { title: 'FUNCIONES', slug: 'funciones/functions' },
+          { title: 'OBJETOS', slug: 'funciones/objects' },
+          { title: 'ÁMBITO', slug: 'funciones/scope' },
+          { title: 'CLASES', slug: 'funciones/classes' },
+        ],
+      },
+      {
+        title: '6. DOM y Eventos',
+        children: [
+          { title: 'DOM', slug: 'dom/dom' },
+          { title: 'EVENTOS', slug: 'dom/events' },
+          { title: 'NAVEGACIÓN DOM', slug: 'dom/dom-navigation' },
+          { title: 'WINDOW', slug: 'dom/window' },
+        ],
+      },
+      {
+        title: '7. Asíncrono y APIs',
+        children: [
+          { title: 'ASÍNCRONO', slug: 'async/async' },
+          { title: 'AJAX', slug: 'async/ajax' },
+          { title: 'JSON', slug: 'async/json' },
+          { title: 'WEB API', slug: 'async/web-api' },
+          { title: 'GRÁFICOS', slug: 'async/graphics' },
+        ],
+      },
+      {
+        title: '8. Módulos y Metaprogramación',
+        children: [
+          { title: 'MÓDULOS', slug: 'avanzado/modules' },
+          { title: 'META & PROXY', slug: 'avanzado/meta-proxy' },
+          { title: 'TYPED ARRAYS', slug: 'avanzado/typed-arrays' },
+        ],
+      },
+      {
+        title: '9. Herramientas y Estilo',
+        children: [
+          { title: 'OUTPUT', slug: 'herramientas/output' },
+          { title: 'GUÍA DE ESTILO', slug: 'herramientas/style-guide' },
+          { title: 'VERSIONES', slug: 'herramientas/versions' },
+          { title: 'PROYECTOS', slug: 'herramientas/projects' },
+          { title: 'REFERENCIA', slug: 'herramientas/reference' },
+        ],
+      },
     ],
   },
 ];
+
+export function getSidebarModule(slug: string): SidebarModule | undefined {
+  return sidebarModules.find((m) => slug.startsWith(m.slug));
+}
+
+export function getAllSidebarTopics(): { title: string; fullSlug: string }[] {
+  const topics: { title: string; fullSlug: string }[] = [];
+  for (const module of sidebarModules) {
+    for (const sub of module.subcategories) {
+      for (const child of sub.children) {
+        topics.push({ title: child.title, fullSlug: `${module.slug}/${child.slug}` });
+      }
+    }
+  }
+  return topics;
+}
+
+export function getAllSidebarTopicsForModule(moduleSlug: string): { title: string; fullSlug: string }[] {
+  return getAllSidebarTopics().filter((t) => t.fullSlug.startsWith(moduleSlug));
+}
+
+export function getPrevNext(fullSlug: string): { prev: { title: string; fullSlug: string } | null; next: { title: string; fullSlug: string } | null } {
+  const all = getAllSidebarTopics();
+  const idx = all.findIndex((t) => t.fullSlug === fullSlug);
+  if (idx === -1) return { prev: null, next: null };
+
+  let prev = idx > 0 ? all[idx - 1] : null;
+  let next = idx < all.length - 1 ? all[idx + 1] : null;
+
+  if (!prev) {
+    const modIdx = sidebarModules.findIndex((m) => fullSlug.startsWith(m.slug));
+    if (modIdx > 0) {
+      const prevModTopics = getAllSidebarTopicsForModule(sidebarModules[modIdx - 1].slug);
+      prev = prevModTopics[prevModTopics.length - 1] ?? null;
+    }
+  }
+
+  if (!next) {
+    const modIdx = sidebarModules.findIndex((m) => fullSlug.startsWith(m.slug));
+    if (modIdx >= 0 && modIdx < sidebarModules.length - 1) {
+      const nextModTopics = getAllSidebarTopicsForModule(sidebarModules[modIdx + 1].slug);
+      next = nextModTopics[0] ?? null;
+    }
+  }
+
+  return { prev, next };
+}

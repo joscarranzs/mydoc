@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
-import Sidebar from '../components/Sidebar.astro';
-import { ClientRouter } from 'astro:transitions';
+import { Icon } from 'astro-icon/components';
 
 export interface Props {
   title: string;
@@ -9,6 +8,7 @@ export interface Props {
 }
 
 const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 const { title, description } = Astro.props;
 ---
 
@@ -16,147 +16,32 @@ const { title, description } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon-globe.svg`} />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta name="description" content={description ?? 'Documentación personal de programación'} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <ClientRouter />
-    <title>{title} | mydocs</title>
+    <title>{title} · mydocs</title>
   </head>
-  <body class="min-h-screen bg-surface text-gray-900 font-sans antialiased">
-    <!-- Top bar -->
-    <header class="sticky top-0 z-40 bg-surface border-b border-gray-200 h-16 flex items-center px-4 sm:px-6 gap-4">
-      <button id="menu-btn" class="lg:hidden p-2 -ml-2 rounded-full hover:bg-gray-100 transition-colors" aria-label="Abrir menú">
-        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      <a href={baseUrl} class="flex items-center gap-3 shrink-0">
-        <svg class="w-8 h-8" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="64" cy="64" r="60" fill="#1A73E8"/>
-          <ellipse cx="64" cy="64" rx="35" ry="60" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.4"/>
-          <path d="M64 4 Q90 32 64 64 Q38 96 64 124" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.5"/>
-          <path d="M64 4 Q38 32 64 64 Q90 96 64 124" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.5"/>
-          <line x1="4" y1="64" x2="124" y2="64" stroke="#FFFFFF" stroke-width="2.5" opacity="0.4"/>
-          <path d="M14 30 Q64 45 114 30" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.4"/>
-          <path d="M14 98 Q64 83 114 98" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.4"/>
-        </svg>
-        <span class="font-display font-medium text-lg text-gray-800 hidden sm:block">mydocs</span>
-      </a>
-      <div class="flex-1"></div>
-      <div class="hidden sm:flex items-center gap-2 text-sm text-gray-500">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-        Documentación
+  <body>
+    <header class="border-b border-swift-border bg-swift-bg">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href={baseUrl} class="flex items-center gap-2 text-sm font-semibold text-white no-underline">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-black">
+            <Icon name="ph:globe-simple" class="h-5 w-5" />
+          </span>
+          mydocs
+        </a>
       </div>
     </header>
 
-    <!-- Flex row: sidebar + main -->
-    <div class="flex flex-1 flex-col lg:flex-row" style="height: calc(100vh - 4rem);">
-      <!-- Backdrop -->
-      <div id="backdrop" transition:persist class="fixed inset-0 z-20 bg-black/30 hidden lg:hidden"></div>
-
-      <!-- Sidebar -->
-      <aside
-        id="sidebar"
-        transition:persist
-        class="fixed top-16 left-0 z-30 h-[calc(100vh-4rem)] w-80 -translate-x-full transition-transform duration-300 ease-in-out
-               lg:static lg:translate-x-0 lg:z-auto lg:h-full
-               bg-surface-secondary border-r border-gray-200 shrink-0 overflow-y-auto"
-      >
-        <div class="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-surface-secondary">
-          <span class="text-sm font-medium text-gray-700">Menú</span>
-          <button id="close-btn" class="p-1 rounded-full hover:bg-gray-200 transition-colors" aria-label="Cerrar menú">
-            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <Sidebar />
-      </aside>
-
-      <!-- Main -->
-      <main class="flex-1 min-w-0 max-w-full overflow-y-auto">
-        <div class="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-6 sm:py-8 lg:py-10">
-          <slot />
-        </div>
-      </main>
-    </div>
-
-    <script>
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('#menu-btn, #close-btn');
-        const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('backdrop');
-        const sidebarLink = !btn && !backdrop?.contains(e.target) && e.target.closest('[data-sidebar-sub], [data-sidebar-module]');
-
-        if (sidebarLink && sidebar?.dataset.open === 'true') {
-          const was = sidebar.style.transition;
-          sidebar.style.transition = 'none';
-          sidebar.dataset.open = 'false';
-          sidebar.classList.add('-translate-x-full');
-          backdrop?.classList.add('hidden');
-          document.body.style.overflow = '';
-          requestAnimationFrame(() => { sidebar.style.transition = was; });
-          return;
-        }
-
-        if (btn || e.target === backdrop) {
-          const isOpen = btn?.id === 'menu-btn' ? sidebar.dataset.open !== 'true' : false;
-          sidebar.dataset.open = String(isOpen);
-          sidebar.classList.toggle('-translate-x-full', !isOpen);
-          backdrop.classList.toggle('hidden', !isOpen);
-          document.body.style.overflow = isOpen ? 'hidden' : '';
-        }
-      });
-
-      function stripSlash(s) { return s.replace(/\/+$/, ''); }
-
-      function updateSidebarActive() {
-        const path = stripSlash(window.location.pathname);
-
-        document.querySelectorAll('[data-sidebar-module]').forEach((a) => {
-          const href = stripSlash(a.getAttribute('href'));
-          const active = path === href || path.startsWith(href + '/');
-          a.classList.toggle('border-l-2', active);
-          a.classList.toggle('border-gblue', active);
-          a.classList.toggle('bg-gblue-50', active);
-          a.classList.toggle('text-gblue-700', active);
-          a.classList.toggle('border-transparent', !active);
-          a.classList.toggle('text-gray-900', !active);
-          a.classList.toggle('hover:bg-gray-100', !active);
-        });
-
-        document.querySelectorAll('[data-sidebar-sub]').forEach((a) => {
-          const active = path === stripSlash(a.getAttribute('href'));
-          a.classList.toggle('text-gblue-700', active);
-          a.classList.toggle('font-medium', active);
-          a.classList.toggle('bg-gblue-50', active);
-          a.classList.toggle('text-gray-600', !active);
-          a.classList.toggle('hover:bg-gray-100', !active);
-        });
-      }
-
-      document.addEventListener('astro:page-load', () => {
-        const sidebar = document.getElementById('sidebar');
-        if (sidebar) {
-          const was = sidebar.style.transition;
-          sidebar.style.transition = 'none';
-          sidebar.dataset.open = 'false';
-          sidebar.classList.add('-translate-x-full');
-          requestAnimationFrame(() => { sidebar.style.transition = was; });
-        }
-        document.getElementById('backdrop')?.classList.add('hidden');
-        document.body.style.overflow = '';
-        updateSidebarActive();
-      });
-    </script>
+    <main class="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+      <slot />
+    </main>
   </body>
 </html>

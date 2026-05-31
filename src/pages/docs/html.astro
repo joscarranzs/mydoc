@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopicNav from '../../components/TopicNav.astro';
+---
+
+<BaseLayout title="HTML" description="Tutorial completo de HTML">
+  <div class="mx-auto max-w-3xl space-y-5">
+    <p class="section-label">HTML</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+      Tutorial de HTML.
+    </h1>
+    <p class="text-lg leading-relaxed text-swift-muted sm:text-xl">
+      HTML es el lenguaje base de la web. Aprende desde los fundamentos hasta APIs avanzadas con ejemplos prácticos.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 max-w-5xl">
+    <TopicNav currentSlug="html" />
+  </div>
+</BaseLayout>
